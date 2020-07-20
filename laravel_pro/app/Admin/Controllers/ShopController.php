@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Modules\Map;
 use App\Modules\Shop;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -55,6 +56,39 @@ class ShopController extends AdminController
     {
         $show = new Show(Shop::findOrFail($id));
 
+        $show->field('id', 'ID');
+        $show->field('created_at', '创建时间');
+        $show->field('updated_at', '修改时间');
+        $show->field('name', '店铺名称');
+        $show->field('business_status', '营业状态')->as(function ($business_status) {
+            return $business_status == Shop::BUSSINESS_STATUS_ENABLE ? "开业" : "停业";
+        });
+        $show->field('business_timezone', '营业时间段');
+        $show->field('province', '省')->as(function ($province) {
+            $info = Map::getInfoByCode($province);
+            return $info ? $info->name : "";
+        });
+        $show->field('city', '市')->as(function ($city) {
+            $info = Map::getInfoByCode($city);
+            return $info ? $info->name : "";
+        });
+
+        $show->field('area', '区')->as(function ($area) {
+            $info = Map::getInfoByCode($area);
+            return $info ? $info->name : "";
+        });
+        $show->field('address', '具体地址');
+        $show->field('phone', '联系电话');
+        $show->field('is_branch', '是否为分店')->as(function ($is_branch) {
+            return $is_branch == Shop::NOT_BRANCH ? '否' : '是';
+        });
+        $show->field('parent_branch', '总店名称')->as(function ($parent_branch) {
+            $info = Shop::find($parent_branch);
+            return $info ? $info->name : "-";
+        });
+        $show->field('extention','扩展字段')->as(function ($extention){
+            return json_encode($extention,JSON_UNESCAPED_UNICODE);
+        })->json();
 
         return $show;
     }
@@ -96,7 +130,7 @@ class ShopController extends AdminController
             Shop::IS_BRANCH => "是",
         ];
         $form->select('is_branch', '是否为分店')->options($branch)->when(Shop::IS_BRANCH, function (Form $form) {
-            $form->select("parent_branch","选择总店")->options('/api/shop/get-parent');
+            $form->select("parent_branch", "选择总店")->options('/api/shop/get-parent');
         })->required();
 
         $form->table('extention', function ($table) {
