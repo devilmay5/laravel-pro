@@ -17,9 +17,9 @@ class ShopController extends BaseController
     {
         try {
             $shop_list = Shop::getParentBranch();
-            $this->RemoteApiResponse($shop_list);
+            return $this->RemoteApiResponse($shop_list->toArray());
         } catch (\Throwable $e) {
-            $this->ErrorResponse($e);
+            return $this->ErrorResponse($e);
         }
     }
 }

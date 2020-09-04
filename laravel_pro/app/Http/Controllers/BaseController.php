@@ -20,11 +20,13 @@ class BaseController extends Controller
         $this->request = Request::capture();
         $this->req_start_time = $this->msectime();
     }
+
     /**
-     * @param $data
-     * @param bool $to_json
+     * @param array $data
+     * @param int $code
+     * @param string $msg
      */
-    public function RemoteApiResponse($data, $to_json = true)
+    public function RemoteApiResponse(array $data, int $code = 200, string $msg = "")
     {
         $now = $this->msectime();
         $req_log_data = [
@@ -39,12 +41,12 @@ class BaseController extends Controller
         $req_log_string = implode("@", $req_log_data);
         Log::channel("execute_log")->debug($req_log_string);
 
-        if ($to_json) {
-            header('Content-Type: application/json;charset=utf-8');
-        }
-
-        echo json_encode($data);
-        exit;
+        $res = [
+            'code' => $code ?? self::SUCCESS_CODE,
+            'msg' => $msg ?? "",
+            'result' => $data ?? [],
+        ];
+        return response()->json($res);
     }
 
     /**
@@ -63,9 +65,9 @@ class BaseController extends Controller
             'result' => [],
         ];
 
-        echo json_encode($err);
-        exit;
+        return response()->json($err);
     }
+
     /**
      * @param array $req_data
      * @param array $req_rules
