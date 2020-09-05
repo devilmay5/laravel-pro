@@ -41,7 +41,11 @@ class CustomerServices
     }
 
 
-    public static function getListFromNickname($nickname)
+    /**
+     * @param string $nickname
+     * @return mixed
+     */
+    public static function getListFromNickname(string $nickname)
     {
         return Customer::query()->where('nickname', 'like', "%$nickname%")->get();
     }

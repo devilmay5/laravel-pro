@@ -26,4 +26,6 @@ Route::prefix('shop')->group(function () {
 
 Route::prefix('customer')->group(function () {
     Route::get('get-customer-select','CustomerController@GetCustomerSelect');
+    Route::post('get-customer-info','CustomerController@PostCustomerInfo');
+
 });

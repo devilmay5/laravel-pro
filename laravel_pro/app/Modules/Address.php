@@ -25,6 +25,13 @@ class Address extends BaseModel
         'IS_DEFAULT' => 1,
     ];
 
+    public function scopeOfCustomerId($query, $customer_id)
+    {
+        if ($customer_id) {
+            $query = $query->where('customer_id', $customer_id);
+        }
 
+        return $query;
+    }
 
 }
