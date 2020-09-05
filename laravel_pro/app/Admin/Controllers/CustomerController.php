@@ -33,6 +33,26 @@ class CustomerController extends AdminController
             return $status ? '启用' : '禁用';
         });
         $grid->column('created_at', '创建时间');
+
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+
+            $filter->like('nickname', '用户名');
+            $filter->like('mobile', '手机号');
+
+            $status_group = [
+                Customer::STATUS['DISABLE'] => '禁用',
+                Customer::STATUS['ENABLE'] => '启用',
+            ];
+            $filter->equal('status', '状态')->select($status_group);
+        });
+
+        $grid->disableExport();
+        $grid->actions(function ($actions) {
+            // 去掉查看
+            $actions->disableView();
+        });
+
         return $grid;
     }
 
@@ -72,10 +92,10 @@ class CustomerController extends AdminController
         $form->mobile('mobile', '手机号');
 
         $status = [
-            'on'  => ['value' => 1, 'text' => '启用', 'color' => 'success'],
+            'on' => ['value' => 1, 'text' => '启用', 'color' => 'success'],
             'off' => ['value' => 0, 'text' => '禁用', 'color' => 'danger'],
         ];
-        $form->image('head_img_url','头像')->uniqueName();
+        $form->image('head_img_url', '头像')->uniqueName();
         $form->switch('status', '状态')->states($status);
 
         return $form;

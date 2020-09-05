@@ -12,12 +12,18 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 use Illuminate\Support\Facades\Route;
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 
-Route::prefix('shop')->group(function(){
-    Route::get('get-parent','ShopController@getParentBranch');
+Route::prefix('shop')->group(function () {
+    Route::get('get-parent', 'ShopController@getParentBranch');
+});
+
+Route::prefix('customer')->group(function () {
+    Route::get('get-customer-select','CustomerController@GetCustomerSelect');
 });
