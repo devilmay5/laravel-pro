@@ -39,4 +39,10 @@ Route::prefix('address')->group(function () {
 
 Route::prefix('pro_label')->group(function () {
     Route::get('get-pro_label-select', 'ProLabelController@GetProLabelSelect');
+    Route::post('get-pro_label-list', 'ProLabelController@GetProLabelList');
+});
+
+Route::prefix('pro_brand')->group(function (){
+    Route::post('get-brand-list', 'ProBrandController@GetBrandList');
+    Route::post('get-brand-info', 'ProBrandController@GetBrandInfo');
 });

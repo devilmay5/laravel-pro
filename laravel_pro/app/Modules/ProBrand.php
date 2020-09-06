@@ -21,4 +21,12 @@ class ProBrand extends BaseModel
         'ENABLE' => 1,
         'DISABLE' => 0,
     ];
+
+    public function scopeOfLabelId($query, $label_id)
+    {
+        if ($label_id) {
+            $query = $query->where('label_id', $label_id);
+        }
+        return $query;
+    }
 }

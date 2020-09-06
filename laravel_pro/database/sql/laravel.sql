@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 06/09/2020 22:52:08
+ Date: 06/09/2020 23:17:59
 */
 
 SET NAMES utf8mb4;
@@ -4179,14 +4179,16 @@ CREATE TABLE `pro_brand`  (
   `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '描述',
   `brand_image` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'logo',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '状态 0下架 1上架',
+  `order_by` int(11) NULL DEFAULT 10 COMMENT '排序值',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `pro_brand_label_id_index`(`label_id`) USING BTREE
+  INDEX `pro_brand_label_id_index`(`label_id`, `order_by`) USING BTREE,
+  INDEX `order_by_idx`(`order_by`, `label_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pro_brand
 -- ----------------------------
-INSERT INTO `pro_brand` VALUES (1, '2020-09-06 14:45:27', '2020-09-06 14:46:24', 1, 'nike', '测试测试测试', 'images/2ff58ce7b1fb12635514126c7330038d.jpg', 1);
+INSERT INTO `pro_brand` VALUES (1, '2020-09-06 14:45:27', '2020-09-06 14:46:24', 1, 'nike', '测试测试测试', 'images/2ff58ce7b1fb12635514126c7330038d.jpg', 1, 10);
 
 -- ----------------------------
 -- Table structure for pro_label

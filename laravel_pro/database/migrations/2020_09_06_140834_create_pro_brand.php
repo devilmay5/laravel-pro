@@ -22,8 +22,10 @@ class CreateProBrand extends Migration
             $table->mediumText('description')->comment('描述');
             $table->mediumText('brand_image')->comment('logo');
             $table->tinyInteger('status')->default(1)->comment('状态 0下架 1上架');
+            $table->integer('order_by')->default(10)->comment('排序值');
 
-            $table->index('label_id');
+            $table->index(['label_id', 'order_by']);
+            $table->index(['order_by', 'label_id']);
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
