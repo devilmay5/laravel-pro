@@ -110,6 +110,16 @@ class AddressController extends AdminController
             ->options($is_default_group)
             ->creationRules(['unique:address,customer_id,is_default'])
             ->updateRules(['unique:address,customer_id,is_default']);
+
+        $form->tools(function (Form\Tools $tools) {
+            // 去掉`查看`按钮
+            $tools->disableView();
+        });
+        $form->footer(function ($footer) {
+            // 去掉`查看`checkbox
+            $footer->disableViewCheck();
+        });
+
         return $form;
     }
 }

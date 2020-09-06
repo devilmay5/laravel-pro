@@ -24,7 +24,7 @@ class CustomerController extends BaseController
         }
     }
 
-    public function PostCustomerInfo()
+    public function GetCustomerInfo()
     {
         try {
             $rules = [

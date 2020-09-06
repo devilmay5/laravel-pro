@@ -16,4 +16,6 @@ Route::group([
     $router->resource('shops', ShopController::class);
     $router->resource('customer', CustomerController::class);
     $router->resource('address', AddressController::class);
+    $router->resource('pro-label', ProLabelController::class);
+    $router->resource('pro-brand', ProBrandController::class);
 });

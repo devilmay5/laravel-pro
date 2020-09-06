@@ -25,8 +25,9 @@ class BaseController extends Controller
      * @param array $data
      * @param int $code
      * @param string $msg
+     * @param int $count
      */
-    public function RemoteApiResponse(array $data, int $code = 200, string $msg = "")
+    public function RemoteApiResponse(array $data, int $code = 200, string $msg = "", int $count = 0)
     {
         $now = $this->msectime();
         $req_log_data = [
@@ -44,6 +45,7 @@ class BaseController extends Controller
         $res = [
             'code' => $code ?? self::SUCCESS_CODE,
             'msg' => $msg ?? "",
+            'count' => $count ?? 0,
             'result' => $data ?? [],
         ];
         return response()->json($res);

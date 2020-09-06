@@ -39,8 +39,51 @@ class AddressServices
         }
 
         $res = $query->get();
-
+        if ($res) {
+            $res = $res->toArray();
+        } else {
+            $res = [];
+        }
         return [$res, $count];
     }
 
+    /**
+     * @param array $address
+     * @return mixed
+     */
+    public static function addAddressInfo(array $address)
+    {
+        return Address::create($address)->toArray();
+    }
+
+
+    /**
+     * @param int $customer_id
+     * @return mixed
+     */
+    public static function setAllDefault(int $customer_id)
+    {
+        return Address::where('customer_id', $customer_id)->update(['is_default' => Address::STATUS['NOT_DEFAULT']]);
+    }
+
+    /**
+     * @param int $address_id
+     * @return mixed
+     */
+    public static function delAddress(int $address_id)
+    {
+        return Address::where('id', $address_id)->delete();
+    }
+
+    /**
+     * @param array $address
+     * @return mixed
+     */
+    public static function updateAddressInfo(array $address)
+    {
+        $address_id = $address['address_id'];
+        unset($address['address_id']);
+
+        return Address::where('id', $address_id)->update($address);
+    }
 }

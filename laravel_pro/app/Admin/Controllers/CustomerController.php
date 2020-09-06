@@ -97,7 +97,14 @@ class CustomerController extends AdminController
         ];
         $form->image('head_img_url', '头像')->uniqueName();
         $form->switch('status', '状态')->states($status);
-
+        $form->tools(function (Form\Tools $tools) {
+            // 去掉`查看`按钮
+            $tools->disableView();
+        });
+        $form->footer(function ($footer) {
+            // 去掉`查看`checkbox
+            $footer->disableViewCheck();
+        });
         return $form;
     }
 }
