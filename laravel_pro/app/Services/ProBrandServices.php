@@ -37,6 +37,10 @@ class ProBrandServices
         return [$pro_brand_group, $count];
     }
 
+    /**
+     * @param int $brand_id
+     * @return array
+     */
     public static function getBrandInfo(int $brand_id): array
     {
         return ProBrand::find($brand_id)->toArray();

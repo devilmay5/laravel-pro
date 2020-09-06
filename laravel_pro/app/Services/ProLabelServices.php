@@ -36,6 +36,9 @@ class ProLabelServices
         return ProLabel::find($label_id);
     }
 
+    /**
+     * @return array
+     */
     public static function getEnableList()
     {
         $label_group = ProLabel::query()
