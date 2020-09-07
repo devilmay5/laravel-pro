@@ -31,6 +31,13 @@
       0 => 'Encore\\ChinaDistpicker\\ChinaDistpickerServiceProvider',
     ),
   ),
+  'laravel-admin-ext/ckeditor' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Encore\\CKEditor\\CKEditorServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 

@@ -13,6 +13,8 @@ use Encore\Admin\Show;
 
 class ProClassController extends AdminController
 {
+    const REMOTE_URL_PRO_LABEL = '/api/pro_label/get-pro_label-select';
+    const REMOTE_URL_PRO_BRAND = '/api/pro_brand/get-brand-select';
     /**
      * Title for current resource.
      *
@@ -50,7 +52,7 @@ class ProClassController extends AdminController
 
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
-            $filter->equal('label_id', '所属标签')->select('/api/pro_label/get-pro_label-select')->load('brand_id', '/api/pro_brand/get-brand-select');
+            $filter->equal('label_id', '所属标签')->select(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND);
             $filter->equal('brand_id', '品牌名称')->select();
             $filter->like('class_name', '分类名称');
         });
@@ -85,11 +87,11 @@ class ProClassController extends AdminController
     {
         $form = new Form(new ProClass());
 
-        $form->select('label_id', '所属标签')->options('/api/pro_label/get-pro_label-select')->load('brand_id', '/api/pro_brand/get-brand-select');
-        $form->select('brand_id', '产品品牌');
-        $form->text('class_name', '分类名称');
-        $form->switch('status', '状态')->default(1);
-        $form->number('order_by', '排序值')->default(10);
+        $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
+        $form->select('brand_id', '产品品牌')->required();
+        $form->text('class_name', '分类名称')->required();
+        $form->switch('status', '状态')->default(1)->required();
+        $form->number('order_by', '排序值')->default(10)->required();
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

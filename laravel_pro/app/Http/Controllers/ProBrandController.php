@@ -18,12 +18,12 @@ class ProBrandController extends BaseController
     {
         try {
             $rules = [
-                'q' => 'required'
+                'q' => ''
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-            [$pro_brand_group, $count] = ProBrandServices::getBrandList($req['q'] ?? 0);
+            [$pro_brand_group, $count] = ProBrandServices::getBrandList(isset($req['q']) && $req['q'] != "" ? $req['q'] : 0);
 
             $return = [];
             foreach ($pro_brand_group as $key => $item) {

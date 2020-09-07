@@ -19,4 +19,6 @@ Route::group([
     $router->resource('pro-label', ProLabelController::class);
     $router->resource('pro-brand', ProBrandController::class);
     $router->resource('pro-class', ProClassController::class);
+    $router->resource('pro-info', ProInfoController::class);
+    $router->resource('pro-specs-class', ProSpecsClassController::class);
 });

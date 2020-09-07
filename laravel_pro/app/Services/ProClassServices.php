@@ -8,6 +8,12 @@ use App\Modules\ProClass;
 
 class ProClassServices
 {
+    /**
+     * @param int $brand_id
+     * @param int $page_index
+     * @param int $page_size
+     * @return array
+     */
     public static function getClassList(int $brand_id = 0, int $page_index = 0, int $page_size = 0): array
     {
         $select = [
@@ -36,5 +42,14 @@ class ProClassServices
             $brand_group = [];
         }
         return [$brand_group, $count];
+    }
+
+    /**
+     * @param int $class_id
+     * @return mixed
+     */
+    public static function getProClassInfo(int $class_id)
+    {
+        return ProClass::find($class_id);
     }
 }

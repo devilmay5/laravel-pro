@@ -73,13 +73,13 @@ class ProLabelController extends AdminController
     {
         $form = new Form(new ProLabel());
 
-        $form->text('label_name', '标签名称');
-        $form->number('order_by', '排序值')->default(10);
+        $form->text('label_name', '标签名称')->required();
+        $form->number('order_by', '排序值')->default(10)->required();
         $states = [
             'on' => ['value' => ProLabel::STATUS_CODE['ENABLE'], 'text' => '上架', 'color' => 'primary'],
             'off' => ['value' => ProLabel::STATUS_CODE['DISABLE'], 'text' => '下架', 'color' => 'default'],
         ];
-        $form->switch('status', '状态')->states($states);
+        $form->switch('status', '状态')->states($states)->required();
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

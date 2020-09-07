@@ -15,7 +15,7 @@ class CustomerController extends AdminController
      *
      * @var string
      */
-    protected $title = '客户管理-基本信息';
+    protected $title = '客户信息';
 
     /**
      * Make a grid builder.
@@ -88,15 +88,15 @@ class CustomerController extends AdminController
         $form = new Form(new Customer());
 
         $form->display('id', 'ID');
-        $form->text('nickname', '用户名');
-        $form->mobile('mobile', '手机号');
+        $form->text('nickname', '用户名')->required();
+        $form->mobile('mobile', '手机号')->required();
 
         $status = [
             'on' => ['value' => 1, 'text' => '启用', 'color' => 'success'],
             'off' => ['value' => 0, 'text' => '禁用', 'color' => 'danger'],
         ];
-        $form->image('head_img_url', '头像')->uniqueName();
-        $form->switch('status', '状态')->states($status);
+        $form->image('head_img_url', '头像')->uniqueName()->required();
+        $form->switch('status', '状态')->states($status)->required();
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮
             $tools->disableView();

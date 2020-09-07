@@ -12,6 +12,7 @@ use Encore\Admin\Show;
 
 class ProBrandController extends AdminController
 {
+    const REMOTE_URL_PRO_LABEL = '/api/pro_label/get-pro_label-select';
     /**
      * Title for current resource.
      *
@@ -44,7 +45,7 @@ class ProBrandController extends AdminController
 
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
-            $filter->equal('label_id', '所属标签')->select('/api/pro_label/get-pro_label-select');
+            $filter->equal('label_id', '所属标签')->select(self::REMOTE_URL_PRO_LABEL);
             $filter->like('brand_name', '品牌名称');
         });
         $grid->disableExport();
@@ -78,16 +79,16 @@ class ProBrandController extends AdminController
     {
         $form = new Form(new ProBrand());
 
-        $form->select('label_id', '所属标签')->options('/api/pro_label/get-pro_label-select');
-        $form->text('brand_name', '品牌名称');
-        $form->textarea('description', '描述');
-        $form->image('brand_image', 'LOGO')->uniqueName();
-        $form->number('order_by', '排序值')->default(10);
+        $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->required();
+        $form->text('brand_name', '品牌名称')->required();
+        $form->textarea('description', '描述')->required();
+        $form->image('brand_image', 'LOGO')->uniqueName()->required();
+        $form->number('order_by', '排序值')->default(10)->required();
         $states = [
             'on' => ['value' => ProBrand::STATUS_CODE['ENABLE'], 'text' => '上架', 'color' => 'primary'],
             'off' => ['value' => ProBrand::STATUS_CODE['DISABLE'], 'text' => '下架', 'color' => 'default'],
         ];
-        $form->switch('status', '状态')->states($states);
+        $form->switch('status', '状态')->states($states)->required();
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

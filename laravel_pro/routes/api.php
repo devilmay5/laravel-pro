@@ -42,8 +42,13 @@ Route::prefix('pro_label')->group(function () {
     Route::post('get-pro_label-list', 'ProLabelController@GetProLabelList');
 });
 
-Route::prefix('pro_brand')->group(function (){
+Route::prefix('pro_brand')->group(function () {
     Route::get('get-brand-select', 'ProBrandController@GetBrandSelect');
     Route::post('get-brand-list', 'ProBrandController@GetBrandList');
     Route::post('get-brand-info', 'ProBrandController@GetBrandInfo');
+});
+
+Route::prefix('pro_class')->group(function () {
+    Route::get('get-class-select', 'ProClassController@GetClassSelect');
+    Route::post('get-class-list', 'ProClassController@GetClassList');
 });
