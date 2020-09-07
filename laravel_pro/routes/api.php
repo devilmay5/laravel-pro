@@ -43,6 +43,7 @@ Route::prefix('pro_label')->group(function () {
 });
 
 Route::prefix('pro_brand')->group(function (){
+    Route::get('get-brand-select', 'ProBrandController@GetBrandSelect');
     Route::post('get-brand-list', 'ProBrandController@GetBrandList');
     Route::post('get-brand-info', 'ProBrandController@GetBrandInfo');
 });

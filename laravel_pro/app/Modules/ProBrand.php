@@ -14,13 +14,11 @@ class ProBrand extends BaseModel
         'brand_name',
         'description',
         'brand_image',
-        'status'
+        'status',
+        'order_by'
     ];
 
-    const  STATUS_CODE = [
-        'ENABLE' => 1,
-        'DISABLE' => 0,
-    ];
+
 
     public function scopeOfLabelId($query, $label_id)
     {

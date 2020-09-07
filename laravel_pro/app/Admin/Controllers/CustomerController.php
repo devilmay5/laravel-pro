@@ -41,8 +41,8 @@ class CustomerController extends AdminController
             $filter->like('mobile', '手机号');
 
             $status_group = [
-                Customer::STATUS['DISABLE'] => '禁用',
-                Customer::STATUS['ENABLE'] => '启用',
+                Customer::STATUS_CODE['DISABLE'] => '禁用',
+                Customer::STATUS_CODE['ENABLE'] => '启用',
             ];
             $filter->equal('status', '状态')->select($status_group);
         });

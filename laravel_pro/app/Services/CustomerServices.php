@@ -19,7 +19,7 @@ class CustomerServices
             'nickname as text',
         ];
 
-        $customer_group = Customer::query()->select($select)->ofStatus(Customer::STATUS['ENABLE'])->get();
+        $customer_group = Customer::query()->select($select)->ofStatus(Customer::STATUS_CODE['ENABLE'])->get();
 
         if ($customer_group) {
             $customer_group = $customer_group->toArray();

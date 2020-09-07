@@ -15,8 +15,4 @@ class Customer extends BaseModel
         'head_img_url',
         'status',
     ];
-    const STATUS = [
-        'DISABLE' => 0,
-        'ENABLE' => 1,
-    ];
 }

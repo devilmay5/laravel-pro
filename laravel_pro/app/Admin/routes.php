@@ -18,4 +18,5 @@ Route::group([
     $router->resource('address', AddressController::class);
     $router->resource('pro-label', ProLabelController::class);
     $router->resource('pro-brand', ProBrandController::class);
+    $router->resource('pro-class', ProClassController::class);
 });

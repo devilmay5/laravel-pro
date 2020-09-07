@@ -11,9 +11,11 @@ class ProBrandServices
 {
     /**
      * @param int $label_id
+     * @param int $page_index
+     * @param int $page_size
      * @return array
      */
-    public static function getBrandList(int $label_id = 0): array
+    public static function getBrandList(int $label_id = 0, int $page_index = 0, int $page_size = 0): array
     {
         $select = [
             'id',
@@ -28,6 +30,11 @@ class ProBrandServices
             ->orderBy('order_by', 'desc');
 
         $count = $query->count();
+
+        if ($page_index && $page_size) {
+            $query = $query->offset(($page_index - 1) * $page_size)->limit($page_size);
+        }
+
         $pro_brand_group = $query->get();
         if ($pro_brand_group) {
             $pro_brand_group = $pro_brand_group->toArray();

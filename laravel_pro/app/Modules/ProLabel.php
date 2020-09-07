@@ -14,8 +14,5 @@ class ProLabel extends BaseModel
         'status',
     ];
 
-    const  STATUS_CODE = [
-        'ENABLE' => 1,
-        'DISABLE' => 0,
-    ];
+
 }
