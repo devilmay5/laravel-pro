@@ -21,4 +21,5 @@ Route::group([
     $router->resource('pro-class', ProClassController::class);
     $router->resource('pro-info', ProInfoController::class);
     $router->resource('pro-specs-class', ProSpecsClassController::class);
+    $router->resource('pro-specs-detail', ProSpecsDetailController::class);
 });
