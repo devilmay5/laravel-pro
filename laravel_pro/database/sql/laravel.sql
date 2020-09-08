@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 07/09/2020 19:08:54
+ Date: 08/09/2020 17:31:06
 */
 
 SET NAMES utf8mb4;
@@ -35,7 +35,7 @@ CREATE TABLE `address`  (
   `is_default` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否是默认地址 0不是 1是',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `address_customer_id_index`(`customer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
@@ -61,7 +61,7 @@ CREATE TABLE `admin_menu`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -82,6 +82,7 @@ INSERT INTO `admin_menu` VALUES (13, 11, 0, '品牌管理', 'fa-bars', 'pro-bran
 INSERT INTO `admin_menu` VALUES (14, 11, 0, '分类管理', 'fa-bars', 'pro-class', '*', '2020-09-07 01:55:58', '2020-09-07 01:55:58');
 INSERT INTO `admin_menu` VALUES (15, 11, 0, '产品详情', 'fa-bars', 'pro-info', '*', '2020-09-07 07:21:53', '2020-09-07 07:21:53');
 INSERT INTO `admin_menu` VALUES (16, 11, 0, '规格分类', 'fa-bars', 'pro-specs-class', '*', '2020-09-07 10:10:22', '2020-09-07 10:10:22');
+INSERT INTO `admin_menu` VALUES (17, 11, 0, '规格详情', 'fa-bars', 'pro-specs-detail', '*', '2020-09-08 08:24:59', '2020-09-08 08:24:59');
 
 -- ----------------------------
 -- Table structure for admin_operation_log
@@ -98,7 +99,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 432 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 450 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -534,6 +535,24 @@ INSERT INTO `admin_operation_log` VALUES (428, 1, 'admin/pro-specs-class', 'GET'
 INSERT INTO `admin_operation_log` VALUES (429, 1, 'admin/pro-specs-class', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"class_id\":\"1\",\"specs_name\":\"\\u8272\"}', '2020-09-07 10:41:29', '2020-09-07 10:41:29');
 INSERT INTO `admin_operation_log` VALUES (430, 1, 'admin/pro-specs-class', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"class_id\":\"1\",\"specs_name\":null}', '2020-09-07 10:41:33', '2020-09-07 10:41:33');
 INSERT INTO `admin_operation_log` VALUES (431, 1, 'admin/pro-specs-class', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"brand_id\":\"1\",\"specs_name\":null}', '2020-09-07 10:41:39', '2020-09-07 10:41:39');
+INSERT INTO `admin_operation_log` VALUES (432, 1, 'admin/pro-specs-class', 'GET', '127.0.0.1', '{\"brand_id\":\"1\",\"specs_name\":null}', '2020-09-08 01:19:01', '2020-09-08 01:19:01');
+INSERT INTO `admin_operation_log` VALUES (433, 1, 'admin/pro-specs-class', 'GET', '127.0.0.1', '{\"brand_id\":\"1\",\"specs_name\":null}', '2020-09-08 08:24:28', '2020-09-08 08:24:28');
+INSERT INTO `admin_operation_log` VALUES (434, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 08:24:45', '2020-09-08 08:24:45');
+INSERT INTO `admin_operation_log` VALUES (435, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"11\",\"title\":\"\\u89c4\\u683c\\u8be6\\u60c5\",\"icon\":\"fa-bars\",\"uri\":\"pro-specs-detail\",\"roles\":[\"1\",null],\"permission\":\"*\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\"}', '2020-09-08 08:24:58', '2020-09-08 08:24:58');
+INSERT INTO `admin_operation_log` VALUES (436, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-08 08:24:59', '2020-09-08 08:24:59');
+INSERT INTO `admin_operation_log` VALUES (437, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-08 08:25:02', '2020-09-08 08:25:02');
+INSERT INTO `admin_operation_log` VALUES (438, 1, 'admin/pro-specs-detail', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 08:25:05', '2020-09-08 08:25:05');
+INSERT INTO `admin_operation_log` VALUES (439, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 08:25:08', '2020-09-08 08:25:08');
+INSERT INTO `admin_operation_log` VALUES (440, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '[]', '2020-09-08 08:25:21', '2020-09-08 08:25:21');
+INSERT INTO `admin_operation_log` VALUES (441, 1, 'admin/pro-specs-detail', 'POST', '127.0.0.1', '{\"brand_id\":\"1\",\"class_id\":\"1\",\"specs_class_id\":\"1\",\"detail_name\":\"\\u7ea2\\u8272\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\",\"after-save\":\"2\"}', '2020-09-08 08:27:29', '2020-09-08 08:27:29');
+INSERT INTO `admin_operation_log` VALUES (442, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '[]', '2020-09-08 08:27:29', '2020-09-08 08:27:29');
+INSERT INTO `admin_operation_log` VALUES (443, 1, 'admin/pro-specs-detail', 'POST', '127.0.0.1', '{\"brand_id\":\"1\",\"class_id\":\"1\",\"specs_class_id\":\"1\",\"detail_name\":\"\\u767d\\u8272\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\",\"after-save\":\"2\"}', '2020-09-08 08:27:37', '2020-09-08 08:27:37');
+INSERT INTO `admin_operation_log` VALUES (444, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '[]', '2020-09-08 08:27:38', '2020-09-08 08:27:38');
+INSERT INTO `admin_operation_log` VALUES (445, 1, 'admin/pro-specs-detail', 'POST', '127.0.0.1', '{\"brand_id\":\"1\",\"class_id\":\"1\",\"specs_class_id\":\"2\",\"detail_name\":\"42\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\",\"after-save\":\"2\"}', '2020-09-08 08:27:49', '2020-09-08 08:27:49');
+INSERT INTO `admin_operation_log` VALUES (446, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '[]', '2020-09-08 08:27:49', '2020-09-08 08:27:49');
+INSERT INTO `admin_operation_log` VALUES (447, 1, 'admin/pro-specs-detail', 'POST', '127.0.0.1', '{\"brand_id\":\"1\",\"class_id\":\"1\",\"specs_class_id\":\"2\",\"detail_name\":\"43\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\"}', '2020-09-08 08:27:57', '2020-09-08 08:27:57');
+INSERT INTO `admin_operation_log` VALUES (448, 1, 'admin/pro-specs-detail', 'GET', '127.0.0.1', '[]', '2020-09-08 08:27:58', '2020-09-08 08:27:58');
+INSERT INTO `admin_operation_log` VALUES (449, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 08:28:01', '2020-09-08 08:28:01');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -586,6 +605,7 @@ INSERT INTO `admin_role_menu` VALUES (1, 13, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 14, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 15, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 16, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 17, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_role_permissions
@@ -4378,8 +4398,8 @@ CREATE TABLE `pro_class`  (
   `order_by` int(11) NOT NULL DEFAULT 10 COMMENT '排序值',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `pro_class_label_id_index`(`label_id`) USING BTREE,
-  INDEX `pro_class_brand_id_index`(`brand_id`, `order_by`) USING BTREE,
-  INDEX `order_by_brand_id_idx`(`order_by`, `brand_id`) USING BTREE
+  INDEX `order_by_brand_id_idx`(`order_by`, `brand_id`) USING BTREE,
+  INDEX `pro_class_brand_id_index`(`brand_id`, `order_by`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -4487,7 +4507,15 @@ CREATE TABLE `pro_specs_detail`  (
   INDEX `pro_specs_detail_class_id_order_by_index`(`class_id`, `order_by`) USING BTREE,
   INDEX `pro_specs_detail_specs_class_id_order_by_index`(`specs_class_id`, `order_by`) USING BTREE,
   INDEX `pro_specs_detail_order_by_index`(`order_by`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pro_specs_detail
+-- ----------------------------
+INSERT INTO `pro_specs_detail` VALUES (1, '2020-09-08 08:27:29', '2020-09-08 08:27:29', 1, 1, 1, '红色', 1, 10);
+INSERT INTO `pro_specs_detail` VALUES (2, '2020-09-08 08:27:38', '2020-09-08 08:27:38', 1, 1, 1, '白色', 1, 10);
+INSERT INTO `pro_specs_detail` VALUES (3, '2020-09-08 08:27:49', '2020-09-08 08:27:49', 1, 1, 2, '42', 1, 10);
+INSERT INTO `pro_specs_detail` VALUES (4, '2020-09-08 08:27:57', '2020-09-08 08:27:57', 1, 1, 2, '43', 1, 10);
 
 -- ----------------------------
 -- Table structure for shop
