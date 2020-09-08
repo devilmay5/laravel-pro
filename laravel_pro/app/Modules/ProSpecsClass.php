@@ -16,4 +16,12 @@ class ProSpecsClass extends BaseModel
         'order_by',
         'status',
     ];
+
+    public function scopeOfClassId($query, $class_id)
+    {
+        if ($class_id) {
+            $query = $query->where('class_id', $class_id);
+        }
+        return $query;
+    }
 }

@@ -52,3 +52,7 @@ Route::prefix('pro_class')->group(function () {
     Route::get('get-class-select', 'ProClassController@GetClassSelect');
     Route::post('get-class-list', 'ProClassController@GetClassList');
 });
+
+Route::prefix('pro_specs_class')->group(function () {
+    Route::get('get-specs-class-select', 'ProSpecsClassController@GetSpecsClassSelect');
+});
