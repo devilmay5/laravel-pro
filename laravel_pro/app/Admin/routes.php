@@ -20,6 +20,8 @@ Route::group([
     $router->resource('pro-brand', ProBrandController::class);
     $router->resource('pro-class', ProClassController::class);
     $router->resource('pro-info', ProInfoController::class);
+    //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);
+    //废
     $router->resource('pro-specs-detail', ProSpecsDetailController::class);
 });

@@ -20,6 +20,7 @@ class ProInfo extends BaseModel
         'detail_image_url',
         'description',
         'detail_params',
+        'sku_params',
         'total_count',
         'sale_count',
         'status',
@@ -28,6 +29,7 @@ class ProInfo extends BaseModel
 
     protected $casts = [
         'detail_params' => 'json',
+        'sku_params' => 'json',
     ];
 
 
