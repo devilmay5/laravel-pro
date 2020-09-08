@@ -24,6 +24,13 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
+  'jadekun/sku' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'JadeKun\\Sku\\SkuServiceProvider',
+    ),
+  ),
   'laravel-admin-ext/china-distpicker' => 
   array (
     'providers' => 

@@ -109,7 +109,10 @@ class ProInfoController extends AdminController
         $form->image('cover_image_url', '封面图片')->uniqueName()->required();
         $form->multipleImage('detail_image_url', '详情图片')->uniqueName();
         $form->ckeditor('description', '产品描述')->required();
-        $form->keyValue('detail_params', '详细参数')->required();
+//        $form->keyValue('detail_params', '详细参数')->required();
+
+        $form->sku('detail_params','商品SKU');
+
         $form->text('total_count', '库存总计')->required();
         $form->text('sale_count', '销售数量')->required();
         $form->switch('status', '状态')->default(1)->required();
@@ -118,8 +121,7 @@ class ProInfoController extends AdminController
         //保存前回调
         $form->saving(function (Form $form) {
             //...
-//            dump($form->detail_image_url);
-//            exit;
+          //  dd($form->sku);
         });
 
         $form->tools(function (Form\Tools $tools) {
