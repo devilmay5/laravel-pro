@@ -56,3 +56,13 @@ Route::prefix('pro_class')->group(function () {
 Route::prefix('pro_specs_class')->group(function () {
     Route::get('get-specs-class-select', 'ProSpecsClassController@GetSpecsClassSelect');
 });
+
+Route::post('upload_file', function (Request $request) {
+    if ($request->hasFile('file')) {
+        $file = $request->file('file');
+        $path = $file->store('images', 'admin');
+
+        // 返回格式
+        return ['url' => '/upload/' . $path];
+    }
+});
