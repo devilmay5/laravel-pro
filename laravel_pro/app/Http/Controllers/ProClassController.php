@@ -26,7 +26,7 @@ class ProClassController extends BaseController
 
             $return = [];
             foreach ($pro_class_group as $key => $item) {
-                $return[$key]['id'] = $item['id'];
+                $return[$key]['id'] = $item['class_id'];
                 $return[$key]['text'] = $item['class_name'];
             }
 

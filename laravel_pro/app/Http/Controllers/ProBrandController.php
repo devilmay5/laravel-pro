@@ -27,7 +27,7 @@ class ProBrandController extends BaseController
 
             $return = [];
             foreach ($pro_brand_group as $key => $item) {
-                $return[$key]['id'] = $item['id'];
+                $return[$key]['id'] = $item['brand_id'];
                 $return[$key]['text'] = $item['brand_name'];
             }
 
@@ -70,7 +70,8 @@ class ProBrandController extends BaseController
             $this->validateParams($req, $rules);
 
             $pro_brand = ProBrandServices::getBrandInfo($req['brand_id']);
-            return $this->RemoteApiResponse($pro_brand, self::SUCCESS_CODE, '查询成功');
+            $pro_count = ProBrandServices::getBrandProCount($req['brand_id']);
+            return $this->RemoteApiResponse(['pro_brand' => $pro_brand, 'pro_count' => $pro_count], self::SUCCESS_CODE, '查询成功');
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);
         }

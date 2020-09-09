@@ -57,6 +57,12 @@ Route::prefix('pro_specs_class')->group(function () {
     Route::get('get-specs-class-select', 'ProSpecsClassController@GetSpecsClassSelect');
 });
 
+Route::prefix('pro_info')->group(function () {
+    Route::post('get-pro-list', 'ProInfoController@GetProList');
+    Route::post('get-pro-info', 'ProInfoController@GetProInfo');
+});
+
+
 Route::post('upload_file', function (Request $request) {
     if ($request->hasFile('file')) {
         $file = $request->file('file');

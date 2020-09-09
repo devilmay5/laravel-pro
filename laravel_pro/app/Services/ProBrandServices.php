@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Modules\ProBrand;
+use App\Modules\ProInfo;
 use App\Modules\ProLabel;
 
 class ProBrandServices
@@ -18,7 +19,7 @@ class ProBrandServices
     public static function getBrandList(int $label_id = 0, int $page_index = 0, int $page_size = 0): array
     {
         $select = [
-            'id',
+            'id as brand_id',
             'brand_name',
             'brand_image',
             'order_by',
@@ -51,5 +52,13 @@ class ProBrandServices
     public static function getBrandInfo(int $brand_id): array
     {
         return ProBrand::find($brand_id)->toArray();
+    }
+
+    public static function getBrandProCount(int $brand_id): int
+    {
+        return ProInfo::query()
+            ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
+            ->ofBrandId($brand_id)
+            ->count();
     }
 }

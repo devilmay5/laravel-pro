@@ -24,7 +24,8 @@ class ProInfo extends BaseModel
         'total_count',
         'sale_count',
         'status',
-        'order_by'
+        'order_by',
+        'is_recommend'
     ];
 
     protected $casts = [
@@ -32,6 +33,10 @@ class ProInfo extends BaseModel
         'sku_params' => 'json',
     ];
 
+    const IS_RECOMMEND = [
+        'ENABLE' => 1,
+        'DISABLE' => 0
+    ];
 
     public function setDetailImageUrlAttribute($detail_image_url)
     {
@@ -44,5 +49,35 @@ class ProInfo extends BaseModel
     {
         return json_decode($detail_image_url, true);
 
+    }
+
+    public function getSkuParamsAttribute($sku_params)
+    {
+        return json_decode($sku_params, true);
+
+    }
+
+    public function scopeOfBrandId($query, $brand_id)
+    {
+        if ($brand_id) {
+            $query = $query->where('brand_id', $brand_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfClassId($query, $class_id)
+    {
+        if ($class_id) {
+            $query = $query->where('class_id', $class_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfIsRecommend($query, $is_recommend)
+    {
+        if ($is_recommend) {
+            $query = $query->where('is_recommend', $is_recommend);
+        }
+        return $query;
     }
 }

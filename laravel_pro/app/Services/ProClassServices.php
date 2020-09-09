@@ -17,7 +17,7 @@ class ProClassServices
     public static function getClassList(int $brand_id = 0, int $page_index = 0, int $page_size = 0): array
     {
         $select = [
-            'id',
+            'id as class_id',
             'class_name',
             'label_id',
             'brand_id',

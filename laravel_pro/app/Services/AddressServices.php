@@ -18,7 +18,7 @@ class AddressServices
     public static function getAddressListByCustomerId(int $customer_id, int $page_index, int $page_size): array
     {
         $select = [
-            'id',
+            'id as address_id',
             'province',
             'city',
             'area',

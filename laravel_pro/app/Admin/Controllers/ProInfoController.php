@@ -56,6 +56,12 @@ class ProInfoController extends AdminController
         ];
         $grid->column('status', '状态')->switch($states);
 
+        $states = [
+            'on' => ['value' => ProInfo::IS_RECOMMEND['ENABLE'], 'text' => '是', 'color' => 'primary'],
+            'off' => ['value' => ProInfo::IS_RECOMMEND['DISABLE'], 'text' => '否', 'color' => 'default'],
+        ];
+        $grid->column('is_recommend', '相关推荐')->switch($states);
+
         $grid->column('order_by', '排序值')->editable()->sortable();
 
         $grid->filter(function ($filter) {
@@ -116,13 +122,9 @@ class ProInfoController extends AdminController
         $form->text('total_count', '库存总计')->required();
         $form->text('sale_count', '销售数量')->required();
         $form->switch('status', '状态')->default(1)->required();
+        $form->switch('is_recommend', '是否相关推荐')->default(0)->required();
         $form->number('order_by', '排序值')->default(10)->required();
 
-        //保存前回调
-        $form->saving(function (Form $form) {
-            //...
-            //  dd($form->sku);
-        });
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮
