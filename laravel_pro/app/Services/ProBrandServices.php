@@ -37,7 +37,7 @@ class ProBrandServices
         }
 
         $pro_brand_group = $query->get();
-        if ($pro_brand_group) {
+        if ($pro_brand_group->isNotEmpty()) {
             $pro_brand_group = $pro_brand_group->toArray();
         } else {
             $pro_brand_group = [];

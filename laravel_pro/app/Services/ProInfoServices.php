@@ -42,7 +42,7 @@ class ProInfoServices
         }
 
         $pro_info_group = $query->get();
-        if ($pro_info_group) {
+        if ($pro_info_group->isNotEmpty()) {
             $pro_info_group = $pro_info_group->toArray();
         } else {
             $pro_info_group = [];
@@ -90,7 +90,7 @@ class ProInfoServices
         }
 
         $recommend_group = $query->get();
-        if ($recommend_group) {
+        if ($recommend_group->isNotEmpty()) {
             $recommend_group = $recommend_group->toArray();
         } else {
             $recommend_group = [];

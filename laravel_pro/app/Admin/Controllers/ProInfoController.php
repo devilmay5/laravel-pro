@@ -57,8 +57,8 @@ class ProInfoController extends AdminController
         $grid->column('status', '状态')->switch($states);
 
         $states = [
-            'on' => ['value' => ProInfo::IS_RECOMMEND['ENABLE'], 'text' => '是', 'color' => 'primary'],
-            'off' => ['value' => ProInfo::IS_RECOMMEND['DISABLE'], 'text' => '否', 'color' => 'default'],
+            'on' => ['value' => ProInfo::IS_RECOMMEND['ENABLE'], 'text' => '推荐', 'color' => 'primary'],
+            'off' => ['value' => ProInfo::IS_RECOMMEND['DISABLE'], 'text' => '不推荐', 'color' => 'default'],
         ];
         $grid->column('is_recommend', '相关推荐')->switch($states);
 

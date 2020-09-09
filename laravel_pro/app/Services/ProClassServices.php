@@ -36,7 +36,7 @@ class ProClassServices
         }
         $brand_group = $query->get();
 
-        if ($brand_group) {
+        if ($brand_group->isNotEmpty()) {
             $brand_group = $brand_group->toArray();
         } else {
             $brand_group = [];

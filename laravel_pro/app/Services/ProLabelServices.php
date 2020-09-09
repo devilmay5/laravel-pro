@@ -19,7 +19,7 @@ class ProLabelServices
         ];
         $label_group = ProLabel::query()->select($select)->ofStatus(ProLabel::STATUS_CODE['ENABLE'])->get();
 
-        if ($label_group) {
+        if ($label_group->isNotEmpty()) {
             $label_group = $label_group->toArray();
         } else {
             $label_group = [];
@@ -46,7 +46,7 @@ class ProLabelServices
             ->orderBy('order_by', 'desc')
             ->get();
 
-        if ($label_group) {
+        if ($label_group->isNotEmpty()) {
             $label_group = $label_group->toArray();
         } else {
             $label_group = [];

@@ -19,6 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('map')->group(function () {
+    Route::get('get-country', 'MapController@GetCountrySelect');
+    Route::get('get-province', 'MapController@GetProvinceSelect');
+});
 
 Route::prefix('shop')->group(function () {
     Route::get('get-parent', 'ShopController@getParentBranch');

@@ -20,7 +20,7 @@ class ProSpecsClassServices
             ->ofClassId($class_id)
             ->get();
 
-        if ($pro_class_specs_group) {
+        if ($pro_class_specs_group->isNotEmpty()) {
             $pro_class_specs_group = $pro_class_specs_group->toArray();
         } else {
             $pro_class_specs_group = [];

@@ -39,7 +39,7 @@ class AddressServices
         }
 
         $res = $query->get();
-        if ($res) {
+        if ($res->isNotEmpty()) {
             $res = $res->toArray();
         } else {
             $res = [];

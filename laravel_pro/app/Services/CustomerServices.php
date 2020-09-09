@@ -21,7 +21,7 @@ class CustomerServices
 
         $customer_group = Customer::query()->select($select)->ofStatus(Customer::STATUS_CODE['ENABLE'])->get();
 
-        if ($customer_group) {
+        if ($customer_group->isNotEmpty()) {
             $customer_group = $customer_group->toArray();
         } else {
             $customer_group = [];
