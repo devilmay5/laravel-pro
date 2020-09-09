@@ -33,12 +33,12 @@ class AddressController extends AdminController
         $grid->column('customer_id', '客户名称')->display(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
             return $customer->nickname;
-        })->required();
-        $grid->column('consignee_name', '收货人姓名')->required();
-        $grid->column('consignee_mobile', '收货人手机号')->required();
+        });
+        $grid->column('consignee_name', '收货人姓名');
+        $grid->column('consignee_mobile', '收货人手机号');
         $grid->column('is_default', '默认地址')->display(function ($is_default) {
             return $is_default == Address::STATUS['IS_DEFAULT'] ? '是' : '否';
-        })->required();
+        });
 
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
