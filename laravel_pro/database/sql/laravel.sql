@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 08/09/2020 17:31:06
+ Date: 09/09/2020 16:37:26
 */
 
 SET NAMES utf8mb4;
@@ -81,8 +81,6 @@ INSERT INTO `admin_menu` VALUES (12, 11, 0, '标签管理', 'fa-bars', 'pro-labe
 INSERT INTO `admin_menu` VALUES (13, 11, 0, '品牌管理', 'fa-bars', 'pro-brand', '*', '2020-09-06 14:31:39', '2020-09-06 14:31:39');
 INSERT INTO `admin_menu` VALUES (14, 11, 0, '分类管理', 'fa-bars', 'pro-class', '*', '2020-09-07 01:55:58', '2020-09-07 01:55:58');
 INSERT INTO `admin_menu` VALUES (15, 11, 0, '产品详情', 'fa-bars', 'pro-info', '*', '2020-09-07 07:21:53', '2020-09-07 07:21:53');
-INSERT INTO `admin_menu` VALUES (16, 11, 0, '规格分类', 'fa-bars', 'pro-specs-class', '*', '2020-09-07 10:10:22', '2020-09-07 10:10:22');
-INSERT INTO `admin_menu` VALUES (17, 11, 0, '规格详情', 'fa-bars', 'pro-specs-detail', '*', '2020-09-08 08:24:59', '2020-09-08 08:24:59');
 
 -- ----------------------------
 -- Table structure for admin_operation_log
@@ -99,7 +97,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 450 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 520 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -553,6 +551,76 @@ INSERT INTO `admin_operation_log` VALUES (446, 1, 'admin/pro-specs-detail/create
 INSERT INTO `admin_operation_log` VALUES (447, 1, 'admin/pro-specs-detail', 'POST', '127.0.0.1', '{\"brand_id\":\"1\",\"class_id\":\"1\",\"specs_class_id\":\"2\",\"detail_name\":\"43\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\"}', '2020-09-08 08:27:57', '2020-09-08 08:27:57');
 INSERT INTO `admin_operation_log` VALUES (448, 1, 'admin/pro-specs-detail', 'GET', '127.0.0.1', '[]', '2020-09-08 08:27:58', '2020-09-08 08:27:58');
 INSERT INTO `admin_operation_log` VALUES (449, 1, 'admin/pro-specs-detail/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 08:28:01', '2020-09-08 08:28:01');
+INSERT INTO `admin_operation_log` VALUES (450, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 09:44:07', '2020-09-08 09:44:07');
+INSERT INTO `admin_operation_log` VALUES (451, 1, 'admin/pro-info/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 09:44:10', '2020-09-08 09:44:10');
+INSERT INTO `admin_operation_log` VALUES (452, 1, 'admin/pro-info/create', 'GET', '127.0.0.1', '[]', '2020-09-08 09:46:03', '2020-09-08 09:46:03');
+INSERT INTO `admin_operation_log` VALUES (453, 1, 'admin/pro-info', 'POST', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u6d4b\\u8bd5\",\"original_price\":\"111.00\",\"present_price\":\"111.00\",\"description\":\"<p>AS\\u963f\\u8428<\\/p>\",\"detail_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u5c3a\\u7801\\\":[\\\"42\\\",\\\"44\\\",\\\"45\\\",\\\"46\\\"],\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\"]},\\\"sku\\\":[{\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u5c3a\\u7801\\\":\\\"45\\\",\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u5c3a\\u7801\\\":\\\"46\\\",\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\",\"total_count\":\"100\",\"sale_count\":\"20\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\"}', '2020-09-08 09:48:08', '2020-09-08 09:48:08');
+INSERT INTO `admin_operation_log` VALUES (454, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-08 09:48:26', '2020-09-08 09:48:26');
+INSERT INTO `admin_operation_log` VALUES (455, 1, 'admin/pro-info/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 09:48:30', '2020-09-08 09:48:30');
+INSERT INTO `admin_operation_log` VALUES (456, 1, 'admin/pro-info', 'POST', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e392\",\"original_price\":\"111.00\",\"present_price\":\"111.00\",\"description\":\"<p>111<\\/p>\",\"detail_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\",\\\"\\u767d\\u8272\\\"],\\\"\\u5c3a\\u7801\\\":[\\\"32\\\",\\\"33\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"32\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"33\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u767d\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"32\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u767d\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"33\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"}]}\",\"total_count\":\"111\",\"sale_count\":\"111\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/pro-info\"}', '2020-09-08 09:49:18', '2020-09-08 09:49:18');
+INSERT INTO `admin_operation_log` VALUES (457, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-08 09:49:19', '2020-09-08 09:49:19');
+INSERT INTO `admin_operation_log` VALUES (458, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 09:56:42', '2020-09-08 09:56:42');
+INSERT INTO `admin_operation_log` VALUES (459, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '[]', '2020-09-08 09:56:44', '2020-09-08 09:56:44');
+INSERT INTO `admin_operation_log` VALUES (460, 1, 'admin/pro-info/2', 'PUT', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e392\",\"original_price\":\"111.00\",\"present_price\":\"111.00\",\"description\":\"<p>111<\\/p>\",\"detail_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\",\\\"\\u767d\\u8272\\\"],\\\"\\u5c3a\\u7801\\\":[\\\"32\\\",\\\"33\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"32\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"33\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u767d\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"32\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u767d\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"33\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"100\\\"}]}\",\"total_count\":\"111\",\"sale_count\":\"111\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"HEnhw0li4VFkgm4XNMGs00VT3QASPOjo366WyL2k\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/pro-info\"}', '2020-09-08 09:56:48', '2020-09-08 09:56:48');
+INSERT INTO `admin_operation_log` VALUES (461, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-08 09:57:07', '2020-09-08 09:57:07');
+INSERT INTO `admin_operation_log` VALUES (462, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '[]', '2020-09-08 09:57:09', '2020-09-08 09:57:09');
+INSERT INTO `admin_operation_log` VALUES (463, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-09 01:22:07', '2020-09-09 01:22:07');
+INSERT INTO `admin_operation_log` VALUES (464, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:22:45', '2020-09-09 01:22:45');
+INSERT INTO `admin_operation_log` VALUES (465, 1, 'admin/auth/menu/17', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\"}', '2020-09-09 01:22:51', '2020-09-09 01:22:51');
+INSERT INTO `admin_operation_log` VALUES (466, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:22:52', '2020-09-09 01:22:52');
+INSERT INTO `admin_operation_log` VALUES (467, 1, 'admin/auth/menu/16', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\"}', '2020-09-09 01:22:56', '2020-09-09 01:22:56');
+INSERT INTO `admin_operation_log` VALUES (468, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:22:57', '2020-09-09 01:22:57');
+INSERT INTO `admin_operation_log` VALUES (469, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:23:01', '2020-09-09 01:23:01');
+INSERT INTO `admin_operation_log` VALUES (470, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:23:07', '2020-09-09 01:23:07');
+INSERT INTO `admin_operation_log` VALUES (471, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 01:23:08', '2020-09-09 01:23:08');
+INSERT INTO `admin_operation_log` VALUES (472, 1, 'admin/pro-info/2/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 01:24:25', '2020-09-09 01:24:25');
+INSERT INTO `admin_operation_log` VALUES (473, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-09 01:24:35', '2020-09-09 01:24:35');
+INSERT INTO `admin_operation_log` VALUES (474, 1, 'admin/pro-info/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:24:37', '2020-09-09 01:24:37');
+INSERT INTO `admin_operation_log` VALUES (475, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:24:42', '2020-09-09 01:24:42');
+INSERT INTO `admin_operation_log` VALUES (476, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:24:45', '2020-09-09 01:24:45');
+INSERT INTO `admin_operation_log` VALUES (477, 1, 'admin/pro-info/1', 'PUT', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e391\",\"original_price\":\"1112.33\",\"present_price\":\"1111.44\",\"description\":\"<p>\\u8349\\u8349\\u8349\\u8349<\\/p>\",\"detail_params\":{\"keys\":[\"\\u7ed9\\u4f60\\u770b\\u770b\"],\"values\":[\"\\u563f\\u563f\"]},\"sku_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"11\\\",\\\"stock\\\":\\\"1\\\"}]}\",\"total_count\":\"100\",\"sale_count\":\"20\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/pro-info\"}', '2020-09-09 01:24:59', '2020-09-09 01:24:59');
+INSERT INTO `admin_operation_log` VALUES (478, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-09 01:25:00', '2020-09-09 01:25:00');
+INSERT INTO `admin_operation_log` VALUES (479, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:25:03', '2020-09-09 01:25:03');
+INSERT INTO `admin_operation_log` VALUES (480, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 01:25:04', '2020-09-09 01:25:04');
+INSERT INTO `admin_operation_log` VALUES (481, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:25:08', '2020-09-09 01:25:08');
+INSERT INTO `admin_operation_log` VALUES (482, 1, 'admin/_handle_action_', 'POST', '127.0.0.1', '{\"_key\":\"2\",\"_model\":\"App_Modules_ProInfo\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\",\"_action\":\"Encore_Admin_Grid_Actions_Delete\",\"_input\":\"true\"}', '2020-09-09 01:25:12', '2020-09-09 01:25:12');
+INSERT INTO `admin_operation_log` VALUES (483, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:25:13', '2020-09-09 01:25:13');
+INSERT INTO `admin_operation_log` VALUES (484, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:25:15', '2020-09-09 01:25:15');
+INSERT INTO `admin_operation_log` VALUES (485, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 01:25:17', '2020-09-09 01:25:17');
+INSERT INTO `admin_operation_log` VALUES (486, 1, 'admin/pro-info/1', 'PUT', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e391\",\"original_price\":\"1112.33\",\"present_price\":\"1111.44\",\"description\":\"<p>\\u8349\\u8349\\u8349\\u8349<\\/p>\",\"detail_params\":{\"keys\":[\"\\u7ed9\\u4f60\\u770b\\u770b\"],\"values\":[\"\\u563f\\u563f\"]},\"sku_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\",\\\"\\u84dd\\u8272\\\"],\\\"\\u5c3a\\u7801\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\",\"total_count\":\"100\",\"sale_count\":\"20\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/pro-info\"}', '2020-09-09 01:25:40', '2020-09-09 01:25:40');
+INSERT INTO `admin_operation_log` VALUES (487, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-09 01:25:40', '2020-09-09 01:25:40');
+INSERT INTO `admin_operation_log` VALUES (488, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:25:43', '2020-09-09 01:25:43');
+INSERT INTO `admin_operation_log` VALUES (489, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 01:25:44', '2020-09-09 01:25:44');
+INSERT INTO `admin_operation_log` VALUES (490, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 01:25:47', '2020-09-09 01:25:47');
+INSERT INTO `admin_operation_log` VALUES (491, 1, 'admin/address', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 02:10:33', '2020-09-09 02:10:33');
+INSERT INTO `admin_operation_log` VALUES (492, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:12:30', '2020-09-09 02:12:30');
+INSERT INTO `admin_operation_log` VALUES (493, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:14:11', '2020-09-09 02:14:11');
+INSERT INTO `admin_operation_log` VALUES (494, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:14:53', '2020-09-09 02:14:53');
+INSERT INTO `admin_operation_log` VALUES (495, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:14:55', '2020-09-09 02:14:55');
+INSERT INTO `admin_operation_log` VALUES (496, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:11', '2020-09-09 02:15:11');
+INSERT INTO `admin_operation_log` VALUES (497, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:20', '2020-09-09 02:15:20');
+INSERT INTO `admin_operation_log` VALUES (498, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:27', '2020-09-09 02:15:27');
+INSERT INTO `admin_operation_log` VALUES (499, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:34', '2020-09-09 02:15:34');
+INSERT INTO `admin_operation_log` VALUES (500, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:43', '2020-09-09 02:15:43');
+INSERT INTO `admin_operation_log` VALUES (501, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:49', '2020-09-09 02:15:49');
+INSERT INTO `admin_operation_log` VALUES (502, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:15:56', '2020-09-09 02:15:56');
+INSERT INTO `admin_operation_log` VALUES (503, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:16:01', '2020-09-09 02:16:01');
+INSERT INTO `admin_operation_log` VALUES (504, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:16:09', '2020-09-09 02:16:09');
+INSERT INTO `admin_operation_log` VALUES (505, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:16:15', '2020-09-09 02:16:15');
+INSERT INTO `admin_operation_log` VALUES (506, 1, 'admin/address', 'GET', '127.0.0.1', '[]', '2020-09-09 02:16:35', '2020-09-09 02:16:35');
+INSERT INTO `admin_operation_log` VALUES (507, 1, 'admin/customer', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 02:16:38', '2020-09-09 02:16:38');
+INSERT INTO `admin_operation_log` VALUES (508, 1, 'admin/address', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 02:16:41', '2020-09-09 02:16:41');
+INSERT INTO `admin_operation_log` VALUES (509, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-09 03:12:25', '2020-09-09 03:12:25');
+INSERT INTO `admin_operation_log` VALUES (510, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 03:12:29', '2020-09-09 03:12:29');
+INSERT INTO `admin_operation_log` VALUES (511, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 03:13:13', '2020-09-09 03:13:13');
+INSERT INTO `admin_operation_log` VALUES (512, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 03:13:15', '2020-09-09 03:13:15');
+INSERT INTO `admin_operation_log` VALUES (513, 1, 'admin/pro-info/1', 'PUT', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e391\",\"original_price\":\"1112.33\",\"present_price\":\"1111.44\",\"description\":\"<p>\\u8349\\u8349\\u8349\\u8349<\\/p>\",\"detail_params\":{\"keys\":[\"\\u7ed9\\u4f60\\u770b\\u770b\"],\"values\":[\"\\u563f\\u563f\"]},\"sku_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\",\\\"\\u84dd\\u8272\\\"],\\\"\\u5c3a\\u7801\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/U1IXU9HT0QUNWgXfeqnYmklQrFZPqWJOriMVOtfl.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/EhhzhnGK6NOiommnNRXySosdaS6nSJKzMjlcrFrN.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/gX7Z3VYSuGEx2s5U5q94XcYQRfFXINCAA0yeaVJz.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/hyrISmptJKkKPQ25IRsq2nESfMgiJX96YIL8PXya.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/8pCtB9TDcBk6jXLd4lvwnfMItShVGILQVxuhkb44.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\",\"total_count\":\"100\",\"sale_count\":\"20\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/pro-info\"}', '2020-09-09 03:13:40', '2020-09-09 03:13:40');
+INSERT INTO `admin_operation_log` VALUES (514, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-09 03:13:40', '2020-09-09 03:13:40');
+INSERT INTO `admin_operation_log` VALUES (515, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 03:15:20', '2020-09-09 03:15:20');
+INSERT INTO `admin_operation_log` VALUES (516, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-09 03:27:45', '2020-09-09 03:27:45');
+INSERT INTO `admin_operation_log` VALUES (517, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 03:27:50', '2020-09-09 03:27:50');
+INSERT INTO `admin_operation_log` VALUES (518, 1, 'admin/pro-info/1', 'PUT', '127.0.0.1', '{\"is_recommend\":\"on\",\"_token\":\"QRQv14fmrCzS1BzRytsrHH5yqxxacfT9C5jVi4zD\",\"_method\":\"PUT\"}', '2020-09-09 03:28:04', '2020-09-09 03:28:04');
+INSERT INTO `admin_operation_log` VALUES (519, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-09 07:15:41', '2020-09-09 07:15:41');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -604,8 +672,6 @@ INSERT INTO `admin_role_menu` VALUES (1, 12, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 13, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 14, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 15, NULL, NULL);
-INSERT INTO `admin_role_menu` VALUES (1, 16, NULL, NULL);
-INSERT INTO `admin_role_menu` VALUES (1, 17, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_role_permissions
@@ -4427,21 +4493,24 @@ CREATE TABLE `pro_info`  (
   `detail_image_url` json NULL COMMENT '详情图',
   `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '描述',
   `detail_params` json NOT NULL COMMENT '参数详情',
+  `sku_params` json NULL COMMENT 'sku详情',
   `total_count` int(11) NOT NULL DEFAULT 0 COMMENT '库存总计',
   `sale_count` int(11) NOT NULL DEFAULT 0 COMMENT '销量总计',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '状态 0下架 1上架',
   `order_by` int(11) NOT NULL DEFAULT 10 COMMENT '排序值',
+  `is_recommend` tinyint(1) NULL DEFAULT NULL COMMENT '相关推荐 0否 1是',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `pro_info_order_by_index`(`order_by`) USING BTREE,
   INDEX `pro_info_label_id_index`(`label_id`) USING BTREE,
   INDEX `pro_info_brand_id_order_by_index`(`brand_id`, `order_by`) USING BTREE,
-  INDEX `pro_info_class_id_order_by_index`(`class_id`, `order_by`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+  INDEX `pro_info_class_id_order_by_index`(`class_id`, `order_by`) USING BTREE,
+  INDEX `is_recommend`(`is_recommend`, `order_by`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pro_info
 -- ----------------------------
-INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-07 09:02:31', 1, 1, 1, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', 100, 20, 1, 10);
+INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-09 03:28:05', 1, 1, 1, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"颜色\\\":[\\\"红色\\\",\\\"蓝色\\\"],\\\"尺码\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/U1IXU9HT0QUNWgXfeqnYmklQrFZPqWJOriMVOtfl.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/EhhzhnGK6NOiommnNRXySosdaS6nSJKzMjlcrFrN.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/gX7Z3VYSuGEx2s5U5q94XcYQRfFXINCAA0yeaVJz.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/hyrISmptJKkKPQ25IRsq2nESfMgiJX96YIL8PXya.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/8pCtB9TDcBk6jXLd4lvwnfMItShVGILQVxuhkb44.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\"', 100, 20, 1, 10, 1);
 
 -- ----------------------------
 -- Table structure for pro_label
