@@ -31,7 +31,6 @@ class ProInfo extends BaseModel
 
     protected $casts = [
         'detail_params' => 'json',
-        'sku_params' => 'json',
     ];
 
     const IS_RECOMMEND = [
@@ -52,11 +51,6 @@ class ProInfo extends BaseModel
 
     }
 
-    public function getSkuParamsAttribute($sku_params)
-    {
-        return json_decode($sku_params, true);
-
-    }
 
     public function scopeOfBrandId($query, $brand_id)
     {

@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
- Source Schema         : laravel
+ Source Schema         : laravel-test
 
  Target Server Type    : MySQL
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 10/09/2020 18:16:27
+ Date: 10/09/2020 23:03:15
 */
 
 SET NAMES utf8mb4;
@@ -100,7 +100,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 714 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 722 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -818,6 +818,14 @@ INSERT INTO `admin_operation_log` VALUES (710, 1, 'admin/auth/menu', 'POST', '12
 INSERT INTO `admin_operation_log` VALUES (711, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:52:29', '2020-09-10 07:52:29');
 INSERT INTO `admin_operation_log` VALUES (712, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:52:31', '2020-09-10 07:52:31');
 INSERT INTO `admin_operation_log` VALUES (713, 1, 'admin/retail-order', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 07:52:34', '2020-09-10 07:52:34');
+INSERT INTO `admin_operation_log` VALUES (714, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 13:14:19', '2020-09-10 13:14:19');
+INSERT INTO `admin_operation_log` VALUES (715, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 13:14:23', '2020-09-10 13:14:23');
+INSERT INTO `admin_operation_log` VALUES (716, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 13:14:26', '2020-09-10 13:14:26');
+INSERT INTO `admin_operation_log` VALUES (717, 1, 'admin/pro-info/1', 'PUT', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e391\",\"original_price\":\"1112.33\",\"present_price\":\"1111.44\",\"description\":\"<p>\\u8349\\u8349\\u8349\\u8349<\\/p>\",\"detail_params\":{\"keys\":[\"\\u7ed9\\u4f60\\u770b\\u770b\"],\"values\":[\"\\u563f\\u563f\"]},\"sku_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\",\\\"\\u84dd\\u8272\\\"],\\\"\\u5c3a\\u7801\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/Geh9a2FhxKiatMdrp8fOlulaWpJ8CE8y0j9erN02.jpeg\\\",\\\"price\\\":\\\"1100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\\\",\\\"price\\\":\\\"1100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/0cPhAAwcRak91TbSnneAnP99aGiJprSQxc9dQMjX.jpeg\\\",\\\"price\\\":\\\"1100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/KToaercX27YFOVbucYWKR6ZX0PLg4riB2WCiHzE0.jpeg\\\",\\\"price\\\":\\\"1100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\\\",\\\"price\\\":\\\"1100\\\",\\\"stock\\\":\\\"100\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/cRBR96k7XVYHycY8PfEccPjBE7tBFpcZcciIwNMt.jpeg\\\",\\\"price\\\":\\\"1100\\\",\\\"stock\\\":\\\"100\\\"}]}\",\"total_count\":\"100\",\"sale_count\":\"20\",\"freight_template_id\":\"2\",\"status\":\"on\",\"is_recommend\":\"on\",\"order_by\":\"10\",\"_token\":\"rOaKsZO0kVfEHxqblwZgUIqcD9ZDW3cQOMY8hdm7\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/pro-info\"}', '2020-09-10 13:15:12', '2020-09-10 13:15:12');
+INSERT INTO `admin_operation_log` VALUES (718, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-10 13:15:13', '2020-09-10 13:15:13');
+INSERT INTO `admin_operation_log` VALUES (719, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 13:15:15', '2020-09-10 13:15:15');
+INSERT INTO `admin_operation_log` VALUES (720, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 13:15:16', '2020-09-10 13:15:16');
+INSERT INTO `admin_operation_log` VALUES (721, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 13:15:52', '2020-09-10 13:15:52');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -976,7 +984,8 @@ CREATE TABLE `cart`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `customer_id_pro_id_idx`(`customer_id`, `pro_id`) USING BTREE
+  INDEX `customer_id_pro_id_idx`(`customer_id`, `pro_id`) USING BTREE,
+  INDEX `pro_id_idx`(`pro_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -4763,7 +4772,7 @@ CREATE TABLE `pro_info`  (
 -- ----------------------------
 -- Records of pro_info
 -- ----------------------------
-INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-10 03:43:15', 1, 1, 1, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"颜色\\\":[\\\"红色\\\",\\\"蓝色\\\"],\\\"尺码\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/U1IXU9HT0QUNWgXfeqnYmklQrFZPqWJOriMVOtfl.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/EhhzhnGK6NOiommnNRXySosdaS6nSJKzMjlcrFrN.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/gX7Z3VYSuGEx2s5U5q94XcYQRfFXINCAA0yeaVJz.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/hyrISmptJKkKPQ25IRsq2nESfMgiJX96YIL8PXya.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/8pCtB9TDcBk6jXLd4lvwnfMItShVGILQVxuhkb44.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\"', 100, 20, 1, 10, 1, 2);
+INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-10 13:15:12', 1, 1, 1, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '{\"sku\": [{\"pic\": \"/upload/images/Geh9a2FhxKiatMdrp8fOlulaWpJ8CE8y0j9erN02.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/0cPhAAwcRak91TbSnneAnP99aGiJprSQxc9dQMjX.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"44\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/KToaercX27YFOVbucYWKR6ZX0PLg4riB2WCiHzE0.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}, {\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}, {\"pic\": \"/upload/images/cRBR96k7XVYHycY8PfEccPjBE7tBFpcZcciIwNMt.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"44\", \"颜色\": \"蓝色\"}], \"type\": \"many\", \"attrs\": {\"尺码\": [\"42\", \"43\", \"44\"], \"颜色\": [\"红色\", \"蓝色\"]}}', 100, 20, 1, 10, 1, 2);
 
 -- ----------------------------
 -- Table structure for pro_label

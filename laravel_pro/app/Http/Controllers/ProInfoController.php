@@ -49,7 +49,6 @@ class ProInfoController extends BaseController
             $this->validateParams($req, $rules);
 
             $proInfo = ProInfoServices::getProInfo($req['pro_id']);
-            //这个sku的扩展使得 sku_params字段被json_encode两次才入库，在设置属性那里反解一次，这里根据前端需要 看看是否还需要二次反解 彻底转为json数组
             $proInfo['sku_params'] = json_decode($proInfo['sku_params'], true);
             return $this->RemoteApiResponse($proInfo, self::SUCCESS_CODE, '查询成功', 1);
         } catch (\Throwable $e) {

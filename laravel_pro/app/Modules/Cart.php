@@ -18,10 +18,24 @@ class Cart extends BaseModel
     ];
 
 
-
     public function getProSkuParamAttribute($pro_sku_param)
     {
         return json_decode($pro_sku_param, true);
+    }
 
+    public function scopeOfCustomerId($query, $customer_id)
+    {
+        if ($customer_id) {
+            $query = $query->where('customer_id', $customer_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfProId($query, $pro_id)
+    {
+        if ($pro_id) {
+            $query = $query->where('pro_id', $pro_id);
+        }
+        return $query;
     }
 }
