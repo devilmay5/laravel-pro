@@ -21,7 +21,7 @@ Route::group([
     $router->resource('pro-class', ProClassController::class);
     $router->resource('pro-info', ProInfoController::class);
     $router->resource('freight-template', FreightTemplateController::class);
-
+    $router->resource('retail-order', RetailOrderController::class);
 
 
     //废

@@ -34,4 +34,11 @@ class Address extends BaseModel
         return $query;
     }
 
+    public function scopeOfIsDefault($query, $is_default)
+    {
+        if ($is_default) {
+            $query = $query->where('is_default', $is_default);
+        }
+        return $query;
+    }
 }

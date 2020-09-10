@@ -92,7 +92,7 @@ class FreightTemplateController extends AdminController
 
                 $form->table('other_template', '定制运费公式', function ($table) {
                     $table->select('country', '国家')->options('/api/map/get-country')->load('province', '/api/map/get-province');
-                    $table->select('text', '省')->options('/api/map/get-province');
+                    $table->select('text', '省份')->options('/api/map/get-province');
                     $table->text('default_piece', '物品件数（件）');
                     $table->text('default_price', '运费金额（元）');
                     $table->text('incr_piece', '每增加物品件数（件）');

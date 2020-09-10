@@ -39,6 +39,7 @@ Route::prefix('address')->group(function () {
     Route::post('create-address-info', 'AddressController@CreateAddressInfo');
     Route::post('del-address-info', 'AddressController@DelAddressInfo');
     Route::post('update-address-info', 'AddressController@UpdateAddresInfo');
+    Route::post('get-default-address', 'AddressController@GetDefaultAddressByCustomerId');
 });
 
 Route::prefix('pro_label')->group(function () {
@@ -64,8 +65,12 @@ Route::prefix('pro_specs_class')->group(function () {
 Route::prefix('pro_info')->group(function () {
     Route::post('get-pro-list', 'ProInfoController@GetProList');
     Route::post('get-pro-info', 'ProInfoController@GetProInfo');
+    Route::get('get-template-select', 'FreightTemplateController@GetTemplateSelect');
 });
 
+Route::prefix('cart')->group(function () {
+    Route::post('add-cart', 'CartController@CreateCart');
+});
 
 Route::post('upload_file', function (Request $request) {
     if ($request->hasFile('file')) {

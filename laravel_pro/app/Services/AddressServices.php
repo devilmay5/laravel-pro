@@ -48,6 +48,26 @@ class AddressServices
     }
 
     /**
+     * @param int $customer_id
+     * @return mixed
+     */
+    public static function getDefaultAddress(int $customer_id)
+    {
+        $default_address = Address::query()
+            ->ofCustomerId($customer_id)
+            ->ofIsDefault(Address::STATUS['IS_DEFAULT'])
+            ->first();
+
+        if ($default_address) {
+            $default_address = $default_address->toArray();
+        } else {
+            $default_address = [];
+        }
+
+        return $default_address;
+    }
+
+    /**
      * @param array $address
      * @return mixed
      */

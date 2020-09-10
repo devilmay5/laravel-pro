@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
- Source Schema         : laravel-test
+ Source Schema         : laravel
 
  Target Server Type    : MySQL
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 09/09/2020 23:19:13
+ Date: 10/09/2020 18:16:27
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ CREATE TABLE `address`  (
 -- ----------------------------
 -- Records of address
 -- ----------------------------
-INSERT INTO `address` VALUES (1, '2020-09-05 03:29:28', '2020-09-06 13:18:06', 1, 110000, 110100, 110101, 'aaavvv', '11111', '18102025221', 0);
+INSERT INTO `address` VALUES (1, '2020-09-05 03:29:28', '2020-09-06 13:18:06', 1, 110000, 110100, 110101, 'aaavvv', '11111', '18102025221', 1);
 INSERT INTO `address` VALUES (2, '2020-09-05 03:38:01', '2020-09-06 13:18:06', 1, 120000, 120100, 120101, '123', '11111', '18102025228', 0);
 INSERT INTO `address` VALUES (3, '2020-09-05 07:14:41', '2020-09-05 07:14:41', 2, 110000, 110100, 110101, 'aaavvv', '11111', '18102025221', 0);
 INSERT INTO `address` VALUES (4, '2020-09-06 13:17:36', '2020-09-06 13:18:06', 1, 110000, 110100, 110101, 'qqqqq', '777', '18192928888', 0);
@@ -61,7 +61,7 @@ CREATE TABLE `admin_menu`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -77,11 +77,13 @@ INSERT INTO `admin_menu` VALUES (8, 0, 8, '客户管理', 'fa-bars', NULL, '*', 
 INSERT INTO `admin_menu` VALUES (9, 8, 10, '基本信息', 'fa-bars', 'customer', '*', '2020-09-04 13:24:49', '2020-09-06 13:52:19');
 INSERT INTO `admin_menu` VALUES (10, 8, 9, '地址管理', 'fa-bars', 'address', '*', '2020-09-04 15:09:17', '2020-09-06 13:52:19');
 INSERT INTO `admin_menu` VALUES (11, 0, 11, '产品管理', 'fa-bars', NULL, '*', '2020-09-06 13:52:02', '2020-09-06 13:52:59');
-INSERT INTO `admin_menu` VALUES (12, 11, 0, '标签管理', 'fa-bars', 'pro-label', '*', '2020-09-06 13:53:24', '2020-09-06 13:53:24');
-INSERT INTO `admin_menu` VALUES (13, 11, 0, '品牌管理', 'fa-bars', 'pro-brand', '*', '2020-09-06 14:31:39', '2020-09-06 14:31:39');
-INSERT INTO `admin_menu` VALUES (14, 11, 0, '分类管理', 'fa-bars', 'pro-class', '*', '2020-09-07 01:55:58', '2020-09-07 01:55:58');
-INSERT INTO `admin_menu` VALUES (15, 11, 0, '产品详情', 'fa-bars', 'pro-info', '*', '2020-09-07 07:21:53', '2020-09-07 07:21:53');
-INSERT INTO `admin_menu` VALUES (18, 11, 0, '模板管理', 'fa-bars', 'freight-template', '*', '2020-09-09 13:16:34', '2020-09-09 13:16:34');
+INSERT INTO `admin_menu` VALUES (12, 11, 12, '标签管理', 'fa-bars', 'pro-label', '*', '2020-09-06 13:53:24', '2020-09-10 07:51:48');
+INSERT INTO `admin_menu` VALUES (13, 11, 13, '品牌管理', 'fa-bars', 'pro-brand', '*', '2020-09-06 14:31:39', '2020-09-10 07:51:48');
+INSERT INTO `admin_menu` VALUES (14, 11, 14, '分类管理', 'fa-bars', 'pro-class', '*', '2020-09-07 01:55:58', '2020-09-10 07:51:48');
+INSERT INTO `admin_menu` VALUES (15, 11, 15, '产品详情', 'fa-bars', 'pro-info', '*', '2020-09-07 07:21:53', '2020-09-10 07:51:48');
+INSERT INTO `admin_menu` VALUES (18, 11, 16, '模板管理', 'fa-bars', 'freight-template', '*', '2020-09-09 13:16:34', '2020-09-10 07:51:48');
+INSERT INTO `admin_menu` VALUES (19, 0, 17, '订单管理', 'fa-bars', NULL, '*', '2020-09-10 07:51:25', '2020-09-10 07:51:48');
+INSERT INTO `admin_menu` VALUES (20, 19, 0, '订单管理', 'fa-bars', 'retail-order', '*', '2020-09-10 07:52:28', '2020-09-10 07:52:28');
 
 -- ----------------------------
 -- Table structure for admin_operation_log
@@ -98,7 +100,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 661 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 714 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -763,6 +765,59 @@ INSERT INTO `admin_operation_log` VALUES (657, 1, 'admin/freight-template', 'GET
 INSERT INTO `admin_operation_log` VALUES (658, 1, 'admin/freight-template/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-09 15:18:33', '2020-09-09 15:18:33');
 INSERT INTO `admin_operation_log` VALUES (659, 1, 'admin/freight-template/2', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u6b63\\u5e38\\u8fd0\\u8d39\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":null,\"default_price\":null,\"incr_piece\":null,\"incr_price\":null},\"status\":\"on\",\"_token\":\"70RYJzxVxoc8H2fgsVZ2F4x5baRngRJUvFDqd5oR\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/freight-template\"}', '2020-09-09 15:18:38', '2020-09-09 15:18:38');
 INSERT INTO `admin_operation_log` VALUES (660, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-09 15:18:38', '2020-09-09 15:18:38');
+INSERT INTO `admin_operation_log` VALUES (661, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-10 02:31:58', '2020-09-10 02:31:58');
+INSERT INTO `admin_operation_log` VALUES (662, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-10 02:32:49', '2020-09-10 02:32:49');
+INSERT INTO `admin_operation_log` VALUES (663, 1, 'admin/freight-template', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:32:53', '2020-09-10 02:32:53');
+INSERT INTO `admin_operation_log` VALUES (664, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:32:57', '2020-09-10 02:32:57');
+INSERT INTO `admin_operation_log` VALUES (665, 1, 'admin/freight-template/3', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u7279\\u6b8a\\u6a21\\u677f\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"11\",\"incr_price\":\"111\"},\"other_template\":[{\"country\":\"1\",\"text\":\"810000\",\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"1\",\"incr_price\":\"11\",\"_remove_\":\"0\"}],\"status\":\"on\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/freight-template\"}', '2020-09-10 02:39:13', '2020-09-10 02:39:13');
+INSERT INTO `admin_operation_log` VALUES (666, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 02:39:14', '2020-09-10 02:39:14');
+INSERT INTO `admin_operation_log` VALUES (667, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:39:20', '2020-09-10 02:39:20');
+INSERT INTO `admin_operation_log` VALUES (668, 1, 'admin/freight-template/3', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u7279\\u6b8a\\u6a21\\u677f\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":null,\"default_price\":null,\"incr_piece\":null,\"incr_price\":null},\"other_template\":{\"0\":{\"country\":\"1\",\"text\":\"810000\",\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"1\",\"incr_price\":\"11\",\"_remove_\":\"0\"},\"new_1\":{\"country\":\"1\",\"text\":\"320000\",\"default_piece\":\"1\",\"default_price\":\"1111\",\"incr_piece\":\"1\",\"incr_price\":\"111\",\"_remove_\":\"0\"}},\"status\":\"on\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/freight-template\"}', '2020-09-10 02:39:31', '2020-09-10 02:39:31');
+INSERT INTO `admin_operation_log` VALUES (669, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 02:39:32', '2020-09-10 02:39:32');
+INSERT INTO `admin_operation_log` VALUES (670, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:42:29', '2020-09-10 02:42:29');
+INSERT INTO `admin_operation_log` VALUES (671, 1, 'admin/freight-template/3', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u7279\\u6b8a\\u6a21\\u677f\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":\"3\",\"default_price\":\"3\",\"incr_piece\":\"3\",\"incr_price\":\"3\"},\"other_template\":[{\"country\":\"1\",\"text\":\"810000\",\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"1\",\"incr_price\":\"11\",\"_remove_\":\"0\"},{\"country\":\"1\",\"text\":\"320000\",\"default_piece\":\"1\",\"default_price\":\"1111\",\"incr_piece\":\"1\",\"incr_price\":\"111\",\"_remove_\":\"0\"}],\"status\":\"on\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/freight-template\"}', '2020-09-10 02:42:35', '2020-09-10 02:42:35');
+INSERT INTO `admin_operation_log` VALUES (672, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 02:42:36', '2020-09-10 02:42:36');
+INSERT INTO `admin_operation_log` VALUES (673, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:42:38', '2020-09-10 02:42:38');
+INSERT INTO `admin_operation_log` VALUES (674, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 02:42:59', '2020-09-10 02:42:59');
+INSERT INTO `admin_operation_log` VALUES (675, 1, 'admin/freight-template/3', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u7279\\u6b8a\\u6a21\\u677f\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":\"3\",\"default_price\":\"3\",\"incr_piece\":\"3\",\"incr_price\":\"3\"},\"other_template\":[{\"country\":\"1\",\"text\":\"810000\",\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"1\",\"incr_price\":\"11\",\"_remove_\":\"0\"},{\"country\":\"1\",\"text\":\"320000\",\"default_piece\":\"1\",\"default_price\":\"1111\",\"incr_piece\":\"1\",\"incr_price\":\"111\",\"_remove_\":\"0\"}],\"status\":\"on\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\"}', '2020-09-10 02:43:19', '2020-09-10 02:43:19');
+INSERT INTO `admin_operation_log` VALUES (676, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 02:43:19', '2020-09-10 02:43:19');
+INSERT INTO `admin_operation_log` VALUES (677, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:43:28', '2020-09-10 02:43:28');
+INSERT INTO `admin_operation_log` VALUES (678, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 02:43:59', '2020-09-10 02:43:59');
+INSERT INTO `admin_operation_log` VALUES (679, 1, 'admin/freight-template', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:44:48', '2020-09-10 02:44:48');
+INSERT INTO `admin_operation_log` VALUES (680, 1, 'admin/freight-template/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:44:51', '2020-09-10 02:44:51');
+INSERT INTO `admin_operation_log` VALUES (681, 1, 'admin/freight-template/2', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u6b63\\u5e38\\u8fd0\\u8d39\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"1\",\"incr_price\":\"9\"},\"status\":\"on\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/freight-template\"}', '2020-09-10 02:44:58', '2020-09-10 02:44:58');
+INSERT INTO `admin_operation_log` VALUES (682, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 02:44:59', '2020-09-10 02:44:59');
+INSERT INTO `admin_operation_log` VALUES (683, 1, 'admin/freight-template/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:45:08', '2020-09-10 02:45:08');
+INSERT INTO `admin_operation_log` VALUES (684, 1, 'admin/freight-template', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:45:11', '2020-09-10 02:45:11');
+INSERT INTO `admin_operation_log` VALUES (685, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:45:13', '2020-09-10 02:45:13');
+INSERT INTO `admin_operation_log` VALUES (686, 1, 'admin/freight-template/3', 'PUT', '127.0.0.1', '{\"template_name\":\"\\u7279\\u6b8a\\u6a21\\u677f\",\"pro_country\":\"1\",\"pro_province\":\"110000\",\"pro_city\":\"110100\",\"pro_area\":\"110101\",\"delivery_time\":\"3\",\"is_free_shipping\":\"0\",\"default_template\":{\"default_piece\":\"3\",\"default_price\":\"3\",\"incr_piece\":\"3\",\"incr_price\":\"3\"},\"other_template\":{\"0\":{\"country\":\"1\",\"text\":\"810000\",\"default_piece\":\"1\",\"default_price\":\"11\",\"incr_piece\":\"1\",\"incr_price\":\"11\",\"_remove_\":\"0\"},\"1\":{\"country\":\"1\",\"text\":\"320000\",\"default_piece\":\"1\",\"default_price\":\"1111\",\"incr_piece\":\"1\",\"incr_price\":\"111\",\"_remove_\":\"1\"},\"new_1\":{\"country\":\"1\",\"text\":\"820000\",\"default_piece\":\"1\",\"default_price\":\"80\",\"incr_piece\":\"1\",\"incr_price\":\"15\",\"_remove_\":\"0\"}},\"status\":\"on\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8004\\/admin\\/freight-template\"}', '2020-09-10 02:45:28', '2020-09-10 02:45:28');
+INSERT INTO `admin_operation_log` VALUES (687, 1, 'admin/freight-template', 'GET', '127.0.0.1', '[]', '2020-09-10 02:45:28', '2020-09-10 02:45:28');
+INSERT INTO `admin_operation_log` VALUES (688, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 02:45:31', '2020-09-10 02:45:31');
+INSERT INTO `admin_operation_log` VALUES (689, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 02:46:05', '2020-09-10 02:46:05');
+INSERT INTO `admin_operation_log` VALUES (690, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 02:46:15', '2020-09-10 02:46:15');
+INSERT INTO `admin_operation_log` VALUES (691, 1, 'admin/freight-template/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 03:10:14', '2020-09-10 03:10:14');
+INSERT INTO `admin_operation_log` VALUES (692, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 03:42:27', '2020-09-10 03:42:27');
+INSERT INTO `admin_operation_log` VALUES (693, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 03:42:30', '2020-09-10 03:42:30');
+INSERT INTO `admin_operation_log` VALUES (694, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 03:42:40', '2020-09-10 03:42:40');
+INSERT INTO `admin_operation_log` VALUES (695, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 03:42:57', '2020-09-10 03:42:57');
+INSERT INTO `admin_operation_log` VALUES (696, 1, 'admin/pro-info/1', 'PUT', '127.0.0.1', '{\"label_id\":\"1\",\"brand_id\":\"1\",\"class_id\":\"1\",\"pro_name\":\"\\u4e54\\u4e391\",\"original_price\":\"1112.33\",\"present_price\":\"1111.44\",\"description\":\"<p>\\u8349\\u8349\\u8349\\u8349<\\/p>\",\"detail_params\":{\"keys\":[\"\\u7ed9\\u4f60\\u770b\\u770b\"],\"values\":[\"\\u563f\\u563f\"]},\"sku_params\":\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"\\u989c\\u8272\\\":[\\\"\\u7ea2\\u8272\\\",\\\"\\u84dd\\u8272\\\"],\\\"\\u5c3a\\u7801\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/U1IXU9HT0QUNWgXfeqnYmklQrFZPqWJOriMVOtfl.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u7ea2\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/EhhzhnGK6NOiommnNRXySosdaS6nSJKzMjlcrFrN.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"42\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/gX7Z3VYSuGEx2s5U5q94XcYQRfFXINCAA0yeaVJz.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"43\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/hyrISmptJKkKPQ25IRsq2nESfMgiJX96YIL8PXya.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"\\u989c\\u8272\\\":\\\"\\u84dd\\u8272\\\",\\\"\\u5c3a\\u7801\\\":\\\"44\\\",\\\"pic\\\":\\\"\\/upload\\/images\\/8pCtB9TDcBk6jXLd4lvwnfMItShVGILQVxuhkb44.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\",\"total_count\":\"100\",\"sale_count\":\"20\",\"freight_template_id\":\"2\",\"status\":\"on\",\"is_recommend\":\"on\",\"order_by\":\"10\",\"_token\":\"v2JIerK4rLSUKz0WJsZgnaP4BN6gTJKbGYpXQdyQ\",\"_method\":\"PUT\"}', '2020-09-10 03:43:15', '2020-09-10 03:43:15');
+INSERT INTO `admin_operation_log` VALUES (697, 1, 'admin/pro-info', 'GET', '127.0.0.1', '[]', '2020-09-10 03:43:16', '2020-09-10 03:43:16');
+INSERT INTO `admin_operation_log` VALUES (698, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 03:43:18', '2020-09-10 03:43:18');
+INSERT INTO `admin_operation_log` VALUES (699, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-10 07:50:44', '2020-09-10 07:50:44');
+INSERT INTO `admin_operation_log` VALUES (700, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 07:50:59', '2020-09-10 07:50:59');
+INSERT INTO `admin_operation_log` VALUES (701, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"\\u8ba2\\u5355\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":null,\"roles\":[\"1\",null],\"permission\":\"*\",\"_token\":\"5yJEGrI9T5tOwKUu4KMlQwDlz6UpG3tRxUPoWqHT\"}', '2020-09-10 07:51:25', '2020-09-10 07:51:25');
+INSERT INTO `admin_operation_log` VALUES (702, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:51:25', '2020-09-10 07:51:25');
+INSERT INTO `admin_operation_log` VALUES (703, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:51:29', '2020-09-10 07:51:29');
+INSERT INTO `admin_operation_log` VALUES (704, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:51:38', '2020-09-10 07:51:38');
+INSERT INTO `admin_operation_log` VALUES (705, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"_token\":\"5yJEGrI9T5tOwKUu4KMlQwDlz6UpG3tRxUPoWqHT\",\"_order\":\"[{\\\"id\\\":1},{\\\"id\\\":2,\\\"children\\\":[{\\\"id\\\":3},{\\\"id\\\":4},{\\\"id\\\":5},{\\\"id\\\":6},{\\\"id\\\":7}]},{\\\"id\\\":8,\\\"children\\\":[{\\\"id\\\":10},{\\\"id\\\":9}]},{\\\"id\\\":11,\\\"children\\\":[{\\\"id\\\":12},{\\\"id\\\":13},{\\\"id\\\":14},{\\\"id\\\":15},{\\\"id\\\":18}]},{\\\"id\\\":19}]\"}', '2020-09-10 07:51:48', '2020-09-10 07:51:48');
+INSERT INTO `admin_operation_log` VALUES (706, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 07:51:49', '2020-09-10 07:51:49');
+INSERT INTO `admin_operation_log` VALUES (707, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:51:51', '2020-09-10 07:51:51');
+INSERT INTO `admin_operation_log` VALUES (708, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 07:51:54', '2020-09-10 07:51:54');
+INSERT INTO `admin_operation_log` VALUES (709, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 07:52:06', '2020-09-10 07:52:06');
+INSERT INTO `admin_operation_log` VALUES (710, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"19\",\"title\":\"\\u8ba2\\u5355\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"retail-order\",\"roles\":[\"1\",null],\"permission\":\"*\",\"_token\":\"5yJEGrI9T5tOwKUu4KMlQwDlz6UpG3tRxUPoWqHT\"}', '2020-09-10 07:52:28', '2020-09-10 07:52:28');
+INSERT INTO `admin_operation_log` VALUES (711, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:52:29', '2020-09-10 07:52:29');
+INSERT INTO `admin_operation_log` VALUES (712, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-10 07:52:31', '2020-09-10 07:52:31');
+INSERT INTO `admin_operation_log` VALUES (713, 1, 'admin/retail-order', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 07:52:34', '2020-09-10 07:52:34');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -815,6 +870,8 @@ INSERT INTO `admin_role_menu` VALUES (1, 13, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 14, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 15, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 18, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 19, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 20, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_role_permissions
@@ -903,6 +960,29 @@ CREATE TABLE `admin_users`  (
 -- Records of admin_users
 -- ----------------------------
 INSERT INTO `admin_users` VALUES (1, 'admin', '$2y$10$uHjzT6IybE0cgwsp52FKVOaF1vrGlLgy1rqJwq7AuZb7n8pdIFswm', 'Administrator', NULL, 'iaEcNHf3syZrKlelOKSzZEMdbhyyer4JnItNf6cR32DT9YTegljZyM0Xcpi4', '2020-08-10 14:55:55', '2020-08-10 14:55:55');
+
+-- ----------------------------
+-- Table structure for cart
+-- ----------------------------
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL COMMENT '客户id',
+  `pro_id` int(11) NOT NULL COMMENT '产品id',
+  `pro_sku_param` json NOT NULL COMMENT '选定产品的sku',
+  `pro_count` int(11) NOT NULL COMMENT '购买数量',
+  `pro_unit_price` decimal(10, 2) NOT NULL COMMENT '产品单价',
+  `pro_total_price` decimal(10, 2) NOT NULL COMMENT '产品总价',
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `customer_id_pro_id_idx`(`customer_id`, `pro_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cart
+-- ----------------------------
+INSERT INTO `cart` VALUES (4, 1, 1, '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 2, 100.00, 200.00, '2020-09-10 10:15:24', '2020-09-10 10:15:24');
 
 -- ----------------------------
 -- Table structure for customer
@@ -1000,8 +1080,8 @@ CREATE TABLE `freight_template`  (
 -- Records of freight_template
 -- ----------------------------
 INSERT INTO `freight_template` VALUES (1, '包邮模板', 1, 110000, 110100, 110101, 7, 1, NULL, NULL, 1, '2020-09-09 14:48:21', '2020-09-09 15:17:54');
-INSERT INTO `freight_template` VALUES (2, '正常运费', 1, 110000, 110100, 110101, 3, 0, '[null, null, null, null]', NULL, 1, '2020-09-09 14:48:53', '2020-09-09 15:18:38');
-INSERT INTO `freight_template` VALUES (3, '特殊模板', 1, 110000, 110100, 110101, 3, 0, '[null, null, null, null]', '[{\"text\": \"810000\", \"country\": \"1\", \"incr_piece\": \"1\", \"incr_price\": \"11\", \"default_piece\": \"1\", \"default_price\": \"11\"}]', 1, '2020-09-09 14:49:57', '2020-09-09 15:18:09');
+INSERT INTO `freight_template` VALUES (2, '正常运费', 1, 110000, 110100, 110101, 3, 0, '{\"incr_piece\": \"1\", \"incr_price\": \"9\", \"default_piece\": \"1\", \"default_price\": \"11\"}', NULL, 1, '2020-09-09 14:48:53', '2020-09-10 02:44:58');
+INSERT INTO `freight_template` VALUES (3, '特殊模板', 1, 110000, 110100, 110101, 3, 0, '{\"incr_piece\": \"3\", \"incr_price\": \"3\", \"default_piece\": \"3\", \"default_price\": \"3\"}', '[{\"text\": \"810000\", \"country\": \"1\", \"incr_piece\": \"1\", \"incr_price\": \"11\", \"default_piece\": \"1\", \"default_price\": \"11\"}, {\"text\": \"820000\", \"country\": \"1\", \"incr_piece\": \"1\", \"incr_price\": \"15\", \"default_piece\": \"1\", \"default_price\": \"80\"}]', 1, '2020-09-09 14:49:57', '2020-09-10 02:45:28');
 
 -- ----------------------------
 -- Table structure for map
@@ -4671,6 +4751,7 @@ CREATE TABLE `pro_info`  (
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '状态 0下架 1上架',
   `order_by` int(11) NOT NULL DEFAULT 10 COMMENT '排序值',
   `is_recommend` tinyint(1) NULL DEFAULT NULL COMMENT '相关推荐 0否 1是',
+  `freight_template_id` int(11) NULL DEFAULT 0 COMMENT '运费模板id',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `pro_info_order_by_index`(`order_by`) USING BTREE,
   INDEX `pro_info_label_id_index`(`label_id`) USING BTREE,
@@ -4682,7 +4763,7 @@ CREATE TABLE `pro_info`  (
 -- ----------------------------
 -- Records of pro_info
 -- ----------------------------
-INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-09 12:14:58', 1, 1, 1, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"颜色\\\":[\\\"红色\\\",\\\"蓝色\\\"],\\\"尺码\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/U1IXU9HT0QUNWgXfeqnYmklQrFZPqWJOriMVOtfl.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/EhhzhnGK6NOiommnNRXySosdaS6nSJKzMjlcrFrN.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/gX7Z3VYSuGEx2s5U5q94XcYQRfFXINCAA0yeaVJz.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/hyrISmptJKkKPQ25IRsq2nESfMgiJX96YIL8PXya.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/8pCtB9TDcBk6jXLd4lvwnfMItShVGILQVxuhkb44.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\"', 100, 20, 1, 10, 1);
+INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-10 03:43:15', 1, 1, 1, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '\"{\\\"type\\\":\\\"many\\\",\\\"attrs\\\":{\\\"颜色\\\":[\\\"红色\\\",\\\"蓝色\\\"],\\\"尺码\\\":[\\\"42\\\",\\\"43\\\",\\\"44\\\"]},\\\"sku\\\":[{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/U1IXU9HT0QUNWgXfeqnYmklQrFZPqWJOriMVOtfl.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"红色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/EhhzhnGK6NOiommnNRXySosdaS6nSJKzMjlcrFrN.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"42\\\",\\\"pic\\\":\\\"/upload/images/gX7Z3VYSuGEx2s5U5q94XcYQRfFXINCAA0yeaVJz.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"43\\\",\\\"pic\\\":\\\"/upload/images/hyrISmptJKkKPQ25IRsq2nESfMgiJX96YIL8PXya.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"},{\\\"颜色\\\":\\\"蓝色\\\",\\\"尺码\\\":\\\"44\\\",\\\"pic\\\":\\\"/upload/images/8pCtB9TDcBk6jXLd4lvwnfMItShVGILQVxuhkb44.jpeg\\\",\\\"price\\\":\\\"100\\\",\\\"stock\\\":\\\"10\\\"}]}\"', 100, 20, 1, 10, 1, 2);
 
 -- ----------------------------
 -- Table structure for pro_label
@@ -4757,6 +4838,53 @@ INSERT INTO `pro_specs_detail` VALUES (1, '2020-09-08 08:27:29', '2020-09-08 08:
 INSERT INTO `pro_specs_detail` VALUES (2, '2020-09-08 08:27:38', '2020-09-08 08:27:38', 1, 1, 1, '白色', 1, 10);
 INSERT INTO `pro_specs_detail` VALUES (3, '2020-09-08 08:27:49', '2020-09-08 08:27:49', 1, 1, 2, '42', 1, 10);
 INSERT INTO `pro_specs_detail` VALUES (4, '2020-09-08 08:27:57', '2020-09-08 08:27:57', 1, 1, 2, '43', 1, 10);
+
+-- ----------------------------
+-- Table structure for retail_order
+-- ----------------------------
+DROP TABLE IF EXISTS `retail_order`;
+CREATE TABLE `retail_order`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `retail_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL,
+  `total_original_price` decimal(10, 2) NOT NULL COMMENT '原总价',
+  `total_actual_price` decimal(10, 2) NOT NULL COMMENT '成交总价',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `customer_id_idx`(`customer_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for retail_order_line
+-- ----------------------------
+DROP TABLE IF EXISTS `retail_order_line`;
+CREATE TABLE `retail_order_line`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `retail_order_id` int(11) NOT NULL,
+  `retail_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单号(冗余字段)',
+  `customer_id` int(11) NOT NULL COMMENT '客户id(冗余字段)',
+  `pro_id` int(11) NOT NULL COMMENT '产品Id',
+  `brand_id` int(11) NOT NULL COMMENT '品牌id',
+  `pro_sku` json NOT NULL COMMENT 'sku参数',
+  `unit_price` decimal(10, 2) NOT NULL COMMENT '单品价格',
+  `unit_count` int(11) NOT NULL COMMENT '单品数量',
+  `freight` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '运费',
+  `pay_type` tinyint(1) NOT NULL DEFAULT 0 COMMENT '支付类型 0未支付 1支付宝 2微信 3其他',
+  `pay_status` tinyint(1) NOT NULL COMMENT '订单状态 0待支付 1待发货 2待签收 3退换货',
+  `pay_serial_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '交易流水号',
+  `pay_time` timestamp(0) NULL DEFAULT NULL COMMENT '支付时间',
+  `delivery_time` timestamp(0) NULL DEFAULT NULL COMMENT '发货时间',
+  `sign_time` timestamp(0) NULL DEFAULT NULL COMMENT '签收时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `retail_order_id`(`retail_order_id`) USING BTREE,
+  INDEX `customer_id`(`customer_id`) USING BTREE,
+  INDEX `pro_id`(`pro_id`) USING BTREE,
+  INDEX `brand_id`(`brand_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for shop

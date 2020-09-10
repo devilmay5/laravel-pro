@@ -25,7 +25,8 @@ class ProInfo extends BaseModel
         'sale_count',
         'status',
         'order_by',
-        'is_recommend'
+        'is_recommend',
+        'freight_template_id',
     ];
 
     protected $casts = [

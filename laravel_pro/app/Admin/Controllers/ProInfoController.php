@@ -17,6 +17,7 @@ class ProInfoController extends AdminController
     const REMOTE_URL_PRO_LABEL = '/api/pro_label/get-pro_label-select';
     const REMOTE_URL_PRO_BRAND = '/api/pro_brand/get-brand-select';
     const REMOTE_URL_PRO_CLASS = '/api/pro_class/get-class-select';
+    const REMOTE_URL_TEMPLATE = '/api/pro_info/get-template-select';
     /**
      * Title for current resource.
      *
@@ -121,6 +122,9 @@ class ProInfoController extends AdminController
 
         $form->text('total_count', '库存总计')->required();
         $form->text('sale_count', '销售数量')->required();
+
+
+        $form->select('freight_template_id', '选择运费模板')->options(self::REMOTE_URL_TEMPLATE);
         $form->switch('status', '状态')->default(1)->required();
         $form->switch('is_recommend', '是否相关推荐')->default(0)->required();
         $form->number('order_by', '排序值')->default(10)->required();

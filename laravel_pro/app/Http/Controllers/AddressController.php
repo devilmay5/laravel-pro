@@ -107,4 +107,20 @@ class AddressController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetDefaultAddressByCustomerId()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required|exists:customer,id'
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $default_address = AddressServices::getDefaultAddress($req['customer_id']);
+            return $this->RemoteApiResponse($default_address, self::SUCCESS_CODE, '获取地址成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

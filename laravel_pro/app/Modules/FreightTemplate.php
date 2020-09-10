@@ -27,23 +27,24 @@ class FreightTemplate extends BaseModel
         'updated_at',
     ];
 
-    public function getDefaultTemplateAttribute($value)
+    public function getDefaultTemplateAttribute($default_template)
     {
-        return array_values(json_decode($value, true) ?: []);
+        return json_decode($default_template, true) ?: [];
     }
 
-    public function setDefaultTemplateAttribute($value)
+    public function setDefaultTemplateAttribute($default_template)
     {
-        $this->attributes['default_template'] = json_encode(array_values($value));
-    }
-    public function getOtherTemplateAttribute($value)
-    {
-        return array_values(json_decode($value, true) ?: []);
+        $this->attributes['default_template'] = json_encode($default_template);
     }
 
-    public function setOtherTemplateAttribute($value)
+    public function getOtherTemplateAttribute($other_template)
     {
-        $this->attributes['other_template'] = json_encode(array_values($value));
+        return array_values(json_decode($other_template, true) ?: []);
+    }
+
+    public function setOtherTemplateAttribute($other_template)
+    {
+        $this->attributes['other_template'] = json_encode(array_values($other_template));
     }
 
 }
