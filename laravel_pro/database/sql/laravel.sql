@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
- Source Schema         : laravel-test
+ Source Schema         : laravel
 
  Target Server Type    : MySQL
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 10/09/2020 23:03:15
+ Date: 11/09/2020 17:59:15
 */
 
 SET NAMES utf8mb4;
@@ -100,7 +100,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 722 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 726 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -826,6 +826,10 @@ INSERT INTO `admin_operation_log` VALUES (718, 1, 'admin/pro-info', 'GET', '127.
 INSERT INTO `admin_operation_log` VALUES (719, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-10 13:15:15', '2020-09-10 13:15:15');
 INSERT INTO `admin_operation_log` VALUES (720, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 13:15:16', '2020-09-10 13:15:16');
 INSERT INTO `admin_operation_log` VALUES (721, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '[]', '2020-09-10 13:15:52', '2020-09-10 13:15:52');
+INSERT INTO `admin_operation_log` VALUES (722, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-11 02:59:57', '2020-09-11 02:59:57');
+INSERT INTO `admin_operation_log` VALUES (723, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-11 03:00:02', '2020-09-11 03:00:02');
+INSERT INTO `admin_operation_log` VALUES (724, 1, 'admin/pro-info/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-11 03:00:05', '2020-09-11 03:00:05');
+INSERT INTO `admin_operation_log` VALUES (725, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-11 03:00:11', '2020-09-11 03:00:11');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -985,13 +989,15 @@ CREATE TABLE `cart`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `customer_id_pro_id_idx`(`customer_id`, `pro_id`) USING BTREE,
-  INDEX `pro_id_idx`(`pro_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  INDEX `pro_id_customer_id_idx`(`pro_id`, `customer_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
-INSERT INTO `cart` VALUES (4, 1, 1, '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 2, 100.00, 200.00, '2020-09-10 10:15:24', '2020-09-10 10:15:24');
+INSERT INTO `cart` VALUES (4, 1, 1, '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 10, 100.00, 1000.00, '2020-09-10 10:15:24', '2020-09-11 03:55:52');
+INSERT INTO `cart` VALUES (5, 1, 1, '{\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}', 4, 1100.00, 4400.00, '2020-09-11 02:54:46', '2020-09-11 02:58:35');
+INSERT INTO `cart` VALUES (6, 1, 1, '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"红色\"}', 2, 1100.00, 2200.00, '2020-09-11 02:58:59', '2020-09-11 02:58:59');
 
 -- ----------------------------
 -- Table structure for customer
