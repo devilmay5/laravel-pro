@@ -17,6 +17,9 @@ class Cart extends BaseModel
         'pro_total_price',
     ];
 
+    public function pro_info(){
+        return $this->belongsTo(ProInfo::class, 'pro_id');
+    }
 
     public function getProSkuParamAttribute($pro_sku_param)
     {

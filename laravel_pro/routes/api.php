@@ -70,6 +70,8 @@ Route::prefix('pro_info')->group(function () {
 
 Route::prefix('cart')->group(function () {
     Route::post('add-cart', 'CartController@CreateCart');
+    Route::post('get-cart', 'CartController@GetCart');
+    Route::post('update-cart', 'CartController@UpdateCart');
 });
 
 Route::post('upload_file', function (Request $request) {
