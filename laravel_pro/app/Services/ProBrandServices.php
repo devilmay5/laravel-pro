@@ -5,8 +5,11 @@ namespace App\Services;
 
 
 use App\Modules\ProBrand;
+use App\Modules\ProClass;
 use App\Modules\ProInfo;
 use App\Modules\ProLabel;
+use App\Modules\Cart;
+use Illuminate\Support\Facades\DB;
 
 class ProBrandServices
 {
@@ -54,11 +57,42 @@ class ProBrandServices
         return ProBrand::find($brand_id)->toArray();
     }
 
+    /**
+     * @param int $brand_id
+     * @return int
+     */
     public static function getBrandProCount(int $brand_id): int
     {
         return ProInfo::query()
             ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
             ->ofBrandId($brand_id)
             ->count();
+    }
+
+    /**
+     * @param int $brand_id
+     * @param int $status
+     */
+    public static function setClassStatus(int $brand_id, int $status)
+    {
+        DB::transaction(function () use ($brand_id, $status) {
+            ProClass::ofBrandId($brand_id)->update(['status' => $status]);
+            ProInfo::ofBrandId($brand_id)->update(['status' => $status]);
+        });
+    }
+
+    /**
+     * @param int $brand_id
+     */
+    public static function delClass(int $brand_id)
+    {
+        DB::transaction(function () use ($brand_id) {
+            ProClass::ofBrandId($brand_id)->delete();
+            $proIds = ProInfo::ofBrandId($brand_id)->pluck('id');
+            if($proIds){
+                Cart::query()->whereIn('pro_id', $proIds)->delete();
+                ProInfo::destroy($proIds);
+            }
+        });
     }
 }

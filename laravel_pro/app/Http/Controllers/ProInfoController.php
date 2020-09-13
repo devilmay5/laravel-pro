@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Modules\ProInfo;
 use App\Services\ProInfoServices;
 
 class ProInfoController extends BaseController
@@ -49,6 +50,9 @@ class ProInfoController extends BaseController
             $this->validateParams($req, $rules);
 
             $proInfo = ProInfoServices::getProInfo($req['pro_id']);
+            if ($proInfo['status'] == ProInfo::STATUS_CODE['DISABLE']) {
+                throw new \Exception('此商品已下架！');
+            }
             $proInfo['sku_params'] = json_decode($proInfo['sku_params'], true);
             return $this->RemoteApiResponse($proInfo, self::SUCCESS_CODE, '查询成功', 1);
         } catch (\Throwable $e) {

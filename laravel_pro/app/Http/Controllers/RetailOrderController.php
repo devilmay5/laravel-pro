@@ -4,6 +4,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Services\RetailOrderServices;
+
 class RetailOrderController extends BaseController
 {
     public function __construct()
@@ -24,16 +26,15 @@ class RetailOrderController extends BaseController
     {
         try {
             $rules = [
-                'cart_ids' => 'required',
+                'cart_ids' => 'required|json',
                 'address_id' => 'required|exists:address,id',
                 'customer_id' => 'required|exists:customer,id',
-                'total_original_price' => '',
-                'total_actual_price' => '',
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-
+            $obj_retail_order = RetailOrderServices::addRetailOrderFromCart($req);
+            return $this->RemoteApiResponse($obj_retail_order->toArray(), self::SUCCESS_CODE, '提交订单成功');
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);
         }
@@ -41,7 +42,23 @@ class RetailOrderController extends BaseController
 
     public function AddRetailFromPro()
     {
+        try {
+            $rules = [
+                'pro_id' => 'required|exists:pro_info,id',
+                'address_id' => 'required|exists:address,id',
+                'customer_id' => 'required|exists:customer,id',
+                'pro_sku_param' => 'required|json',
+                'pro_unit_price' => 'required',
+                'pro_count' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
 
+            $obj_retail_order = RetailOrderServices::addRetailOrderFromPro($req);
+            return $this->RemoteApiResponse($obj_retail_order->toArray(), self::SUCCESS_CODE, '提交订单成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
     }
 
 }

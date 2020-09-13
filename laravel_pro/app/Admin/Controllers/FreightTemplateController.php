@@ -72,14 +72,14 @@ class FreightTemplateController extends AdminController
     {
         $form = new Form(new FreightTemplate());
 
-        $form->text('template_name', '模板名称');
-        $form->select('pro_country', '所属国家')->options('/api/map/get-country');
+        $form->text('template_name', '模板名称')->required();
+        $form->select('pro_country', '所属国家')->options('/api/map/get-country')->required();
         $form->distpicker([
             'pro_province' => '省',
             'pro_city' => '市',
             'pro_area' => '区'
-        ], '宝贝地址');
-        $form->select('delivery_time', '发货时间')->options([1 => '1天内发货', 3 => '3天内发货', 7 => '7天内发货'])->help('多少天内发货');
+        ], '宝贝地址')->required();
+        $form->select('delivery_time', '发货时间')->options([1 => '1天内发货', 3 => '3天内发货', 7 => '7天内发货'])->help('多少天内发货')->required();
 
         $form->radio('is_free_shipping', '是否包邮')->options([0 => '否', 1 => '是'])->default(1)
             ->when(0, function (Form $form) {

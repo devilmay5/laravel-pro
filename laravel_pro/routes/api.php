@@ -31,7 +31,7 @@ Route::prefix('shop')->group(function () {
 Route::prefix('customer')->group(function () {
     Route::get('get-customer-select', 'CustomerController@GetCustomerSelect');
     Route::post('get-customer-info', 'CustomerController@GetCustomerInfo');
-
+    Route::post('login', 'CustomerController@Login');
 });
 
 Route::prefix('address')->group(function () {
@@ -72,6 +72,10 @@ Route::prefix('cart')->group(function () {
     Route::post('add-cart', 'CartController@CreateCart');
     Route::post('get-cart', 'CartController@GetCart');
     Route::post('update-cart', 'CartController@UpdateCart');
+});
+
+Route::prefix('retail_order')->group(function (){
+    Route::post('add-retail-from-cart', 'RetailOrderController@AddRetailFromCart');
 });
 
 Route::post('upload_file', function (Request $request) {

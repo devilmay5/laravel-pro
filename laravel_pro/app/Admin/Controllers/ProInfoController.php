@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Modules\ProInfo;
 use App\Modules\ProLabel;
+use App\Services\CartServices;
 use App\Services\ProBrandServices;
 use App\Services\ProClassServices;
 use App\Services\ProLabelServices;
@@ -125,10 +126,15 @@ class ProInfoController extends AdminController
 
 
         $form->select('freight_template_id', '选择运费模板')->options(self::REMOTE_URL_TEMPLATE);
-        $form->switch('status', '状态')->default(1)->required();
-        $form->switch('is_recommend', '是否相关推荐')->default(0)->required();
+        $form->switch('status', '状态')->default(1);
+        $form->switch('is_recommend', '是否相关推荐')->default(0);
         $form->number('order_by', '排序值')->default(10)->required();
 
+        $form->saved(function (Form $form) {
+            if ($form->model()->sku_params) {
+                CartServices::checkSkuIsEnable($form->model()->id, $form->model()->sku_params);
+            }
+        });
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

@@ -3,10 +3,12 @@
 
 namespace App\Services;
 
+use App\Modules\FreightTemplate;
 use App\Modules\ProInfo;
 use Illuminate\Support\Arr;
 use App\Modules\Cart;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CartServices
 {
@@ -44,10 +46,9 @@ class CartServices
             //验证提交数量与库存对比
             self::checkStock($req);
             //获取这个客户买的产品的购物车信息列表
-            $cart_group = self::getCartList($req['customer_id'], $req['pro_id']);
-            if ($cart_group->isNotEmpty()) {
+            [$cart_group, $count] = self::getCartList($req['customer_id'], $req['pro_id']);
+            if ($cart_group) {
                 $different_num = 0; // 当前购物车数量遍历次数
-
                 foreach ($cart_group as $item) {
                     //比较除了 pic price  stock 之外的 N个Key的值是否一样,如果都一样，说明就是一个sku属性
                     $tmp_item = Arr::except($item['pro_sku_param'], ['pic', 'price', 'stock']);
@@ -143,4 +144,40 @@ class CartServices
         return Cart::destroy($cart_id);
     }
 
+    /**
+     * @param int $pro_id
+     * @param $pro_sku
+     */
+    public static function checkSkuIsEnable(int $pro_id, $pro_sku)
+    {
+        DB::transaction(function () use ($pro_sku, $pro_id) {
+            $pro_sku = json_decode($pro_sku, true);
+            $cart_group = Cart::query()->ofProId($pro_id)->get();
+            if ($cart_group) {
+                foreach ($cart_group as $item) {
+                    $cart_pro_sku_param = $item->pro_sku_param;
+                    $tmp_cart_pro_sku_param = Arr::except($cart_pro_sku_param, ['pic', 'price', 'stock']);
+                    $different = 0;
+                    //遍历即将保存的sku参数，判断除了'pic', 'price', 'stock'这三个字段的其他所有字段是否和当前购物车中的产品sku字段一致
+                    foreach ($pro_sku['sku'] as $item_sku) {
+                        $tmp_pro_sku_param = Arr::except($item_sku, ['pic', 'price', 'stock']);
+                        if ($tmp_cart_pro_sku_param == $tmp_pro_sku_param) {
+                            $cart_pro_sku_param['price'] = $item_sku['price'];
+                            $cart_pro_sku_param['stock'] = $item_sku['stock'];
+                            $item->pro_sku_param = json_encode($cart_pro_sku_param);
+                            $item->pro_unit_price = $item_sku['price'];
+                            $item->pro_total_price = $item->pro_unit_price * $item->pro_count;
+                            $item->save();
+                        } else {
+                            $different++;
+                        }
+                    }
+                    //都没有则删掉这条购物车信息
+                    if ($different == count($pro_sku['sku'])) {
+                        $item->delete();
+                    }
+                }
+            }
+        });
+    }
 }

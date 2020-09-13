@@ -9,6 +9,24 @@ use App\Modules\Customer;
 class CustomerServices
 {
     /**
+     * @param $mobile
+     * @return array
+     */
+    public static function getCustomerByMobile($mobile): array
+    {
+        $customer = Customer::ofMobile($mobile)->first();
+
+        if (!$customer) {
+            $tmp_customer = [];
+            $tmp_customer['nickname'] = '游客' . time();
+            $tmp_customer['mobile'] = $mobile;
+            $tmp_customer['status'] = Customer::STATUS_CODE['ENABLE'];
+            $customer = Customer::create($tmp_customer);
+        }
+        return $customer->toArray();
+    }
+
+    /**
      * 获取select列表
      * @return array
      */

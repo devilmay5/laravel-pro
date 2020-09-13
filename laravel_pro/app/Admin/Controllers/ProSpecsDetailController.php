@@ -72,7 +72,7 @@ class ProSpecsDetailController extends AdminController
         $form->select('class_id', '所属产品分类')->options(self::REMOTE_URL_PRO_CLASS)->load('specs_class_id', self::REMOTE_URL_PRO_SPECS_CLASS)->required();
         $form->select('specs_class_id', '规格分类')->required();
         $form->text('detail_name', '规格详情名称')->required();
-        $form->switch('status', '状态')->default(1)->required();
+        $form->switch('status', '状态')->default(1);
         $form->number('order_by', '排序值')->default(10)->required();
 
 

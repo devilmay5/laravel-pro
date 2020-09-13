@@ -27,6 +27,8 @@ class FreightTemplate extends BaseModel
         'updated_at',
     ];
 
+    const BAOYOU = 1;
+
     public function getDefaultTemplateAttribute($default_template)
     {
         return json_decode($default_template, true) ?: [];

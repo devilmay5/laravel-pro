@@ -14,6 +14,7 @@ class RetailOrderLine extends BaseModel
         'retail_name',
         'customer_id',
         'pro_id',
+        'pro_name',
         'brand_id',
         'pro_sku',
         'unit_price',
@@ -27,8 +28,27 @@ class RetailOrderLine extends BaseModel
         'sign_time'
     ];
 
+    const PAY_TYPE = [
+        'NO_PAY' => 0,
+        'ALIPAY' => 1,
+        'WEIXIN' => 2,
+        'OTHER' => 3,
+    ];
+
+    const PAY_STATUS = [
+        'TO_BE_PAY' => 0,
+        'TO_BE_DELIVERY' => 1,
+        'TO_BE_SIGNED' => 2,
+        'RETURN_EXCHANGE' => 3,
+    ];
+
     public function retail_order()
     {
         return $this->belongsTo(RetailOrder::class, 'retail_order_id');
+    }
+
+    public function setProSkuAttribute($pro_sku)
+    {
+        $this->attributes['pro_sku'] = json_encode($pro_sku);
     }
 }

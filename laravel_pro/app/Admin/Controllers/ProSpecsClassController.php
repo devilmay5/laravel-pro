@@ -100,7 +100,7 @@ class ProSpecsClassController extends AdminController
             'on' => ['value' => ProSpecsClass::STATUS_CODE['ENABLE'], 'text' => '上架', 'color' => 'primary'],
             'off' => ['value' => ProSpecsClass::STATUS_CODE['DISABLE'], 'text' => '下架', 'color' => 'default'],
         ];
-        $form->switch('status', '状态')->states($states)->required();
+        $form->switch('status', '状态')->states($states);
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

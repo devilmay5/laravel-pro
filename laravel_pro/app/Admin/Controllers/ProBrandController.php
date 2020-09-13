@@ -4,7 +4,9 @@ namespace App\Admin\Controllers;
 
 use App\Modules\ProBrand;
 use App\Modules\ProLabel;
+use App\Services\ProClassServices;
 use App\Services\ProLabelServices;
+use App\Services\ProBrandServices;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -88,7 +90,15 @@ class ProBrandController extends AdminController
             'on' => ['value' => ProBrand::STATUS_CODE['ENABLE'], 'text' => '上架', 'color' => 'primary'],
             'off' => ['value' => ProBrand::STATUS_CODE['DISABLE'], 'text' => '下架', 'color' => 'default'],
         ];
-        $form->switch('status', '状态')->states($states)->required();
+        $form->switch('status', '状态')->states($states);
+
+        $form->saved(function (Form $form) {
+            ProBrandServices::setClassStatus($form->model()->id, $form->model()->status);
+        });
+
+        $form->deleted(function (Form $form) {
+            ProBrandServices::delClass($form->model()->id);
+        });
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

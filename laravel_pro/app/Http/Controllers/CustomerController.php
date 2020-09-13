@@ -13,6 +13,25 @@ class CustomerController extends BaseController
         parent::__construct();
     }
 
+    public function Login()
+    {
+
+        try {
+            $rules = [
+                'mobile' => 'required'
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $customer = CustomerServices::getCustomerByMobile($req['mobile']);
+            session('customer_' . $customer['id'], json_encode($customer));
+
+            return $this->RemoteApiResponse($customer, self::SUCCESS_CODE, '登录成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
     public function GetCustomerSelect()
     {
         try {
@@ -41,7 +60,7 @@ class CustomerController extends BaseController
                 $customerInfo = [];
             }
 
-            return $this->RemoteApiResponse($customerInfo,self::SUCCESS_CODE,'查询成功');
+            return $this->RemoteApiResponse($customerInfo, self::SUCCESS_CODE, '查询成功');
 
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);

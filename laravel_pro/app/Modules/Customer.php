@@ -15,4 +15,12 @@ class Customer extends BaseModel
         'head_img_url',
         'status',
     ];
+
+    public function scopeOfMobile($query, $mobile)
+    {
+        if($mobile){
+            $query = $query->where('mobile',$mobile);
+        }
+        return $query;
+    }
 }

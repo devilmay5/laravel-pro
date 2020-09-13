@@ -5,6 +5,8 @@ namespace App\Admin\Controllers;
 use App\Modules\ProBrand;
 use App\Modules\ProClass;
 use App\Services\ProBrandServices;
+use App\Services\ProClassServices;
+use App\Services\ProInfoServices;
 use App\Services\ProLabelServices;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -31,7 +33,7 @@ class ProClassController extends AdminController
     {
         $grid = new Grid(new ProClass());
 
-        $grid->column('id', __('Id'));
+        $grid->column('id', 'Id');
         $grid->column('created_at', '创建时间');
         $grid->column('label_id', '所属标签')->display(function ($label_id) {
             $labelInfo = ProLabelServices::getInfoById($label_id);
@@ -86,12 +88,20 @@ class ProClassController extends AdminController
     protected function form()
     {
         $form = new Form(new ProClass());
-
+        $form->text('id', '分类Id')->readonly();
         $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
         $form->select('brand_id', '产品品牌')->required();
         $form->text('class_name', '分类名称')->required();
-        $form->switch('status', '状态')->default(1)->required();
+        $form->switch('status', '状态')->default(1);
         $form->number('order_by', '排序值')->default(10)->required();
+
+        $form->saved(function (Form $form) {
+            ProClassServices::setProInfoStatus($form->model()->id, $form->model()->status);
+        });
+
+        $form->deleted(function (Form $form) {
+            ProClassServices::delProInfo($form->model()->id);
+        });
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

@@ -4,7 +4,10 @@
 namespace App\Services;
 
 
+use App\Modules\Cart;
 use App\Modules\ProClass;
+use App\Modules\ProInfo;
+use Illuminate\Support\Facades\DB;
 
 class ProClassServices
 {
@@ -51,5 +54,28 @@ class ProClassServices
     public static function getProClassInfo(int $class_id)
     {
         return ProClass::find($class_id);
+    }
+
+    /**
+     * @param int $class_id
+     * @param int $status
+     */
+    public static function setProInfoStatus(int $class_id, int $status)
+    {
+        ProInfo::ofClassId($class_id)->update(['status' => $status]);
+    }
+
+    /**
+     * @param int $class_id
+     */
+    public static function delProInfo(int $class_id)
+    {
+        DB::transaction(function () use ($class_id) {
+            $proIds = ProInfo::ofBrandId($class_id)->pluck('id');
+            if($proIds){
+                Cart::query()->whereIn('pro_id', $proIds)->delete();
+                ProInfo::destroy($proIds);
+            }
+        });
     }
 }
