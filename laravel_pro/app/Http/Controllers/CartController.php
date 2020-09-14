@@ -67,6 +67,7 @@ class CartController extends BaseController
         try {
             $rules = [
                 'cart_id' => 'required|exists:cart,id',
+                'customer_id' => 'required|exists:customer,id',
                 'pro_count' => 'required',
             ];
             $req = $this->request->only(array_keys($rules));
@@ -84,6 +85,7 @@ class CartController extends BaseController
         try {
             $rules = [
                 'cart_id' => 'required|exists:cart,id',
+                'customer_id' => 'required|exists:customer,id',
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);

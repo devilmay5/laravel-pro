@@ -106,4 +106,13 @@ class AddressServices
 
         return Address::where('id', $address_id)->update($address);
     }
+
+    /**
+     * @param int $address_id
+     * @return mixed
+     */
+    public static function getAddressInfoById(int $address_id)
+    {
+        return Address::find($address_id);
+    }
 }

@@ -30,11 +30,11 @@ Route::prefix('shop')->group(function () {
 
 Route::prefix('customer')->group(function () {
     Route::get('get-customer-select', 'CustomerController@GetCustomerSelect');
-    Route::post('get-customer-info', 'CustomerController@GetCustomerInfo');
+    Route::middleware('check_customer')->post('get-customer-info', 'CustomerController@GetCustomerInfo');
     Route::post('login', 'CustomerController@Login');
 });
 
-Route::prefix('address')->group(function () {
+Route::prefix('address')->middleware('check_customer')->group(function () {
     Route::post('get-address-list', 'AddressController@GetAddressList');
     Route::post('create-address-info', 'AddressController@CreateAddressInfo');
     Route::post('del-address-info', 'AddressController@DelAddressInfo');
@@ -68,14 +68,15 @@ Route::prefix('pro_info')->group(function () {
     Route::get('get-template-select', 'FreightTemplateController@GetTemplateSelect');
 });
 
-Route::prefix('cart')->group(function () {
+Route::prefix('cart')->middleware('check_customer')->group(function () {
     Route::post('add-cart', 'CartController@CreateCart');
     Route::post('get-cart', 'CartController@GetCart');
     Route::post('update-cart', 'CartController@UpdateCart');
 });
 
-Route::prefix('retail_order')->group(function (){
+Route::prefix('retail_order')->middleware('check_customer')->group(function () {
     Route::post('add-retail-from-cart', 'RetailOrderController@AddRetailFromCart');
+    Route::post('add-retail-from-pro', 'RetailOrderController@AddRetailFromPro');
 });
 
 Route::post('upload_file', function (Request $request) {

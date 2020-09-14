@@ -42,6 +42,10 @@ class RetailOrderLine extends BaseModel
         'RETURN_EXCHANGE' => 3,
     ];
 
+    protected $casts = [
+        'pro_sku' => 'json',
+    ];
+
     public function retail_order()
     {
         return $this->belongsTo(RetailOrder::class, 'retail_order_id');

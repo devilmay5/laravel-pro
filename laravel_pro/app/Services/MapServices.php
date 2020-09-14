@@ -8,6 +8,15 @@ use App\Modules\Map;
 class MapServices
 {
     /**
+     * @param $code
+     * @return Map|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    public static function getInfoByCode($code)
+    {
+        return Map::getInfoByCode($code);
+    }
+
+    /**
      * @param $country
      * @return array|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
