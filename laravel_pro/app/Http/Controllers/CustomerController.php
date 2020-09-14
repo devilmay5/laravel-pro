@@ -3,8 +3,8 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Services\CustomerServices;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends BaseController
 {
@@ -15,16 +15,17 @@ class CustomerController extends BaseController
 
     public function Login()
     {
-
         try {
             $rules = [
-                'mobile' => 'required'
+                'mobile' => 'required',
+                'wechat_openid' => '',
+                'head_img_url' => ''
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-            $customer = CustomerServices::getCustomerByMobile($req['mobile']);
-            session('customer_' . $customer['id'], json_encode($customer));
+            $customer = CustomerServices::getCustomerByMobile($req);
+            Session::put('customer_' . $customer['id'], $customer);
 
             return $this->RemoteApiResponse($customer, self::SUCCESS_CODE, '登录成功');
         } catch (\Throwable $e) {

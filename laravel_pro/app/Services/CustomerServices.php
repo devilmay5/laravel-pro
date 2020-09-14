@@ -12,15 +12,17 @@ class CustomerServices
      * @param $mobile
      * @return array
      */
-    public static function getCustomerByMobile($mobile): array
+    public static function getCustomerByMobile($req): array
     {
-        $customer = Customer::ofMobile($mobile)->first();
+        $customer = Customer::ofMobile($req['mobile'])->first();
 
         if (!$customer) {
             $tmp_customer = [];
             $tmp_customer['nickname'] = '游客' . time();
-            $tmp_customer['mobile'] = $mobile;
+            $tmp_customer['mobile'] = $req['mobile'];
             $tmp_customer['status'] = Customer::STATUS_CODE['ENABLE'];
+            $tmp_customer['wechat_openid'] = $req['wechat_openid'] ?? '';
+            $tmp_customer['head_img_url'] = $req['head_img_url'] ?? '';
             $customer = Customer::create($tmp_customer);
         }
         return $customer->toArray();
