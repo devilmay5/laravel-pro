@@ -30,6 +30,7 @@ class ProClassServices
         $query = ProClass::query()->select($select)
             ->ofStatus(ProClass::STATUS_CODE['ENABLE'])
             ->ofBrandId($brand_id)
+            ->ofParentId(0)
             ->orderBy('order_by', 'desc');
 
         $count = $query->count();
@@ -72,10 +73,28 @@ class ProClassServices
     {
         DB::transaction(function () use ($class_id) {
             $proIds = ProInfo::ofBrandId($class_id)->pluck('id');
-            if($proIds){
+            if ($proIds) {
                 Cart::query()->whereIn('pro_id', $proIds)->delete();
                 ProInfo::destroy($proIds);
             }
         });
+    }
+
+
+    /**
+     * @param $parent_id
+     * @return mixed
+     */
+    public static function getRootClass($parent_id = 0)
+    {
+        $select = [
+            'id as id',
+            'class_name as text'
+        ];
+        return ProClass::query()->select($select)
+            ->ofStatus(ProClass::STATUS_CODE['ENABLE'])
+            ->ofParentId($parent_id)
+            ->orderBy('order_by', 'desc')
+            ->get();
     }
 }

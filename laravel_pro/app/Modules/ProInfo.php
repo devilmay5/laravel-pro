@@ -13,6 +13,8 @@ class ProInfo extends BaseModel
         'label_id',
         'brand_id',
         'class_id',
+        'second_class_id',
+        'third_class_id',
         'pro_name',
         'original_price',
         'present_price',
@@ -64,6 +66,22 @@ class ProInfo extends BaseModel
     {
         if ($class_id) {
             $query = $query->where('class_id', $class_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfSecondClassId($query, $second_class_id)
+    {
+        if ($second_class_id) {
+            $query = $query->where('second_class_id', $second_class_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfThirdClassId($query, $third_class_id)
+    {
+        if ($third_class_id) {
+            $query = $query->where('third_class_id', $third_class_id);
         }
         return $query;
     }

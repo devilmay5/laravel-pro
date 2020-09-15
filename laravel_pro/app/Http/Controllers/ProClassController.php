@@ -60,4 +60,40 @@ class ProClassController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetRootClass()
+    {
+        try {
+            $res = ProClassServices::getRootClass();
+            return response()->json($res);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function GetChildClass()
+    {
+        try {
+            $rules = [
+                'q' => '',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $res = ProClassServices::getRootClass($req['q']);
+            return response()->json($res);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function GetAllClass()
+    {
+        try {
+            $res = ProClassServices::getRootClass(false);
+            return response()->json($res);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

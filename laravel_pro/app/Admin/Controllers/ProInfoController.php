@@ -19,6 +19,9 @@ class ProInfoController extends AdminController
     const REMOTE_URL_PRO_BRAND = '/api/pro_brand/get-brand-select';
     const REMOTE_URL_PRO_CLASS = '/api/pro_class/get-class-select';
     const REMOTE_URL_TEMPLATE = '/api/pro_info/get-template-select';
+    const REMOTE_URL_PRO_CLASS_ROOT = '/api/pro_class/get-root-class';
+    const REMOTE_URL_PRO_CLASS_CHILD = '/api/pro_class/get-child-class';
+    const REMOTE_URL_PRO_CLASS_ALL = '/api/pro_class/get-all-class';
     /**
      * Title for current resource.
      *
@@ -108,9 +111,17 @@ class ProInfoController extends AdminController
 
         $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
 
-        $form->select('brand_id', '选择品牌')->options(self::REMOTE_URL_PRO_BRAND)->load('class_id', self::REMOTE_URL_PRO_CLASS)->required();
+        $form->select('brand_id', '选择品牌')->load('class_id', self::REMOTE_URL_PRO_CLASS)->required();
 
         $form->select('class_id', '产品分类')->required();
+
+
+//        $form->select('second_class_id', '二级产品分类')->options(self::REMOTE_URL_PRO_CLASS_ALL)->load('third_class_id', self::REMOTE_URL_PRO_CLASS_CHILD)->required();
+////
+////
+//        $form->select('third_class_id', '三级产品分类')->options(self::REMOTE_URL_PRO_CLASS_ALL)->required();
+
+
         $form->text('pro_name', '产品名称')->required();
         $form->currency('original_price', '原价')->symbol('￥')->required();
         $form->currency('present_price', '现价')->symbol('￥')->required();

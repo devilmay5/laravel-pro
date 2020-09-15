@@ -12,6 +12,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Tree;
+use Encore\Admin\Layout\Content;
 
 class ProClassController extends AdminController
 {
@@ -23,6 +25,16 @@ class ProClassController extends AdminController
      * @var string
      */
     protected $title = '产品分类';
+
+    public function index(Content $content)
+    {
+        $tree = new Tree(new ProClass());
+
+        return $content
+            ->header($this->title)
+            ->body($tree);
+    }
+
 
     /**
      * Make a grid builder.
@@ -91,6 +103,7 @@ class ProClassController extends AdminController
         $form->text('id', '分类Id')->readonly();
         $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
         $form->select('brand_id', '产品品牌')->required();
+        $form->select('parent_id', '父级分类')->options(ProClass::selectOptions())->required();
         $form->text('class_name', '分类名称')->required();
         $form->switch('status', '状态')->default(1);
         $form->number('order_by', '排序值')->default(10)->required();

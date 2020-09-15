@@ -56,6 +56,9 @@ Route::prefix('pro_brand')->group(function () {
 Route::prefix('pro_class')->group(function () {
     Route::get('get-class-select', 'ProClassController@GetClassSelect');
     Route::post('get-class-list', 'ProClassController@GetClassList');
+    Route::get('get-root-class', 'ProClassController@GetRootClass');
+    Route::get('get-child-class', 'ProClassController@GetChildClass');
+    Route::get('get-all-class', 'ProClassController@GetAllClass');
 });
 
 Route::prefix('pro_specs_class')->group(function () {
