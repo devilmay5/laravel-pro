@@ -79,6 +79,16 @@ Route::prefix('retail_order')->middleware('check_customer')->group(function () {
     Route::post('add-retail-from-pro', 'RetailOrderController@AddRetailFromPro');
 });
 
+Route::prefix('pro_collection')->middleware('check_customer')->group(function () {
+    Route::post('add-pro-info-collection', 'ProCollectionController@addProInfoCollection');
+    Route::post('del-pro-info-collection', 'ProCollectionController@delProInfoCollection');
+    Route::post('get-pro_collection-list', 'ProCollectionController@getProInfoCollection');
+
+    Route::post('add-brand-collection', 'ProCollectionController@addBrandCollection');
+    Route::post('del-brand-collection', 'ProCollectionController@delBrandCollection');
+    Route::post('get-brand_collection-list', 'ProCollectionController@getBrandCollection');
+});
+
 Route::post('upload_file', function (Request $request) {
     if ($request->hasFile('file')) {
         $file = $request->file('file');
