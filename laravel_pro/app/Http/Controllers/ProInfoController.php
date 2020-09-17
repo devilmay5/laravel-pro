@@ -30,8 +30,8 @@ class ProInfoController extends BaseController
             [$pro_info_group, $count] = ProInfoServices::getProList(
                 $req['brand_id'] ?? 0,
                 $req['class_id'] ?? 0,
-                $req['page_index'] ?? 0,
-                $req['page_size'] ?? 0
+                $req['page_size'] ?? 0,
+                $req['page_index'] ?? 0
             );
 
             return $this->RemoteApiResponse($pro_info_group, self::SUCCESS_CODE, '查询成功', $count);

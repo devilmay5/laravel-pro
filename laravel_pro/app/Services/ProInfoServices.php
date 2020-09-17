@@ -15,7 +15,7 @@ class ProInfoServices
      * @param int $page_index
      * @return array
      */
-    public static function getProList(int $brand_id = 0, int $class_id = 0, int $page_size = 1, int $page_index = 20): array
+    public static function getProList(int $brand_id = 0, int $class_id = 0, int $page_size = 20, int $page_index = 1): array
     {
         $select = [
             'id as pro_id',
