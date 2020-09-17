@@ -67,6 +67,7 @@ class AddressController extends BaseController
         try {
             $rules = [
                 'address_id' => 'required',
+                'customer_id' => 'required',
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
