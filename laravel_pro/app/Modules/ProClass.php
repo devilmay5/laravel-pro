@@ -2,12 +2,15 @@
 
 namespace App\Modules;
 
-
+use App\Services\ProClassServices;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 use Encore\Admin\Traits\ModelTree;
 
 class ProClass extends BaseModel
 {
     use ModelTree;
+
     //
     protected $table = "pro_class";
     protected $fillable = [
@@ -44,5 +47,15 @@ class ProClass extends BaseModel
             $query = $query->where('parent_id', $parent_id);
         }
         return $query;
+    }
+
+    //删除回调
+    public static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($model) {
+            $obj = json_decode($model, true);
+            ProClassServices::delProInfo($obj['id']);
+        });
     }
 }

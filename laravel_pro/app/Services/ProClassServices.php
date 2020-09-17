@@ -8,6 +8,7 @@ use App\Modules\Cart;
 use App\Modules\ProClass;
 use App\Modules\ProInfo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ProClassServices
 {
@@ -63,7 +64,11 @@ class ProClassServices
      */
     public static function setProInfoStatus(int $class_id, int $status)
     {
-        ProInfo::ofClassId($class_id)->update(['status' => $status]);
+        DB::transaction(function () use ($class_id, $status) {
+            ProInfo::ofClassId($class_id)->update(['status' => $status]);
+            ProInfo::ofSecondClassId($class_id)->update(['status' => $status]);
+            ProInfo::ofThirdClassId($class_id)->update(['status' => $status]);
+        });
     }
 
     /**
@@ -72,7 +77,13 @@ class ProClassServices
     public static function delProInfo(int $class_id)
     {
         DB::transaction(function () use ($class_id) {
-            $proIds = ProInfo::ofBrandId($class_id)->pluck('id');
+            $proIds = ProInfo::ofClassId($class_id)->pluck('id');
+            $pro_sec_Ids = ProInfo::ofSecondClassId($class_id)->pluck('id');
+            $pro_third_Ids = ProInfo::ofThirdClassId($class_id)->pluck('id');
+
+            $proIds = array_merge($proIds->toArray(), $pro_sec_Ids->toArray(), $pro_third_Ids->toArray());
+            $proIds = array_unique($proIds);
+
             if ($proIds) {
                 Cart::query()->whereIn('pro_id', $proIds)->delete();
                 ProInfo::destroy($proIds);

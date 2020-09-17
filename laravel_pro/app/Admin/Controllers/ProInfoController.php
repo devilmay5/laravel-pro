@@ -109,17 +109,38 @@ class ProInfoController extends AdminController
     {
         $form = new Form(new ProInfo());
 
-        $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
+        $label_list = ProLabelServices::getEnableList();
+        $options_label = [];
+        foreach ($label_list as $item) {
+            $options_label[$item['id']] = $item['label_name'];
+        }
 
-        $form->select('brand_id', '选择品牌')->load('class_id', self::REMOTE_URL_PRO_CLASS)->required();
+        $form->select('label_id', '所属标签')->options($options_label)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
 
-        $form->select('class_id', '产品分类')->required();
+        [$brand_list, $count] = ProBrandServices::getBrandList(0, 0, 0);
+        $options_brand = [];
+        foreach ($brand_list as $key => $item) {
+            $options_brand[$item['brand_id']] = $item['brand_name'];
+        }
 
+        $form->select('brand_id', '选择品牌')->options($options_brand)->load('class_id', self::REMOTE_URL_PRO_CLASS)->required();
 
-//        $form->select('second_class_id', '二级产品分类')->options(self::REMOTE_URL_PRO_CLASS_ALL)->load('third_class_id', self::REMOTE_URL_PRO_CLASS_CHILD)->required();
-////
-////
-//        $form->select('third_class_id', '三级产品分类')->options(self::REMOTE_URL_PRO_CLASS_ALL)->required();
+        [$class_list, $count] = ProClassServices::getClassList(0, 0, 0);
+        $options_class = [];
+        foreach ($class_list as $key => $item) {
+            $options_class[$item['class_id']] = $item['class_name'];
+        }
+        $form->select('class_id', '产品分类')->options($options_class)->load('second_class_id', self::REMOTE_URL_PRO_CLASS_CHILD)->required();
+
+        $class_list = ProClassServices::getRootClass(false);
+        $options_class = [];
+        foreach ($class_list as $key => $item) {
+            $options_class[$item['id']] = $item['text'];
+        }
+
+        $form->select('second_class_id', '二级产品分类')->options($options_class)->load('third_class_id', self::REMOTE_URL_PRO_CLASS_CHILD);
+
+        $form->select('third_class_id', '三级产品分类')->options($options_class);
 
 
         $form->text('pro_name', '产品名称')->required();
@@ -139,7 +160,7 @@ class ProInfoController extends AdminController
         $form->select('freight_template_id', '选择运费模板')->options(self::REMOTE_URL_TEMPLATE);
         $form->switch('status', '状态')->default(1);
         $form->switch('is_recommend', '是否相关推荐')->default(0);
-        $form->number('order_by', '排序值')->default(10)->required();
+        $form->number('order_by', '排序值')->default(10);
 
         $form->saved(function (Form $form) {
             if ($form->model()->sku_params) {

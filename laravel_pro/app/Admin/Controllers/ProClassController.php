@@ -14,6 +14,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Tree;
 use Encore\Admin\Layout\Content;
+use Illuminate\Support\Facades\Log;
 
 class ProClassController extends AdminController
 {
@@ -112,9 +113,6 @@ class ProClassController extends AdminController
             ProClassServices::setProInfoStatus($form->model()->id, $form->model()->status);
         });
 
-        $form->deleted(function (Form $form) {
-            ProClassServices::delProInfo($form->model()->id);
-        });
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

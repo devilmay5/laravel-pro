@@ -96,9 +96,6 @@ class ProBrandController extends AdminController
             ProBrandServices::setClassStatus($form->model()->id, $form->model()->status);
         });
 
-        $form->deleted(function (Form $form) {
-            ProBrandServices::delClass($form->model()->id);
-        });
 
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮
