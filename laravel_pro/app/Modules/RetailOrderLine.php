@@ -25,7 +25,8 @@ class RetailOrderLine extends BaseModel
         'pay_serial_number',
         'pay_time',
         'delivery_time',
-        'sign_time'
+        'sign_time',
+        'logistics_number'
     ];
 
     const PAY_TYPE = [
@@ -54,5 +55,21 @@ class RetailOrderLine extends BaseModel
     public function setProSkuAttribute($pro_sku)
     {
         $this->attributes['pro_sku'] = json_encode($pro_sku);
+    }
+
+    public function scopeOfCustomerId($query, $customer_id)
+    {
+        if ($customer_id) {
+            $query = $query->where('customer_id', $customer_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfPayStatus($query, $pay_status)
+    {
+        if ($pay_status !== false) {
+            $query = $query->where('pay_status', $pay_status);
+        }
+        return $query;
     }
 }

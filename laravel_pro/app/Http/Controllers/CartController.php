@@ -36,7 +36,6 @@ class CartController extends BaseController
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-
             CartServices::addCart($req);
             return $this->RemoteApiResponse([], self::SUCCESS_CODE, '添加购物车成功');
         } catch (\Throwable $e) {
@@ -55,7 +54,7 @@ class CartController extends BaseController
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-            [$cart_list, $count] = CartServices::getCartList($req['customer_id'], 0, $req['page_index'], $req['page_size']);
+            [$cart_list, $count] = CartServices::getCartList($req['customer_id'], 0, $req['page_index'] ?? 0, $req['page_size'] ?? 0);
             return $this->RemoteApiResponse($cart_list, self::SUCCESS_CODE, '查询成功', $count);
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);

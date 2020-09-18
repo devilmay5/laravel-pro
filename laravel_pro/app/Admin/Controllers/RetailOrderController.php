@@ -134,6 +134,7 @@ class RetailOrderController extends AdminController
             ]);
 
             $form->display('pay_serial_number', '交易流水号');
+            $form->text('logistics_number','物流单号');
             $form->datetime('pay_time', '支付时间');
             $form->datetime('delivery_time', '发货时间');
             $form->datetime('sign_time', '签收时间');

@@ -61,4 +61,39 @@ class RetailOrderController extends BaseController
         }
     }
 
+    public function GetRetailList()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required|exists:customer,id',
+                'page_index' => 'int',
+                'page_size' => 'int',
+                'pay_status' => 'int',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            [$res, $count] = RetailOrderServices::getRetailOrderLineList($req);
+            return $this->RemoteApiResponse($res, self::SUCCESS_CODE, '查询成功', $count);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function GetRetailInfo()
+    {
+        try {
+            $rules = [
+                'retail_order_line_id' => 'required|exists:retail_order_line,id',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $retail = RetailOrderServices::getRetailOrderLineInfo($req);
+            return $this->RemoteApiResponse($retail, self::SUCCESS_CODE, '查询成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
 }

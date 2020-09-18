@@ -14,9 +14,94 @@ use Illuminate\Support\Facades\DB;
 
 class RetailOrderServices
 {
+    public static function getRetailOrderLineInfo(array $req)
+    {
+        $select = [
+            'id as retail_order_line_id',
+            'created_at',
+            'retail_order_id',
+            'retail_name',
+            'customer_id',
+            'pro_id',
+            'pro_name',
+            'pro_sku',
+            'unit_price',
+            'unit_count',
+            'freight',
+            'pay_type',
+            'pay_status',
+            'pay_serial_number',
+            'pay_time',
+            'delivery_time',
+            'sign_time',
+            'logistics_number'
+        ];
+
+        $retail_order_line = RetailOrderLine::select($select)->find($req['retail_order_line_id'])->toArray();
+
+        $retail_order = RetailOrder::find($retail_order_line['retail_order_id']);
+        $retail_order_line['address'] = Address::find($retail_order['address_id'])->toArray();
+
+        $province = MapServices::getInfoByCode($retail_order_line['address']['province']);
+        $retail_order_line['address']['province'] = $province['name'];
+
+        $city = MapServices::getInfoByCode($retail_order_line['address']['city']);
+        $retail_order_line['address']['city'] = $city['name'];
+
+        $area = MapServices::getInfoByCode($retail_order_line['address']['area']);
+        $retail_order_line['address']['area'] = $area['name'];
+
+        return $retail_order_line;
+    }
 
     /**
      * @param array $req
+     * @return array
+     */
+    public static function getRetailOrderLineList(array $req): array
+    {
+        $select = [
+            'id as retail_order_line_id',
+            'retail_order_id',
+            'retail_name',
+            'customer_id',
+            'pro_id',
+            'pro_name',
+            'pro_sku',
+            'unit_price',
+            'unit_count',
+            'freight',
+            'pay_type',
+            'pay_status',
+            'pay_serial_number',
+            'pay_time',
+            'delivery_time',
+            'sign_time',
+            'logistics_number'
+        ];
+        $query = RetailOrderLine::query()->select($select)
+            ->ofCustomerId($req['customer_id'])
+            ->ofPayStatus($req['pay_status'] ?? false);
+
+        $query = $query->orderBy("id", "desc");
+        $count = $query->count();
+
+        if (isset($req['page_index']) && isset($req['page_size'])) {
+            $query = $query->offset(($req['page_index'] - 1) * $req['page_size'])->limit($req['page_size']);
+        }
+
+        $res = $query->get();
+        if ($res->isNotEmpty()) {
+            $res = $res->toArray();
+        } else {
+            $res = [];
+        }
+        return [$res, $count];
+    }
+
+    /**
+     * @param array $req
+     * @return mixed
      */
     public static function addRetailOrderFromPro(array $req)
     {
@@ -33,6 +118,7 @@ class RetailOrderServices
 
     /**
      * @param array $req
+     * @return mixed
      */
     public static function addRetailOrderFromCart(array $req)
     {
