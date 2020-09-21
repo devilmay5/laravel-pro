@@ -67,6 +67,8 @@ class ProCollectionServices
 
         $query = ProInfoCollection::query()->select($select)
             ->join('pro_info', 'pro_info.id', '=', 'pro_info_collection.pro_id')
+            ->ofCustomerId($req['customer_id'])
+            ->ofProId($req['pro_id'])
             ->where('pro_info.status', ProInfo::STATUS_CODE['ENABLE'])
             ->orderBy('pro_collection_id', 'desc');
 
