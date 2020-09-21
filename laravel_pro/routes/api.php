@@ -94,6 +94,10 @@ Route::prefix('pro_collection')->middleware('check_customer')->group(function ()
     Route::post('get-brand_collection-list', 'ProCollectionController@getBrandCollection');
 });
 
+Route::prefix('ask')->middleware('check_customer')->group(function () {
+    Route::post('add-ask', 'CustomerAskController@AddAsk');
+});
+
 Route::post('upload_file', function (Request $request) {
     if ($request->hasFile('file')) {
         $file = $request->file('file');

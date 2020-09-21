@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
- Source Schema         : laravel
+ Source Schema         : laravel-test
 
  Target Server Type    : MySQL
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 17/09/2020 15:51:05
+ Date: 21/09/2020 23:28:54
 */
 
 SET NAMES utf8mb4;
@@ -61,7 +61,7 @@ CREATE TABLE `admin_menu`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -83,7 +83,9 @@ INSERT INTO `admin_menu` VALUES (14, 11, 14, '分类管理', 'fa-bars', 'pro-cla
 INSERT INTO `admin_menu` VALUES (15, 11, 15, '产品详情', 'fa-bars', 'pro-info', '*', '2020-09-07 07:21:53', '2020-09-10 07:51:48');
 INSERT INTO `admin_menu` VALUES (18, 11, 16, '模板管理', 'fa-bars', 'freight-template', '*', '2020-09-09 13:16:34', '2020-09-10 07:51:48');
 INSERT INTO `admin_menu` VALUES (19, 0, 17, '订单管理', 'fa-bars', NULL, '*', '2020-09-10 07:51:25', '2020-09-10 07:51:48');
-INSERT INTO `admin_menu` VALUES (20, 19, 0, '订单管理', 'fa-bars', 'retail-order', '*', '2020-09-10 07:52:28', '2020-09-10 07:52:28');
+INSERT INTO `admin_menu` VALUES (20, 19, 18, '订单管理', 'fa-bars', 'retail-order', '*', '2020-09-10 07:52:28', '2020-09-21 23:04:00');
+INSERT INTO `admin_menu` VALUES (21, 0, 19, '客服管理', 'fa-bars', NULL, NULL, '2020-09-21 23:03:50', '2020-09-21 23:04:00');
+INSERT INTO `admin_menu` VALUES (22, 21, 0, '消息中心', 'fa-bars', '/customer-ask', NULL, '2020-09-21 23:04:23', '2020-09-21 23:04:38');
 
 -- ----------------------------
 -- Table structure for admin_operation_log
@@ -100,7 +102,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1050 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1232 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -1154,6 +1156,188 @@ INSERT INTO `admin_operation_log` VALUES (1046, 1, 'admin/pro-info', 'GET', '127
 INSERT INTO `admin_operation_log` VALUES (1047, 1, 'admin/pro-info/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-17 15:50:40', '2020-09-17 15:50:40');
 INSERT INTO `admin_operation_log` VALUES (1048, 1, 'admin/pro-info/4/edit', 'GET', '127.0.0.1', '[]', '2020-09-17 15:50:41', '2020-09-17 15:50:41');
 INSERT INTO `admin_operation_log` VALUES (1049, 1, 'admin/pro-info', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-17 15:50:46', '2020-09-17 15:50:46');
+INSERT INTO `admin_operation_log` VALUES (1050, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:45:44', '2020-09-21 21:45:44');
+INSERT INTO `admin_operation_log` VALUES (1051, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:45:55', '2020-09-21 21:45:55');
+INSERT INTO `admin_operation_log` VALUES (1052, 1, 'admin/auth/users/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:45:58', '2020-09-21 21:45:58');
+INSERT INTO `admin_operation_log` VALUES (1053, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:47:33', '2020-09-21 21:47:33');
+INSERT INTO `admin_operation_log` VALUES (1054, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:47:35', '2020-09-21 21:47:35');
+INSERT INTO `admin_operation_log` VALUES (1055, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:47:36', '2020-09-21 21:47:36');
+INSERT INTO `admin_operation_log` VALUES (1056, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:47:38', '2020-09-21 21:47:38');
+INSERT INTO `admin_operation_log` VALUES (1057, 1, 'admin/auth/roles/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:47:43', '2020-09-21 21:47:43');
+INSERT INTO `admin_operation_log` VALUES (1058, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:47:55', '2020-09-21 21:47:55');
+INSERT INTO `admin_operation_log` VALUES (1059, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:47:58', '2020-09-21 21:47:58');
+INSERT INTO `admin_operation_log` VALUES (1060, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:48:12', '2020-09-21 21:48:12');
+INSERT INTO `admin_operation_log` VALUES (1061, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"Customer\",\"name\":\"\\u5ba2\\u6237\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/customer*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:49:08', '2020-09-21 21:49:08');
+INSERT INTO `admin_operation_log` VALUES (1062, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:49:09', '2020-09-21 21:49:09');
+INSERT INTO `admin_operation_log` VALUES (1063, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:49:35', '2020-09-21 21:49:35');
+INSERT INTO `admin_operation_log` VALUES (1064, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"Address\",\"name\":\"\\u5730\\u5740\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/address*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:49:50', '2020-09-21 21:49:50');
+INSERT INTO `admin_operation_log` VALUES (1065, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:49:50', '2020-09-21 21:49:50');
+INSERT INTO `admin_operation_log` VALUES (1066, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:49:58', '2020-09-21 21:49:58');
+INSERT INTO `admin_operation_log` VALUES (1067, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"ProLabel\",\"name\":\"\\u6807\\u7b7e\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/pro-label*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:50:13', '2020-09-21 21:50:13');
+INSERT INTO `admin_operation_log` VALUES (1068, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:50:14', '2020-09-21 21:50:14');
+INSERT INTO `admin_operation_log` VALUES (1069, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:50:18', '2020-09-21 21:50:18');
+INSERT INTO `admin_operation_log` VALUES (1070, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"ProBrand\",\"name\":\"\\u54c1\\u724c\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/pro-brand*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:50:44', '2020-09-21 21:50:44');
+INSERT INTO `admin_operation_log` VALUES (1071, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:50:44', '2020-09-21 21:50:44');
+INSERT INTO `admin_operation_log` VALUES (1072, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:50:47', '2020-09-21 21:50:47');
+INSERT INTO `admin_operation_log` VALUES (1073, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"\\u5206\\u7c7b\\u7ba1\\u7406\",\"name\":\"ProClass\",\"http_method\":[null],\"http_path\":\"\\/pro-class*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:51:04', '2020-09-21 21:51:04');
+INSERT INTO `admin_operation_log` VALUES (1074, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '[]', '2020-09-21 21:51:04', '2020-09-21 21:51:04');
+INSERT INTO `admin_operation_log` VALUES (1075, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"ProInfo\",\"name\":\"\\u4ea7\\u54c1\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/pro-info*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\"}', '2020-09-21 21:51:27', '2020-09-21 21:51:27');
+INSERT INTO `admin_operation_log` VALUES (1076, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:51:28', '2020-09-21 21:51:28');
+INSERT INTO `admin_operation_log` VALUES (1077, 1, 'admin/auth/permissions/10/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:51:33', '2020-09-21 21:51:33');
+INSERT INTO `admin_operation_log` VALUES (1078, 1, 'admin/auth/permissions/10', 'PUT', '127.0.0.1', '{\"slug\":\"ProClass\",\"name\":\"\\u5206\\u7c7b\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/pro-class*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:51:40', '2020-09-21 21:51:40');
+INSERT INTO `admin_operation_log` VALUES (1079, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:51:41', '2020-09-21 21:51:41');
+INSERT INTO `admin_operation_log` VALUES (1080, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:51:47', '2020-09-21 21:51:47');
+INSERT INTO `admin_operation_log` VALUES (1081, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"FreightTemplate\",\"name\":\"\\u8fd0\\u8d39\\u6a21\\u677f\",\"http_method\":[null],\"http_path\":\"\\/freight-template*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/permissions\"}', '2020-09-21 21:52:08', '2020-09-21 21:52:08');
+INSERT INTO `admin_operation_log` VALUES (1082, 1, 'admin/auth/permissions/create', 'GET', '127.0.0.1', '[]', '2020-09-21 21:52:08', '2020-09-21 21:52:08');
+INSERT INTO `admin_operation_log` VALUES (1083, 1, 'admin/auth/permissions', 'POST', '127.0.0.1', '{\"slug\":\"RetailOrder\",\"name\":\"\\u8ba2\\u5355\\u7ba1\\u7406\",\"http_method\":[null],\"http_path\":\"\\/retail-order*\",\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\"}', '2020-09-21 21:52:38', '2020-09-21 21:52:38');
+INSERT INTO `admin_operation_log` VALUES (1084, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2020-09-21 21:52:38', '2020-09-21 21:52:38');
+INSERT INTO `admin_operation_log` VALUES (1085, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:52:46', '2020-09-21 21:52:46');
+INSERT INTO `admin_operation_log` VALUES (1086, 1, 'admin/auth/roles/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:52:48', '2020-09-21 21:52:48');
+INSERT INTO `admin_operation_log` VALUES (1087, 1, 'admin/auth/roles', 'POST', '127.0.0.1', '{\"slug\":\"Master\",\"name\":\"\\u4e3b\\u7ba1\\u7406\\u5458\",\"permissions\":[\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",null],\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/roles\"}', '2020-09-21 21:53:02', '2020-09-21 21:53:02');
+INSERT INTO `admin_operation_log` VALUES (1088, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '[]', '2020-09-21 21:53:03', '2020-09-21 21:53:03');
+INSERT INTO `admin_operation_log` VALUES (1089, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:53:11', '2020-09-21 21:53:11');
+INSERT INTO `admin_operation_log` VALUES (1090, 1, 'admin/auth/users/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:53:13', '2020-09-21 21:53:13');
+INSERT INTO `admin_operation_log` VALUES (1091, 1, 'admin/auth/users', 'POST', '127.0.0.1', '{\"username\":\"master\",\"name\":\"\\u4e3b\\u7ba1\\u7406\\u5458\",\"password\":\"master123\",\"password_confirmation\":\"master123\",\"roles\":[\"2\",null],\"permissions\":[null],\"_token\":\"QRgkUNwAWWV5dvVzxA2dwYYCZ2j79ojceLziVRla\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/users\"}', '2020-09-21 21:53:42', '2020-09-21 21:53:42');
+INSERT INTO `admin_operation_log` VALUES (1092, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2020-09-21 21:53:42', '2020-09-21 21:53:42');
+INSERT INTO `admin_operation_log` VALUES (1093, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:53:47', '2020-09-21 21:53:47');
+INSERT INTO `admin_operation_log` VALUES (1094, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:53:56', '2020-09-21 21:53:56');
+INSERT INTO `admin_operation_log` VALUES (1095, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:54:01', '2020-09-21 21:54:01');
+INSERT INTO `admin_operation_log` VALUES (1096, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:54:01', '2020-09-21 21:54:01');
+INSERT INTO `admin_operation_log` VALUES (1097, 2, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:06', '2020-09-21 21:54:06');
+INSERT INTO `admin_operation_log` VALUES (1098, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:54:14', '2020-09-21 21:54:14');
+INSERT INTO `admin_operation_log` VALUES (1099, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:20', '2020-09-21 21:54:20');
+INSERT INTO `admin_operation_log` VALUES (1100, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:22', '2020-09-21 21:54:22');
+INSERT INTO `admin_operation_log` VALUES (1101, 1, 'admin/auth/roles/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:25', '2020-09-21 21:54:25');
+INSERT INTO `admin_operation_log` VALUES (1102, 1, 'admin/auth/roles/2', 'PUT', '127.0.0.1', '{\"slug\":\"Master\",\"name\":\"\\u4e3b\\u7ba1\\u7406\\u5458\",\"permissions\":[\"2\",\"3\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",null],\"_token\":\"0qowUt1sULlYjHWnP12OQchvSb2bQggHzd5bKPz0\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/roles\"}', '2020-09-21 21:54:40', '2020-09-21 21:54:40');
+INSERT INTO `admin_operation_log` VALUES (1103, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '[]', '2020-09-21 21:54:41', '2020-09-21 21:54:41');
+INSERT INTO `admin_operation_log` VALUES (1104, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:45', '2020-09-21 21:54:45');
+INSERT INTO `admin_operation_log` VALUES (1105, 1, 'admin/auth/users/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:49', '2020-09-21 21:54:49');
+INSERT INTO `admin_operation_log` VALUES (1106, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:51', '2020-09-21 21:54:51');
+INSERT INTO `admin_operation_log` VALUES (1107, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:54:55', '2020-09-21 21:54:55');
+INSERT INTO `admin_operation_log` VALUES (1108, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:55:02', '2020-09-21 21:55:02');
+INSERT INTO `admin_operation_log` VALUES (1109, 2, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:55:16', '2020-09-21 21:55:16');
+INSERT INTO `admin_operation_log` VALUES (1110, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:55:21', '2020-09-21 21:55:21');
+INSERT INTO `admin_operation_log` VALUES (1111, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:55:26', '2020-09-21 21:55:26');
+INSERT INTO `admin_operation_log` VALUES (1112, 1, 'admin/auth/menu/8/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:55:35', '2020-09-21 21:55:35');
+INSERT INTO `admin_operation_log` VALUES (1113, 1, 'admin/auth/menu/8', 'PUT', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"\\u5ba2\\u6237\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":null,\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"y6yCH4GtVzZZD4byGlkP4QfSukFQJs8xq8werZ4h\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:55:51', '2020-09-21 21:55:51');
+INSERT INTO `admin_operation_log` VALUES (1114, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:55:52', '2020-09-21 21:55:52');
+INSERT INTO `admin_operation_log` VALUES (1115, 1, 'admin/auth/menu/11/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:55:55', '2020-09-21 21:55:55');
+INSERT INTO `admin_operation_log` VALUES (1116, 1, 'admin/auth/menu/11', 'PUT', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"\\u4ea7\\u54c1\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":null,\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"y6yCH4GtVzZZD4byGlkP4QfSukFQJs8xq8werZ4h\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:56:00', '2020-09-21 21:56:00');
+INSERT INTO `admin_operation_log` VALUES (1117, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:56:00', '2020-09-21 21:56:00');
+INSERT INTO `admin_operation_log` VALUES (1118, 1, 'admin/auth/menu/19/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:04', '2020-09-21 21:56:04');
+INSERT INTO `admin_operation_log` VALUES (1119, 1, 'admin/auth/menu/19', 'PUT', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"\\u8ba2\\u5355\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":null,\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"y6yCH4GtVzZZD4byGlkP4QfSukFQJs8xq8werZ4h\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:56:08', '2020-09-21 21:56:08');
+INSERT INTO `admin_operation_log` VALUES (1120, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:56:09', '2020-09-21 21:56:09');
+INSERT INTO `admin_operation_log` VALUES (1121, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:12', '2020-09-21 21:56:12');
+INSERT INTO `admin_operation_log` VALUES (1122, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:56:18', '2020-09-21 21:56:18');
+INSERT INTO `admin_operation_log` VALUES (1123, 2, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:24', '2020-09-21 21:56:24');
+INSERT INTO `admin_operation_log` VALUES (1124, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:56:31', '2020-09-21 21:56:31');
+INSERT INTO `admin_operation_log` VALUES (1125, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:35', '2020-09-21 21:56:35');
+INSERT INTO `admin_operation_log` VALUES (1126, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:38', '2020-09-21 21:56:38');
+INSERT INTO `admin_operation_log` VALUES (1127, 1, 'admin/auth/menu/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:45', '2020-09-21 21:56:45');
+INSERT INTO `admin_operation_log` VALUES (1128, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:49', '2020-09-21 21:56:49');
+INSERT INTO `admin_operation_log` VALUES (1129, 1, 'admin/auth/menu/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:52', '2020-09-21 21:56:52');
+INSERT INTO `admin_operation_log` VALUES (1130, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:55', '2020-09-21 21:56:55');
+INSERT INTO `admin_operation_log` VALUES (1131, 1, 'admin/auth/menu/8/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:56:58', '2020-09-21 21:56:58');
+INSERT INTO `admin_operation_log` VALUES (1132, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:57:00', '2020-09-21 21:57:00');
+INSERT INTO `admin_operation_log` VALUES (1133, 1, 'admin/auth/menu/10/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:57:03', '2020-09-21 21:57:03');
+INSERT INTO `admin_operation_log` VALUES (1134, 1, 'admin/auth/menu/10', 'PUT', '127.0.0.1', '{\"parent_id\":\"8\",\"title\":\"\\u5730\\u5740\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"address\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"d6qMe9jek1jWJBAkXnuSZF2ToR1qNV3iAYYzmQdu\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:57:07', '2020-09-21 21:57:07');
+INSERT INTO `admin_operation_log` VALUES (1135, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:57:07', '2020-09-21 21:57:07');
+INSERT INTO `admin_operation_log` VALUES (1136, 1, 'admin/auth/menu/9/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:57:10', '2020-09-21 21:57:10');
+INSERT INTO `admin_operation_log` VALUES (1137, 1, 'admin/auth/menu/9', 'PUT', '127.0.0.1', '{\"parent_id\":\"8\",\"title\":\"\\u57fa\\u672c\\u4fe1\\u606f\",\"icon\":\"fa-bars\",\"uri\":\"customer\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"d6qMe9jek1jWJBAkXnuSZF2ToR1qNV3iAYYzmQdu\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:57:13', '2020-09-21 21:57:13');
+INSERT INTO `admin_operation_log` VALUES (1138, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:57:14', '2020-09-21 21:57:14');
+INSERT INTO `admin_operation_log` VALUES (1139, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:57:17', '2020-09-21 21:57:17');
+INSERT INTO `admin_operation_log` VALUES (1140, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:57:24', '2020-09-21 21:57:24');
+INSERT INTO `admin_operation_log` VALUES (1141, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:57:32', '2020-09-21 21:57:32');
+INSERT INTO `admin_operation_log` VALUES (1142, 2, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:57:56', '2020-09-21 21:57:56');
+INSERT INTO `admin_operation_log` VALUES (1143, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:58:01', '2020-09-21 21:58:01');
+INSERT INTO `admin_operation_log` VALUES (1144, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:58:07', '2020-09-21 21:58:07');
+INSERT INTO `admin_operation_log` VALUES (1145, 1, 'admin/auth/users/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:58:10', '2020-09-21 21:58:10');
+INSERT INTO `admin_operation_log` VALUES (1146, 1, 'admin/auth/users/2', 'PUT', '127.0.0.1', '{\"username\":\"master\",\"name\":\"\\u4e3b\\u7ba1\\u7406\\u5458\",\"password\":\"$2y$10$HBBOazbOXALyuaN3YeYEUu0V8\\/nTgJO6umVgpmisjcGcl7mAB2yQK\",\"password_confirmation\":\"$2y$10$HBBOazbOXALyuaN3YeYEUu0V8\\/nTgJO6umVgpmisjcGcl7mAB2yQK\",\"roles\":[\"2\",null],\"permissions\":[\"1\",null],\"_token\":\"6STEsq8NjsVmzDrilNYgpe9wUdw2UpfOlVzZiMOy\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/users\"}', '2020-09-21 21:58:16', '2020-09-21 21:58:16');
+INSERT INTO `admin_operation_log` VALUES (1147, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2020-09-21 21:58:16', '2020-09-21 21:58:16');
+INSERT INTO `admin_operation_log` VALUES (1148, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:58:19', '2020-09-21 21:58:19');
+INSERT INTO `admin_operation_log` VALUES (1149, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:58:27', '2020-09-21 21:58:27');
+INSERT INTO `admin_operation_log` VALUES (1150, 2, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:58:33', '2020-09-21 21:58:33');
+INSERT INTO `admin_operation_log` VALUES (1151, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:58:48', '2020-09-21 21:58:48');
+INSERT INTO `admin_operation_log` VALUES (1152, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:58:52', '2020-09-21 21:58:52');
+INSERT INTO `admin_operation_log` VALUES (1153, 1, 'admin/auth/menu/12/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:01', '2020-09-21 21:59:01');
+INSERT INTO `admin_operation_log` VALUES (1154, 1, 'admin/auth/menu/12', 'PUT', '127.0.0.1', '{\"parent_id\":\"11\",\"title\":\"\\u6807\\u7b7e\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"pro-label\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"icNWc9PR6tF1eRxrUROk8xrgoji85LnRX1k9cjI2\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:59:12', '2020-09-21 21:59:12');
+INSERT INTO `admin_operation_log` VALUES (1155, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:12', '2020-09-21 21:59:12');
+INSERT INTO `admin_operation_log` VALUES (1156, 1, 'admin/auth/menu/13/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:17', '2020-09-21 21:59:17');
+INSERT INTO `admin_operation_log` VALUES (1157, 1, 'admin/auth/menu/13', 'PUT', '127.0.0.1', '{\"parent_id\":\"11\",\"title\":\"\\u54c1\\u724c\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"pro-brand\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"icNWc9PR6tF1eRxrUROk8xrgoji85LnRX1k9cjI2\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:59:20', '2020-09-21 21:59:20');
+INSERT INTO `admin_operation_log` VALUES (1158, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:21', '2020-09-21 21:59:21');
+INSERT INTO `admin_operation_log` VALUES (1159, 1, 'admin/auth/menu/14/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:24', '2020-09-21 21:59:24');
+INSERT INTO `admin_operation_log` VALUES (1160, 1, 'admin/auth/menu/14', 'PUT', '127.0.0.1', '{\"parent_id\":\"11\",\"title\":\"\\u5206\\u7c7b\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"pro-class\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"icNWc9PR6tF1eRxrUROk8xrgoji85LnRX1k9cjI2\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:59:27', '2020-09-21 21:59:27');
+INSERT INTO `admin_operation_log` VALUES (1161, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:28', '2020-09-21 21:59:28');
+INSERT INTO `admin_operation_log` VALUES (1162, 1, 'admin/auth/menu/15/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:31', '2020-09-21 21:59:31');
+INSERT INTO `admin_operation_log` VALUES (1163, 1, 'admin/auth/menu/15', 'PUT', '127.0.0.1', '{\"parent_id\":\"11\",\"title\":\"\\u4ea7\\u54c1\\u8be6\\u60c5\",\"icon\":\"fa-bars\",\"uri\":\"pro-info\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"icNWc9PR6tF1eRxrUROk8xrgoji85LnRX1k9cjI2\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:59:34', '2020-09-21 21:59:34');
+INSERT INTO `admin_operation_log` VALUES (1164, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:35', '2020-09-21 21:59:35');
+INSERT INTO `admin_operation_log` VALUES (1165, 1, 'admin/auth/menu/18/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:38', '2020-09-21 21:59:38');
+INSERT INTO `admin_operation_log` VALUES (1166, 1, 'admin/auth/menu/18', 'PUT', '127.0.0.1', '{\"parent_id\":\"11\",\"title\":\"\\u6a21\\u677f\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"freight-template\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"icNWc9PR6tF1eRxrUROk8xrgoji85LnRX1k9cjI2\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:59:41', '2020-09-21 21:59:41');
+INSERT INTO `admin_operation_log` VALUES (1167, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:42', '2020-09-21 21:59:42');
+INSERT INTO `admin_operation_log` VALUES (1168, 1, 'admin/auth/menu/20/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:44', '2020-09-21 21:59:44');
+INSERT INTO `admin_operation_log` VALUES (1169, 1, 'admin/auth/menu/20', 'PUT', '127.0.0.1', '{\"parent_id\":\"19\",\"title\":\"\\u8ba2\\u5355\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"retail-order\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"icNWc9PR6tF1eRxrUROk8xrgoji85LnRX1k9cjI2\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 21:59:47', '2020-09-21 21:59:47');
+INSERT INTO `admin_operation_log` VALUES (1170, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:48', '2020-09-21 21:59:48');
+INSERT INTO `admin_operation_log` VALUES (1171, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:50', '2020-09-21 21:59:50');
+INSERT INTO `admin_operation_log` VALUES (1172, 2, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 21:59:57', '2020-09-21 21:59:57');
+INSERT INTO `admin_operation_log` VALUES (1173, 2, 'admin/retail-order', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 21:59:59', '2020-09-21 21:59:59');
+INSERT INTO `admin_operation_log` VALUES (1174, 2, 'admin/retail-order/15/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:03', '2020-09-21 22:00:03');
+INSERT INTO `admin_operation_log` VALUES (1175, 2, 'admin/retail-order/15/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 22:00:05', '2020-09-21 22:00:05');
+INSERT INTO `admin_operation_log` VALUES (1176, 2, 'admin/retail-order', 'GET', '127.0.0.1', '[]', '2020-09-21 22:00:17', '2020-09-21 22:00:17');
+INSERT INTO `admin_operation_log` VALUES (1177, 2, 'admin/retail-order/11/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:20', '2020-09-21 22:00:20');
+INSERT INTO `admin_operation_log` VALUES (1178, 2, 'admin/retail-order/11', 'PUT', '127.0.0.1', '{\"total_actual_price\":\"13002.00\",\"retail_order_line\":{\"1\":{\"pro_sku\":{\"keys\":[\"pic\",\"price\",\"stock\",\"\\u5c3a\\u7801\",\"\\u989c\\u8272\"],\"values\":[\"\\/upload\\/images\\/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\",\"1299\",\"200\",\"42\",\"\\u7ea2\\u8272\"]},\"unit_price\":\"1299.00\",\"freight\":\"12.00\",\"pay_type\":\"0\",\"pay_status\":\"0\",\"logistics_number\":null,\"pay_time\":null,\"delivery_time\":null,\"sign_time\":null,\"id\":\"1\",\"_remove_\":\"0\"}},\"_token\":\"ue6s0PcNVrrFgGaTcbWZJwDsSfBLnb2VbmZbpa1a\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/retail-order\"}', '2020-09-21 22:00:24', '2020-09-21 22:00:24');
+INSERT INTO `admin_operation_log` VALUES (1179, 2, 'admin/retail-order', 'GET', '127.0.0.1', '[]', '2020-09-21 22:00:25', '2020-09-21 22:00:25');
+INSERT INTO `admin_operation_log` VALUES (1180, 2, 'admin/retail-order/14/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:32', '2020-09-21 22:00:32');
+INSERT INTO `admin_operation_log` VALUES (1181, 2, 'admin/retail-order', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:34', '2020-09-21 22:00:34');
+INSERT INTO `admin_operation_log` VALUES (1182, 2, 'admin/retail-order/13/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:36', '2020-09-21 22:00:36');
+INSERT INTO `admin_operation_log` VALUES (1183, 2, 'admin/retail-order', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:38', '2020-09-21 22:00:38');
+INSERT INTO `admin_operation_log` VALUES (1184, 2, 'admin/customer', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:44', '2020-09-21 22:00:44');
+INSERT INTO `admin_operation_log` VALUES (1185, 2, 'admin/customer/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:48', '2020-09-21 22:00:48');
+INSERT INTO `admin_operation_log` VALUES (1186, 2, 'admin/customer', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:00:50', '2020-09-21 22:00:50');
+INSERT INTO `admin_operation_log` VALUES (1187, 2, 'admin/pro-class', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:04:03', '2020-09-21 22:04:03');
+INSERT INTO `admin_operation_log` VALUES (1188, 2, 'admin/pro-class/6/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:04:07', '2020-09-21 22:04:07');
+INSERT INTO `admin_operation_log` VALUES (1189, 2, 'admin/pro-class', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:04:08', '2020-09-21 22:04:08');
+INSERT INTO `admin_operation_log` VALUES (1190, 2, 'admin/pro-class/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:04:11', '2020-09-21 22:04:11');
+INSERT INTO `admin_operation_log` VALUES (1191, 2, 'admin/pro-class/1', 'PUT', '127.0.0.1', '{\"id\":\"1\",\"label_id\":\"1\",\"brand_id\":\"1\",\"parent_id\":\"0\",\"class_name\":\"\\u978b\\u5b50\",\"status\":\"on\",\"order_by\":\"10\",\"_token\":\"ue6s0PcNVrrFgGaTcbWZJwDsSfBLnb2VbmZbpa1a\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/pro-class\"}', '2020-09-21 22:04:20', '2020-09-21 22:04:20');
+INSERT INTO `admin_operation_log` VALUES (1192, 2, 'admin/pro-class', 'GET', '127.0.0.1', '[]', '2020-09-21 22:04:20', '2020-09-21 22:04:20');
+INSERT INTO `admin_operation_log` VALUES (1193, 2, 'admin/pro-class/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:04:23', '2020-09-21 22:04:23');
+INSERT INTO `admin_operation_log` VALUES (1194, 2, 'admin/pro-class', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 22:04:24', '2020-09-21 22:04:24');
+INSERT INTO `admin_operation_log` VALUES (1195, 2, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:03:17', '2020-09-21 23:03:17');
+INSERT INTO `admin_operation_log` VALUES (1196, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-21 23:03:23', '2020-09-21 23:03:23');
+INSERT INTO `admin_operation_log` VALUES (1197, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:03:27', '2020-09-21 23:03:27');
+INSERT INTO `admin_operation_log` VALUES (1198, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"\\u5ba2\\u670d\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":null,\"roles\":[\"1\",\"2\",null],\"permission\":null,\"_token\":\"MfyG8a57avp6fZOUGplfY3469OQtkH6EyPlsi2N3\"}', '2020-09-21 23:03:50', '2020-09-21 23:03:50');
+INSERT INTO `admin_operation_log` VALUES (1199, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 23:03:50', '2020-09-21 23:03:50');
+INSERT INTO `admin_operation_log` VALUES (1200, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"_token\":\"MfyG8a57avp6fZOUGplfY3469OQtkH6EyPlsi2N3\",\"_order\":\"[{\\\"id\\\":1},{\\\"id\\\":2,\\\"children\\\":[{\\\"id\\\":3},{\\\"id\\\":4},{\\\"id\\\":5},{\\\"id\\\":6},{\\\"id\\\":7}]},{\\\"id\\\":8,\\\"children\\\":[{\\\"id\\\":10},{\\\"id\\\":9}]},{\\\"id\\\":11,\\\"children\\\":[{\\\"id\\\":12},{\\\"id\\\":13},{\\\"id\\\":14},{\\\"id\\\":15},{\\\"id\\\":18}]},{\\\"id\\\":19,\\\"children\\\":[{\\\"id\\\":20}]},{\\\"id\\\":21}]\"}', '2020-09-21 23:04:00', '2020-09-21 23:04:00');
+INSERT INTO `admin_operation_log` VALUES (1201, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:04:00', '2020-09-21 23:04:00');
+INSERT INTO `admin_operation_log` VALUES (1202, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"21\",\"title\":\"\\u514b\\u670d\\u5b98\\u50da\",\"icon\":\"fa-bars\",\"uri\":\"\\/customer-ask\",\"roles\":[\"1\",\"2\",null],\"permission\":null,\"_token\":\"MfyG8a57avp6fZOUGplfY3469OQtkH6EyPlsi2N3\"}', '2020-09-21 23:04:23', '2020-09-21 23:04:23');
+INSERT INTO `admin_operation_log` VALUES (1203, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 23:04:24', '2020-09-21 23:04:24');
+INSERT INTO `admin_operation_log` VALUES (1204, 1, 'admin/auth/menu/22/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:04:28', '2020-09-21 23:04:28');
+INSERT INTO `admin_operation_log` VALUES (1205, 1, 'admin/auth/menu/22', 'PUT', '127.0.0.1', '{\"parent_id\":\"21\",\"title\":\"\\u6d88\\u606f\\u4e2d\\u5fc3\",\"icon\":\"fa-bars\",\"uri\":\"\\/customer-ask\",\"roles\":[\"1\",\"2\",null],\"permission\":null,\"_token\":\"MfyG8a57avp6fZOUGplfY3469OQtkH6EyPlsi2N3\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/auth\\/menu\"}', '2020-09-21 23:04:38', '2020-09-21 23:04:38');
+INSERT INTO `admin_operation_log` VALUES (1206, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 23:04:38', '2020-09-21 23:04:38');
+INSERT INTO `admin_operation_log` VALUES (1207, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-09-21 23:04:41', '2020-09-21 23:04:41');
+INSERT INTO `admin_operation_log` VALUES (1208, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:04:43', '2020-09-21 23:04:43');
+INSERT INTO `admin_operation_log` VALUES (1209, 1, 'admin/customer-ask/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:04:47', '2020-09-21 23:04:47');
+INSERT INTO `admin_operation_log` VALUES (1210, 1, 'admin/customer-ask/2/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:06:06', '2020-09-21 23:06:06');
+INSERT INTO `admin_operation_log` VALUES (1211, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:08:05', '2020-09-21 23:08:05');
+INSERT INTO `admin_operation_log` VALUES (1212, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:08:08', '2020-09-21 23:08:08');
+INSERT INTO `admin_operation_log` VALUES (1213, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:10:01', '2020-09-21 23:10:01');
+INSERT INTO `admin_operation_log` VALUES (1214, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:10:04', '2020-09-21 23:10:04');
+INSERT INTO `admin_operation_log` VALUES (1215, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:13:20', '2020-09-21 23:13:20');
+INSERT INTO `admin_operation_log` VALUES (1216, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:13:29', '2020-09-21 23:13:29');
+INSERT INTO `admin_operation_log` VALUES (1217, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:13:35', '2020-09-21 23:13:35');
+INSERT INTO `admin_operation_log` VALUES (1218, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:14:09', '2020-09-21 23:14:09');
+INSERT INTO `admin_operation_log` VALUES (1219, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:15:14', '2020-09-21 23:15:14');
+INSERT INTO `admin_operation_log` VALUES (1220, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-21 23:15:44', '2020-09-21 23:15:44');
+INSERT INTO `admin_operation_log` VALUES (1221, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:15:48', '2020-09-21 23:15:48');
+INSERT INTO `admin_operation_log` VALUES (1222, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:16:17', '2020-09-21 23:16:17');
+INSERT INTO `admin_operation_log` VALUES (1223, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-21 23:17:43', '2020-09-21 23:17:43');
+INSERT INTO `admin_operation_log` VALUES (1224, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:17:54', '2020-09-21 23:17:54');
+INSERT INTO `admin_operation_log` VALUES (1225, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:21:35', '2020-09-21 23:21:35');
+INSERT INTO `admin_operation_log` VALUES (1226, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:22:32', '2020-09-21 23:22:32');
+INSERT INTO `admin_operation_log` VALUES (1227, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:23:49', '2020-09-21 23:23:49');
+INSERT INTO `admin_operation_log` VALUES (1228, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:25:03', '2020-09-21 23:25:03');
+INSERT INTO `admin_operation_log` VALUES (1229, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:25:22', '2020-09-21 23:25:22');
+INSERT INTO `admin_operation_log` VALUES (1230, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:25:46', '2020-09-21 23:25:46');
+INSERT INTO `admin_operation_log` VALUES (1231, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:26:16', '2020-09-21 23:26:16');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -1170,7 +1354,7 @@ CREATE TABLE `admin_permissions`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `admin_permissions_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `admin_permissions_slug_unique`(`slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_permissions
@@ -1180,6 +1364,14 @@ INSERT INTO `admin_permissions` VALUES (2, 'Dashboard', 'dashboard', 'GET', '/',
 INSERT INTO `admin_permissions` VALUES (3, 'Login', 'auth.login', '', '/auth/login\r\n/auth/logout', NULL, NULL);
 INSERT INTO `admin_permissions` VALUES (4, 'User setting', 'auth.setting', 'GET,PUT', '/auth/setting', NULL, NULL);
 INSERT INTO `admin_permissions` VALUES (5, 'Auth management', 'auth.management', '', '/auth/roles\r\n/auth/permissions\r\n/auth/menu\r\n/auth/logs', NULL, NULL);
+INSERT INTO `admin_permissions` VALUES (6, '客户管理', 'Customer', '', '/customer*', '2020-09-21 21:49:09', '2020-09-21 21:49:09');
+INSERT INTO `admin_permissions` VALUES (7, '地址管理', 'Address', '', '/address*', '2020-09-21 21:49:50', '2020-09-21 21:49:50');
+INSERT INTO `admin_permissions` VALUES (8, '标签管理', 'ProLabel', '', '/pro-label*', '2020-09-21 21:50:14', '2020-09-21 21:50:14');
+INSERT INTO `admin_permissions` VALUES (9, '品牌管理', 'ProBrand', '', '/pro-brand*', '2020-09-21 21:50:44', '2020-09-21 21:50:44');
+INSERT INTO `admin_permissions` VALUES (10, '分类管理', 'ProClass', '', '/pro-class*', '2020-09-21 21:51:04', '2020-09-21 21:51:40');
+INSERT INTO `admin_permissions` VALUES (11, '产品管理', 'ProInfo', '', '/pro-info*', '2020-09-21 21:51:27', '2020-09-21 21:51:27');
+INSERT INTO `admin_permissions` VALUES (12, '运费模板', 'FreightTemplate', '', '/freight-template*', '2020-09-21 21:52:08', '2020-09-21 21:52:08');
+INSERT INTO `admin_permissions` VALUES (13, '订单管理', 'RetailOrder', '', '/retail-order*', '2020-09-21 21:52:38', '2020-09-21 21:52:38');
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -1208,6 +1400,21 @@ INSERT INTO `admin_role_menu` VALUES (1, 15, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 18, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 19, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 20, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 8, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 11, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 19, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 10, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 9, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 12, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 13, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 14, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 15, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 18, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 20, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 21, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 21, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 22, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 22, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_role_permissions
@@ -1225,6 +1432,16 @@ CREATE TABLE `admin_role_permissions`  (
 -- Records of admin_role_permissions
 -- ----------------------------
 INSERT INTO `admin_role_permissions` VALUES (1, 1, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 6, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 7, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 8, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 9, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 10, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 11, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 12, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 13, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 2, NULL, NULL);
+INSERT INTO `admin_role_permissions` VALUES (2, 3, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_role_users
@@ -1242,6 +1459,7 @@ CREATE TABLE `admin_role_users`  (
 -- Records of admin_role_users
 -- ----------------------------
 INSERT INTO `admin_role_users` VALUES (1, 1, NULL, NULL);
+INSERT INTO `admin_role_users` VALUES (2, 2, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_roles
@@ -1256,12 +1474,13 @@ CREATE TABLE `admin_roles`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `admin_roles_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `admin_roles_slug_unique`(`slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_roles
 -- ----------------------------
 INSERT INTO `admin_roles` VALUES (1, 'Administrator', 'administrator', '2020-08-10 14:55:55', '2020-08-10 14:55:55');
+INSERT INTO `admin_roles` VALUES (2, '主管理员', 'Master', '2020-09-21 21:53:02', '2020-09-21 21:53:02');
 
 -- ----------------------------
 -- Table structure for admin_user_permissions
@@ -1274,6 +1493,11 @@ CREATE TABLE `admin_user_permissions`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   INDEX `admin_user_permissions_user_id_permission_id_index`(`user_id`, `permission_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of admin_user_permissions
+-- ----------------------------
+INSERT INTO `admin_user_permissions` VALUES (2, 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_users
@@ -1290,12 +1514,13 @@ CREATE TABLE `admin_users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `admin_users_username_unique`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_users
 -- ----------------------------
-INSERT INTO `admin_users` VALUES (1, 'admin', '$2y$10$uHjzT6IybE0cgwsp52FKVOaF1vrGlLgy1rqJwq7AuZb7n8pdIFswm', 'Administrator', NULL, 'iaEcNHf3syZrKlelOKSzZEMdbhyyer4JnItNf6cR32DT9YTegljZyM0Xcpi4', '2020-08-10 14:55:55', '2020-08-10 14:55:55');
+INSERT INTO `admin_users` VALUES (1, 'admin', '$2y$10$uHjzT6IybE0cgwsp52FKVOaF1vrGlLgy1rqJwq7AuZb7n8pdIFswm', 'Administrator', NULL, 'pDdATJkC9IlDL6mzc6p8A4tKpOAyI6TmmIQGZyzT1lZ7mqCpuY5Lj4ULfM0Y', '2020-08-10 14:55:55', '2020-08-10 14:55:55');
+INSERT INTO `admin_users` VALUES (2, 'master', '$2y$10$HBBOazbOXALyuaN3YeYEUu0V8/nTgJO6umVgpmisjcGcl7mAB2yQK', '主管理员', 'images/timg (2).jpg', 'b9uBcI4Z0hNVpdBfIU1GsuExA5UvOx8UhUv6T54NbEwMVRrQWTEg7ErAo6Hu', '2020-09-21 21:53:42', '2020-09-21 21:53:42');
 
 -- ----------------------------
 -- Table structure for cart
@@ -1392,6 +1617,34 @@ INSERT INTO `customer` VALUES (48, '2020-09-04 14:02:50', '2020-09-04 14:02:50',
 INSERT INTO `customer` VALUES (49, '2020-09-04 14:02:51', '2020-09-04 14:02:51', 'Tom697713', '18102025228', 'b72e9dd8-df48-4f45-bced-0dcd0019a376', 'http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyVmy6KibtfR6LSjTIzBibPpRib8OZfZPOKJzpgibbKwFWLtRtJ3cLsZj6zfW0NiaJlLoKmtibVMrWVIJA/132', 1);
 INSERT INTO `customer` VALUES (50, '2020-09-04 14:02:51', '2020-09-04 14:02:51', 'Tom526445', '18102025228', '0c8a5a14-1e08-48f6-8c0e-95cb5df1350c', 'http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyVmy6KibtfR6LSjTIzBibPpRib8OZfZPOKJzpgibbKwFWLtRtJ3cLsZj6zfW0NiaJlLoKmtibVMrWVIJA/132', 1);
 INSERT INTO `customer` VALUES (51, '2020-09-13 15:40:53', '2020-09-13 15:40:53', '游客1600011653', '18102025227', '', NULL, 1);
+
+-- ----------------------------
+-- Table structure for customer_ask
+-- ----------------------------
+DROP TABLE IF EXISTS `customer_ask`;
+CREATE TABLE `customer_ask`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `retail_order_line_id` int(11) NULL DEFAULT NULL,
+  `customer_id` int(11) NOT NULL,
+  `pro_id` int(11) NOT NULL,
+  `ask_id` int(11) NULL DEFAULT NULL,
+  `ask_content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `ask_img` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `reply_content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `customer_id`(`customer_id`, `ask_id`) USING BTREE,
+  INDEX `retail_order_line_id`(`retail_order_line_id`) USING BTREE,
+  INDEX `pro_id`(`pro_id`) USING BTREE,
+  INDEX `ask_id`(`ask_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of customer_ask
+-- ----------------------------
+INSERT INTO `customer_ask` VALUES (3, '2020-09-21 23:07:21', '2020-09-21 23:07:21', 0, 51, 0, 4, '差评差评差评差评差评差评差评差评', '', NULL);
+INSERT INTO `customer_ask` VALUES (4, '2020-09-21 23:09:42', '2020-09-21 23:09:42', 0, 51, 0, 4, '', 'images/xSRmPkun8PJo0GirWEGha3TYlXW6XBegftMLytDY.jpeg', NULL);
 
 -- ----------------------------
 -- Table structure for freight_template
@@ -5073,7 +5326,8 @@ CREATE TABLE `pro_class`  (
   `class_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分类名称',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '状态 0下架 1上架',
   `order_by` int(11) NOT NULL DEFAULT 10 COMMENT '排序值',
-  `parent_id` int(255) NULL DEFAULT 0,
+  `parent_id` int(255) NULL DEFAULT 0 COMMENT '父级id',
+  `class_img` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '图片地址',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `pro_class_label_id_index`(`label_id`) USING BTREE,
   INDEX `order_by_brand_id_idx`(`order_by`, `brand_id`) USING BTREE,
@@ -5083,13 +5337,13 @@ CREATE TABLE `pro_class`  (
 -- ----------------------------
 -- Records of pro_class
 -- ----------------------------
-INSERT INTO `pro_class` VALUES (1, '2020-09-07 02:10:35', '2020-09-12 13:01:26', 1, 1, '鞋子', 1, 10, 0);
-INSERT INTO `pro_class` VALUES (2, '2020-09-07 02:10:45', '2020-09-12 13:01:26', 1, 1, '衣服', 1, 10, 0);
-INSERT INTO `pro_class` VALUES (3, '2020-09-15 21:59:47', '2020-09-15 21:59:47', 1, 1, '篮球鞋', 1, 10, 1);
-INSERT INTO `pro_class` VALUES (4, '2020-09-15 22:00:03', '2020-09-15 22:00:03', 1, 1, '运动衫', 1, 10, 2);
-INSERT INTO `pro_class` VALUES (5, '2020-09-15 22:00:52', '2020-09-15 22:00:52', 1, 1, '防滑', 1, 10, 3);
-INSERT INTO `pro_class` VALUES (6, '2020-09-15 22:01:10', '2020-09-15 22:01:10', 1, 1, '减震', 1, 10, 3);
-INSERT INTO `pro_class` VALUES (7, '2020-09-15 22:37:55', '2020-09-15 22:37:55', 1, 1, '其他', 1, 10, 0);
+INSERT INTO `pro_class` VALUES (1, '2020-09-07 02:10:35', '2020-09-21 22:04:20', 1, 1, '鞋子', 1, 10, 0, 'images/7e1cdf2da5bc3a1653d7794f307e6ec4.jpg');
+INSERT INTO `pro_class` VALUES (2, '2020-09-07 02:10:45', '2020-09-12 13:01:26', 1, 1, '衣服', 1, 10, 0, NULL);
+INSERT INTO `pro_class` VALUES (3, '2020-09-15 21:59:47', '2020-09-15 21:59:47', 1, 1, '篮球鞋', 1, 10, 1, NULL);
+INSERT INTO `pro_class` VALUES (4, '2020-09-15 22:00:03', '2020-09-15 22:00:03', 1, 1, '运动衫', 1, 10, 2, NULL);
+INSERT INTO `pro_class` VALUES (5, '2020-09-15 22:00:52', '2020-09-15 22:00:52', 1, 1, '防滑', 1, 10, 3, NULL);
+INSERT INTO `pro_class` VALUES (6, '2020-09-15 22:01:10', '2020-09-15 22:01:10', 1, 1, '减震', 1, 10, 3, NULL);
+INSERT INTO `pro_class` VALUES (7, '2020-09-15 22:37:55', '2020-09-15 22:37:55', 1, 1, '其他', 1, 10, 0, NULL);
 
 -- ----------------------------
 -- Table structure for pro_info
@@ -5131,8 +5385,8 @@ CREATE TABLE `pro_info`  (
 -- ----------------------------
 -- Records of pro_info
 -- ----------------------------
-INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-17 15:29:23', 1, 1, 1, 3, 6, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '{\"sku\": [{\"pic\": \"/upload/images/Geh9a2FhxKiatMdrp8fOlulaWpJ8CE8y0j9erN02.jpeg\", \"price\": \"1299\", \"stock\": \"200\", \"尺码\": \"42\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}, {\"pic\": \"/upload/images/0cPhAAwcRak91TbSnneAnP99aGiJprSQxc9dQMjX.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/KToaercX27YFOVbucYWKR6ZX0PLg4riB2WCiHzE0.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}, {\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"44\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/cRBR96k7XVYHycY8PfEccPjBE7tBFpcZcciIwNMt.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"44\", \"颜色\": \"蓝色\"}], \"type\": \"many\", \"attrs\": {\"尺码\": [\"42\", \"43\", \"44\"], \"颜色\": [\"红色\", \"蓝色\"]}}', 100, 20, 1, 10, 1, 3);
-INSERT INTO `pro_info` VALUES (4, '2020-09-12 14:21:53', '2020-09-17 15:50:37', 1, 1, 1, 3, 6, '1111', 111.00, 11.00, 'images/18fe8decc31cffd81c164649a83b5b35.jpg', NULL, '<p>111</p>', '{\"1\": \"1\"}', '{\"sku\": [{\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XXL\", \"颜色\": \"红色\"}, {\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XXL\", \"颜色\": \"绿色\"}, {\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XL\", \"颜色\": \"红色\"}, {\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XL\", \"颜色\": \"绿色\"}], \"type\": \"many\", \"attrs\": {\"尺码\": [\"XXL\", \"XL\"], \"颜色\": [\"红色\", \"绿色\"]}}', 111, 11, 1, 10, 1, 1);
+INSERT INTO `pro_info` VALUES (1, '2020-09-07 08:38:43', '2020-09-21 22:04:20', 1, 1, 1, 3, 6, '乔丹1', 1112.33, 1111.44, 'images/a0e1dae065e894e8cfedaab0285d4dea.jpg', '[\"images/f465e3b004c1b0571b3b781bff968679.jpg\", \"images/7723f01d385d7f5555bca218a23c4302.jpg\", \"images/528f448634e0c2ea4b2476b845d45166.jpg\"]', '<p>草草草草</p>', '{\"给你看看\": \"嘿嘿\"}', '{\"sku\": [{\"pic\": \"/upload/images/Geh9a2FhxKiatMdrp8fOlulaWpJ8CE8y0j9erN02.jpeg\", \"price\": \"1299\", \"stock\": \"200\", \"尺码\": \"42\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}, {\"pic\": \"/upload/images/0cPhAAwcRak91TbSnneAnP99aGiJprSQxc9dQMjX.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/KToaercX27YFOVbucYWKR6ZX0PLg4riB2WCiHzE0.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}, {\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"44\", \"颜色\": \"红色\"}, {\"pic\": \"/upload/images/cRBR96k7XVYHycY8PfEccPjBE7tBFpcZcciIwNMt.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"44\", \"颜色\": \"蓝色\"}], \"type\": \"many\", \"attrs\": {\"尺码\": [\"42\", \"43\", \"44\"], \"颜色\": [\"红色\", \"蓝色\"]}}', 100, 20, 1, 10, 1, 3);
+INSERT INTO `pro_info` VALUES (4, '2020-09-12 14:21:53', '2020-09-21 22:04:20', 1, 1, 1, 3, 6, '1111', 111.00, 11.00, 'images/18fe8decc31cffd81c164649a83b5b35.jpg', NULL, '<p>111</p>', '{\"1\": \"1\"}', '{\"sku\": [{\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XXL\", \"颜色\": \"红色\"}, {\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XXL\", \"颜色\": \"绿色\"}, {\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XL\", \"颜色\": \"红色\"}, {\"pic\": \"\", \"price\": \"100\", \"stock\": \"10\", \"尺码\": \"XL\", \"颜色\": \"绿色\"}], \"type\": \"many\", \"attrs\": {\"尺码\": [\"XXL\", \"XL\"], \"颜色\": [\"红色\", \"绿色\"]}}', 111, 11, 1, 10, 1, 1);
 
 -- ----------------------------
 -- Table structure for pro_info_collection
@@ -5147,7 +5401,7 @@ CREATE TABLE `pro_info_collection`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `customer_id_pro_id_idx`(`customer_id`, `pro_id`) USING BTREE,
   INDEX `pro_id_idx`(`pro_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pro_info_collection
@@ -5243,13 +5497,15 @@ CREATE TABLE `retail_order`  (
   `total_actual_price` decimal(10, 2) NULL DEFAULT 0.00 COMMENT '成交总价',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `customer_id_idx`(`customer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of retail_order
 -- ----------------------------
-INSERT INTO `retail_order` VALUES (11, '2020-09-13 14:59:58', '2020-09-13 14:59:58', '202009131459580000000001585', 1, 1, 0.00, 13002.00);
+INSERT INTO `retail_order` VALUES (11, '2020-09-13 14:59:58', '2020-09-21 22:00:24', '202009131459580000000001585', 1, 1, 0.00, 13002.00);
 INSERT INTO `retail_order` VALUES (13, '2020-09-13 15:11:52', '2020-09-13 15:11:52', '2020091315115200000000013502', 1, 1, 0.00, 4412.00);
+INSERT INTO `retail_order` VALUES (14, '2020-09-18 22:15:04', '2020-09-18 22:15:04', '2020091822150400000000015293', 1, 1, 0.00, 1103.00);
+INSERT INTO `retail_order` VALUES (15, '2020-09-18 22:18:45', '2020-09-18 22:18:45', '2020091822184500000000011777', 1, 1, 0.00, 0.00);
 
 -- ----------------------------
 -- Table structure for retail_order_line
@@ -5275,18 +5531,21 @@ CREATE TABLE `retail_order_line`  (
   `pay_time` timestamp(0) NULL DEFAULT NULL COMMENT '支付时间',
   `delivery_time` timestamp(0) NULL DEFAULT NULL COMMENT '发货时间',
   `sign_time` timestamp(0) NULL DEFAULT NULL COMMENT '签收时间',
+  `logistics_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物流号',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `retail_order_id`(`retail_order_id`) USING BTREE,
   INDEX `customer_id`(`customer_id`) USING BTREE,
   INDEX `pro_id`(`pro_id`) USING BTREE,
   INDEX `brand_id`(`brand_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of retail_order_line
 -- ----------------------------
-INSERT INTO `retail_order_line` VALUES (1, '2020-09-13 14:59:58', '2020-09-13 14:59:58', 11, '202009131459580000000001585', 1, 1, 1, '测试11', '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"1299\", \"stock\": \"200\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 1299.00, 10, 12.00, 0, 0, NULL, NULL, NULL, NULL);
-INSERT INTO `retail_order_line` VALUES (2, '2020-09-13 15:11:52', '2020-09-13 15:11:52', 13, '2020091315115200000000013502', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}', 1100.00, 4, 12.00, 0, 0, NULL, NULL, NULL, NULL);
+INSERT INTO `retail_order_line` VALUES (1, '2020-09-13 14:59:58', '2020-09-13 14:59:58', 11, '202009131459580000000001585', 1, 1, 1, '测试11', '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"1299\", \"stock\": \"200\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 1299.00, 10, 12.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `retail_order_line` VALUES (2, '2020-09-13 15:11:52', '2020-09-13 15:11:52', 13, '2020091315115200000000013502', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}', 1100.00, 4, 12.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `retail_order_line` VALUES (3, '2020-09-18 22:15:04', '2020-09-18 22:15:04', 14, '2020091822150400000000015293', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}', 1100.00, 1, 3.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `retail_order_line` VALUES (4, '2020-09-18 22:18:45', '2020-09-18 22:18:45', 15, '2020091822184500000000011777', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}', 1100.00, 1, 3.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for shop

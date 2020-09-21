@@ -22,7 +22,7 @@ Route::group([
     $router->resource('pro-info', ProInfoController::class);
     $router->resource('freight-template', FreightTemplateController::class);
     $router->resource('retail-order', RetailOrderController::class);
-
+    $router->resource('customer-ask', AskController::class);
 
     //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);

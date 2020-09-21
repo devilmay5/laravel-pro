@@ -81,7 +81,8 @@ class BaseController extends Controller
         if ($validate->fails()) {
             $fail_group = $validate->errors()->all();
             $return_msg = implode(":", $fail_group);
-            return $this->ErrorResponse(new \Exception($return_msg))->send();
+            $this->ErrorResponse(new \Exception($return_msg))->send();
+            exit;
         }
     }
 

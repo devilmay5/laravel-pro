@@ -106,6 +106,7 @@ class ProClassController extends AdminController
         $form->select('brand_id', '产品品牌')->required();
         $form->select('parent_id', '父级分类')->options(ProClass::selectOptions())->required();
         $form->text('class_name', '分类名称')->required();
+        $form->image('class_img', '分类图片')->uniqueName()->required();
         $form->switch('status', '状态')->default(1);
         $form->number('order_by', '排序值')->default(10)->required();
 

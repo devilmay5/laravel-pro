@@ -26,6 +26,7 @@ class ProClassServices
             'label_id',
             'brand_id',
             'order_by',
+            'class_img',
         ];
 
         $query = ProClass::query()->select($select)

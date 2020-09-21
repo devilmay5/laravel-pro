@@ -22,6 +22,7 @@ class ProClass extends BaseModel
         'status',
         'order_by',
         'parent_id',
+        'class_img',
     ];
 
     public function __construct(array $attributes = [])
