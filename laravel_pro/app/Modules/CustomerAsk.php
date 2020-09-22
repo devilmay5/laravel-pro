@@ -17,4 +17,20 @@ class CustomerAsk extends BaseModel
         'ask_img',
         'reply_content',
     ];
+
+    public function scopeOfCustomerId($query, $customer_id)
+    {
+        if ($customer_id) {
+            $query = $query->where('customer_id', $customer_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfAskId($query, $ask_id)
+    {
+        if ($ask_id) {
+            $query = $query->where('ask_id', $ask_id);
+        }
+        return $query;
+    }
 }

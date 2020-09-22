@@ -36,4 +36,38 @@ class CustomerAskController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetAskList()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required',
+                'page_index' => 'required',
+                'page_size' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            [$ask_list, $count] = AskServices::getAskList($req);
+            return $this->RemoteApiResponse($ask_list, self::SUCCESS_CODE, '查询成功', $count);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function GetAskItem()
+    {
+        try {
+            $rules = [
+                'ask_id' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $ask_list = AskServices::getAskItem($req);
+            return $this->RemoteApiResponse($ask_list->toArray(), self::SUCCESS_CODE, '查询成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

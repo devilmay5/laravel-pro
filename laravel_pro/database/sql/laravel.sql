@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 21/09/2020 23:28:54
+ Date: 22/09/2020 22:49:04
 */
 
 SET NAMES utf8mb4;
@@ -102,7 +102,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1232 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1285 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -1338,6 +1338,59 @@ INSERT INTO `admin_operation_log` VALUES (1228, 1, 'admin/customer-ask/3/edit', 
 INSERT INTO `admin_operation_log` VALUES (1229, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:25:22', '2020-09-21 23:25:22');
 INSERT INTO `admin_operation_log` VALUES (1230, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:25:46', '2020-09-21 23:25:46');
 INSERT INTO `admin_operation_log` VALUES (1231, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-21 23:26:16', '2020-09-21 23:26:16');
+INSERT INTO `admin_operation_log` VALUES (1232, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:05:01', '2020-09-22 21:05:01');
+INSERT INTO `admin_operation_log` VALUES (1233, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:06:22', '2020-09-22 21:06:22');
+INSERT INTO `admin_operation_log` VALUES (1234, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:08:20', '2020-09-22 21:08:20');
+INSERT INTO `admin_operation_log` VALUES (1235, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:09:19', '2020-09-22 21:09:19');
+INSERT INTO `admin_operation_log` VALUES (1236, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:09:54', '2020-09-22 21:09:54');
+INSERT INTO `admin_operation_log` VALUES (1237, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:10:35', '2020-09-22 21:10:35');
+INSERT INTO `admin_operation_log` VALUES (1238, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:11:03', '2020-09-22 21:11:03');
+INSERT INTO `admin_operation_log` VALUES (1239, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:16:03', '2020-09-22 21:16:03');
+INSERT INTO `admin_operation_log` VALUES (1240, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:16:22', '2020-09-22 21:16:22');
+INSERT INTO `admin_operation_log` VALUES (1241, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:16:32', '2020-09-22 21:16:32');
+INSERT INTO `admin_operation_log` VALUES (1242, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:16:35', '2020-09-22 21:16:35');
+INSERT INTO `admin_operation_log` VALUES (1243, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:16:48', '2020-09-22 21:16:48');
+INSERT INTO `admin_operation_log` VALUES (1244, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:17:19', '2020-09-22 21:17:19');
+INSERT INTO `admin_operation_log` VALUES (1245, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:39:08', '2020-09-22 21:39:08');
+INSERT INTO `admin_operation_log` VALUES (1246, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:39:21', '2020-09-22 21:39:21');
+INSERT INTO `admin_operation_log` VALUES (1247, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '[]', '2020-09-22 21:39:38', '2020-09-22 21:39:38');
+INSERT INTO `admin_operation_log` VALUES (1248, 1, 'admin/customer-ask/3', 'PUT', '127.0.0.1', '{\"reply_content\":\"\\u54c8\\u54c8\\u54c8\\u54c8\\u6216\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\"}', '2020-09-22 21:41:44', '2020-09-22 21:41:44');
+INSERT INTO `admin_operation_log` VALUES (1249, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:41:44', '2020-09-22 21:41:44');
+INSERT INTO `admin_operation_log` VALUES (1250, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:42:15', '2020-09-22 21:42:15');
+INSERT INTO `admin_operation_log` VALUES (1251, 1, 'admin/customer-ask/4', 'PUT', '127.0.0.1', '{\"reply_content\":\"\\u51c4\\u51c4\\u5207\\u5207\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/customer-ask\"}', '2020-09-22 21:42:19', '2020-09-22 21:42:19');
+INSERT INTO `admin_operation_log` VALUES (1252, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:42:20', '2020-09-22 21:42:20');
+INSERT INTO `admin_operation_log` VALUES (1253, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:42:37', '2020-09-22 21:42:37');
+INSERT INTO `admin_operation_log` VALUES (1254, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:42:40', '2020-09-22 21:42:40');
+INSERT INTO `admin_operation_log` VALUES (1255, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:43:00', '2020-09-22 21:43:00');
+INSERT INTO `admin_operation_log` VALUES (1256, 1, 'admin/customer-ask/3', 'PUT', '127.0.0.1', '{\"reply_content\":\"\\u60c6\\u6005\\u957f\\u5c91\\u957fc\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/customer-ask\"}', '2020-09-22 21:43:05', '2020-09-22 21:43:05');
+INSERT INTO `admin_operation_log` VALUES (1257, 1, 'admin/customer-ask/3', 'GET', '127.0.0.1', '[]', '2020-09-22 21:43:23', '2020-09-22 21:43:23');
+INSERT INTO `admin_operation_log` VALUES (1258, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:43:25', '2020-09-22 21:43:25');
+INSERT INTO `admin_operation_log` VALUES (1259, 1, 'admin/customer-ask/3', 'PUT', '127.0.0.1', '{\"reply_content\":\"\\u51c4\\u51c4\\u5207\\u5207\\u51c4\\u51c4\\u5207\\u5207\\u7fa4\\u7fa4\\u7fa4\\u7fa4\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\"}', '2020-09-22 21:43:33', '2020-09-22 21:43:33');
+INSERT INTO `admin_operation_log` VALUES (1260, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:45:18', '2020-09-22 21:45:18');
+INSERT INTO `admin_operation_log` VALUES (1261, 1, 'admin/customer-ask/3', 'PUT', '127.0.0.1', '{\"reply_content\":\"888888888888888888888888\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\"}', '2020-09-22 21:45:28', '2020-09-22 21:45:28');
+INSERT INTO `admin_operation_log` VALUES (1262, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:45:28', '2020-09-22 21:45:28');
+INSERT INTO `admin_operation_log` VALUES (1263, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:45:45', '2020-09-22 21:45:45');
+INSERT INTO `admin_operation_log` VALUES (1264, 1, 'admin/customer-ask/3', 'PUT', '127.0.0.1', '{\"reply_content\":\"4444444444444444444\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/customer-ask\"}', '2020-09-22 21:45:52', '2020-09-22 21:45:52');
+INSERT INTO `admin_operation_log` VALUES (1265, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:45:52', '2020-09-22 21:45:52');
+INSERT INTO `admin_operation_log` VALUES (1266, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:46:19', '2020-09-22 21:46:19');
+INSERT INTO `admin_operation_log` VALUES (1267, 1, 'admin/customer-ask/4', 'PUT', '127.0.0.1', '{\"reply_content\":\"999999\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/customer-ask\"}', '2020-09-22 21:46:25', '2020-09-22 21:46:25');
+INSERT INTO `admin_operation_log` VALUES (1268, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:46:26', '2020-09-22 21:46:26');
+INSERT INTO `admin_operation_log` VALUES (1269, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:47:05', '2020-09-22 21:47:05');
+INSERT INTO `admin_operation_log` VALUES (1270, 1, 'admin/customer-ask/4', 'PUT', '127.0.0.1', '{\"reply_content\":\"\\u978d\\u5c71\\u9053\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/customer-ask\"}', '2020-09-22 21:47:09', '2020-09-22 21:47:09');
+INSERT INTO `admin_operation_log` VALUES (1271, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:47:09', '2020-09-22 21:47:09');
+INSERT INTO `admin_operation_log` VALUES (1272, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:47:13', '2020-09-22 21:47:13');
+INSERT INTO `admin_operation_log` VALUES (1273, 1, 'admin/customer-ask/3', 'PUT', '127.0.0.1', '{\"reply_content\":\"\\u5e73\\u5e73\\u5e73\\u5e73\\u5e73\\u5e73\\u5e73\\u556a\\u556a\\u556a\\u556a\\u556a\\u556a\\u556a\\u556a\\u556a\",\"_token\":\"7CAKkELFYFrVhwUC0mL0XZeQyiHeUKnNUeza6JrE\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/customer-ask\"}', '2020-09-22 21:47:21', '2020-09-22 21:47:21');
+INSERT INTO `admin_operation_log` VALUES (1274, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:47:22', '2020-09-22 21:47:22');
+INSERT INTO `admin_operation_log` VALUES (1275, 1, 'admin/customer-ask/4/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:47:42', '2020-09-22 21:47:42');
+INSERT INTO `admin_operation_log` VALUES (1276, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:47:47', '2020-09-22 21:47:47');
+INSERT INTO `admin_operation_log` VALUES (1277, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:48:17', '2020-09-22 21:48:17');
+INSERT INTO `admin_operation_log` VALUES (1278, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:52:15', '2020-09-22 21:52:15');
+INSERT INTO `admin_operation_log` VALUES (1279, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:53:12', '2020-09-22 21:53:12');
+INSERT INTO `admin_operation_log` VALUES (1280, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:53:24', '2020-09-22 21:53:24');
+INSERT INTO `admin_operation_log` VALUES (1281, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '[]', '2020-09-22 21:55:59', '2020-09-22 21:55:59');
+INSERT INTO `admin_operation_log` VALUES (1282, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"created_at\":{\"start\":null,\"end\":null},\"ask_id\":\"4\",\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:56:22', '2020-09-22 21:56:22');
+INSERT INTO `admin_operation_log` VALUES (1283, 1, 'admin/customer-ask', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:56:29', '2020-09-22 21:56:29');
+INSERT INTO `admin_operation_log` VALUES (1284, 1, 'admin/customer-ask/3/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-22 21:56:30', '2020-09-22 21:56:30');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -1643,8 +1696,8 @@ CREATE TABLE `customer_ask`  (
 -- ----------------------------
 -- Records of customer_ask
 -- ----------------------------
-INSERT INTO `customer_ask` VALUES (3, '2020-09-21 23:07:21', '2020-09-21 23:07:21', 0, 51, 0, 4, '差评差评差评差评差评差评差评差评', '', NULL);
-INSERT INTO `customer_ask` VALUES (4, '2020-09-21 23:09:42', '2020-09-21 23:09:42', 0, 51, 0, 4, '', 'images/xSRmPkun8PJo0GirWEGha3TYlXW6XBegftMLytDY.jpeg', NULL);
+INSERT INTO `customer_ask` VALUES (3, '2020-09-21 23:07:21', '2020-09-22 21:45:28', 0, 51, 1, 4, '差评差评差评差评差评差评差评差评', '', '');
+INSERT INTO `customer_ask` VALUES (4, '2020-09-21 23:09:42', '2020-09-22 21:47:21', 0, 51, 1, 4, '', 'images/xSRmPkun8PJo0GirWEGha3TYlXW6XBegftMLytDY.jpeg', '平平平平平平平啪啪啪啪啪啪啪啪啪');
 
 -- ----------------------------
 -- Table structure for freight_template

@@ -35,8 +35,8 @@ class AddressServices
         $count = $query->count();
 
         if ($page_index && $page_size) {
-            $query = $query->offset(($page_index - 1) * $page_size)->limit($page_size);
-        }
+        $query = $query->offset(($page_index - 1) * $page_size)->limit($page_size);
+    }
 
         $res = $query->get();
         if ($res->isNotEmpty()) {

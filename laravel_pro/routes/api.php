@@ -96,6 +96,8 @@ Route::prefix('pro_collection')->middleware('check_customer')->group(function ()
 
 Route::prefix('ask')->middleware('check_customer')->group(function () {
     Route::post('add-ask', 'CustomerAskController@AddAsk');
+    Route::post('get-ask-list', 'CustomerAskController@GetAskList');
+    Route::post('get-ask-item', 'CustomerAskController@GetAskItem');
 });
 
 Route::post('upload_file', function (Request $request) {
