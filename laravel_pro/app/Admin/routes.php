@@ -23,6 +23,7 @@ Route::group([
     $router->resource('freight-template', FreightTemplateController::class);
     $router->resource('retail-order', RetailOrderController::class);
     $router->resource('customer-ask', AskController::class);
+    $router->resource('advertisement', AdvertisementController::class);
 
     //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);

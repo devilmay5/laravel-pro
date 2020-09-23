@@ -65,7 +65,7 @@ class ProInfoController extends AdminController
             'on' => ['value' => ProInfo::IS_RECOMMEND['ENABLE'], 'text' => '推荐', 'color' => 'primary'],
             'off' => ['value' => ProInfo::IS_RECOMMEND['DISABLE'], 'text' => '不推荐', 'color' => 'default'],
         ];
-        $grid->column('is_recommend', '相关推荐')->switch($states);
+        $grid->column('is_recommend', '精品推荐')->switch($states);
 
         $grid->column('order_by', '排序值')->editable()->sortable();
 
@@ -159,7 +159,7 @@ class ProInfoController extends AdminController
 
         $form->select('freight_template_id', '选择运费模板')->options(self::REMOTE_URL_TEMPLATE);
         $form->switch('status', '状态')->default(1);
-        $form->switch('is_recommend', '是否相关推荐')->default(0);
+        $form->switch('is_recommend', '是否精品推荐')->default(0);
         $form->number('order_by', '排序值')->default(10);
 
         $form->saved(function (Form $form) {

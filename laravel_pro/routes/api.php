@@ -24,8 +24,12 @@ Route::prefix('map')->group(function () {
     Route::get('get-province', 'MapController@GetProvinceSelect');
 });
 
-Route::prefix('shop')->group(function () {
-    Route::get('get-parent', 'ShopController@getParentBranch');
+Route::prefix('index')->group(function () {
+    Route::post('get-search-list', 'IndexController@GetIndexProSearch');
+    Route::post('get-banner', 'AdvertisementController@GetBannerList');
+    Route::post('get-advert', 'AdvertisementController@GetAdvert');
+    Route::post('get-recommend-list', 'IndexController@GetRecommendList');
+    Route::post('get-pro-list', 'IndexController@GetProList');
 });
 
 Route::prefix('customer')->group(function () {
@@ -68,6 +72,7 @@ Route::prefix('pro_specs_class')->group(function () {
 Route::prefix('pro_info')->group(function () {
     Route::post('get-pro-list', 'ProInfoController@GetProList');
     Route::post('get-pro-info', 'ProInfoController@GetProInfo');
+    Route::post('get-pro-recommend', 'ProInfoController@GetRecommendList');
     Route::get('get-template-select', 'FreightTemplateController@GetTemplateSelect');
 });
 

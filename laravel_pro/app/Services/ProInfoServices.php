@@ -61,12 +61,14 @@ class ProInfoServices
     }
 
     /**
+     * @param int $pro_id
      * @param int $page_index
      * @param int $page_size
      * @return array
      */
-    public static function getRecommendList(int $page_index = 1, int $page_size = 3): array
+    public static function getRecommendList(int $pro_id, int $page_index = 1, int $page_size = 3): array
     {
+        $proInfo = self::getProInfo($pro_id);
         $select = [
             'id as pro_id',
             'pro_name',
@@ -75,12 +77,11 @@ class ProInfoServices
             'cover_image_url',
             'status',
             'order_by',
-            'is_recommend'
         ];
 
         $query = ProInfo::query()->select($select)
             ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
-            ->ofIsRecommend(ProInfo::IS_RECOMMEND['ENABLE'])
+            ->ofClassId($proInfo['class_id'])
             ->orderBy('order_by', 'desc');
 
         $count = $query->count();
@@ -97,5 +98,36 @@ class ProInfoServices
         }
 
         return [$recommend_group, $count];
+    }
+
+    public static function getSearchList(array $req): array
+    {
+        $select = [
+            'id as pro_id',
+            'pro_name',
+            'present_price',
+            'cover_image_url',
+            'sale_count'
+        ];
+
+        $query = ProInfo::query()->select($select)
+            ->ofProName($req['pro_name'] ?? '')
+            ->ofIsRecommend($req['is_recommend'] ?? '')
+            ->orderBy($req['order_item'], $req['order_type']);
+
+        $count = $query->count();
+
+        if ($req['page_index'] && $req['page_size']) {
+            $query = $query->offset(($req['page_index'] - 1) * $req['page_size'])->limit($req['page_size']);
+        }
+
+        $pro_group = $query->get();
+        if ($pro_group->isNotEmpty()) {
+            $pro_group = $pro_group->toArray();
+        } else {
+            $pro_group = [];
+        }
+
+        return [$pro_group, $count];
     }
 }

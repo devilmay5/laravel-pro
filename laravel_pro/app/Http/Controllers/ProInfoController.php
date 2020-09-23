@@ -64,6 +64,7 @@ class ProInfoController extends BaseController
     {
         try {
             $rules = [
+                'pro_id' => 'required',
                 'page_index' => 'int',
                 'page_size' => 'int',
             ];
@@ -71,6 +72,7 @@ class ProInfoController extends BaseController
             $this->validateParams($req, $rules);
 
             [$recommend_group, $count] = ProInfoServices::getRecommendList(
+                $req['pro_id'],
                 $req['page_index'] ?? 0,
                 $req['page_size'] ?? 0
             );

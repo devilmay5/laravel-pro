@@ -93,4 +93,12 @@ class ProInfo extends BaseModel
         }
         return $query;
     }
+
+    public function scopeOfProName($query, $pro_name)
+    {
+        if ($pro_name) {
+            $query = $query->where('pro_name', 'like', '%' . $pro_name . '%');
+        }
+        return $query;
+    }
 }
