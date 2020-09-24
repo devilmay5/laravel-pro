@@ -34,6 +34,7 @@ Route::prefix('index')->group(function () {
 
 Route::prefix('customer')->group(function () {
     Route::get('get-customer-select', 'CustomerController@GetCustomerSelect');
+    Route::middleware('check_customer')->post('update-customer', 'CustomerController@UpdateCustomerInfo');
     Route::middleware('check_customer')->post('get-customer-info', 'CustomerController@GetCustomerInfo');
     Route::post('login', 'CustomerController@Login');
 });

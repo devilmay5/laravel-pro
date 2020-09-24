@@ -18,6 +18,11 @@ class CustomerAsk extends BaseModel
         'reply_content',
     ];
 
+    public function getAskImgAttribute($ask_img)
+    {
+        return 'upload/' . $ask_img;
+    }
+
     public function scopeOfCustomerId($query, $customer_id)
     {
         if ($customer_id) {

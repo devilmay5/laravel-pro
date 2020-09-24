@@ -14,12 +14,21 @@ class Customer extends BaseModel
         'wechat_openid',
         'head_img_url',
         'status',
+        'sex'
     ];
+
+    const SEX_MAN = 1;
+    const SEX_WOMAN = 2;
+
+    public function getHeadImgUrlAttribute($head_img_url)
+    {
+        return 'upload/' . $head_img_url;
+    }
 
     public function scopeOfMobile($query, $mobile)
     {
-        if($mobile){
-            $query = $query->where('mobile',$mobile);
+        if ($mobile) {
+            $query = $query->where('mobile', $mobile);
         }
         return $query;
     }

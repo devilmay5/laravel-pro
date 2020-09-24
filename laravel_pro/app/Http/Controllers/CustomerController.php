@@ -68,5 +68,26 @@ class CustomerController extends BaseController
         }
     }
 
+    public function UpdateCustomerInfo()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required|exists:customer,id',
+                'nickname' => 'string',
+                'sex' => 'string',
+                'head_img_url' => ''
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            if ($this->request->hasFile('head_img_url')) {
+                $req['head_img_url'] = $this->request->file('head_img_url');
+            }
+             CustomerServices::updateCustomer($req);
+            return $this->RemoteApiResponse([], self::SUCCESS_CODE, '更新成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 
 }

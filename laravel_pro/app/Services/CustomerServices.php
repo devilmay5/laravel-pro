@@ -23,9 +23,26 @@ class CustomerServices
             $tmp_customer['status'] = Customer::STATUS_CODE['ENABLE'];
             $tmp_customer['wechat_openid'] = $req['wechat_openid'] ?? '';
             $tmp_customer['head_img_url'] = $req['head_img_url'] ?? '';
+            $tmp_customer['sex'] = Customer::SEX_MAN;
             $customer = Customer::create($tmp_customer);
         }
         return $customer->toArray();
+    }
+
+    /**
+     * @param array $req
+     * @return int
+     */
+    public static function updateCustomer(array $req)
+    {
+        $id = $req['customer_id'];
+        unset($req['customer_id']);
+        $data = $req;
+        if (isset($req['head_img_url'])) {
+            $path = $req['head_img_url']->store('images', 'admin');
+            $data['head_img_url'] = $path;
+        }
+        return Customer::query()->where('id', $id)->update($data);
     }
 
     /**
