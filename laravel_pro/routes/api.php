@@ -30,6 +30,8 @@ Route::prefix('index')->group(function () {
     Route::post('get-advert', 'AdvertisementController@GetAdvert');
     Route::post('get-recommend-list', 'IndexController@GetRecommendList');
     Route::post('get-pro-list', 'IndexController@GetProList');
+    Route::post('get-pro-list-in-brand', 'IndexController@getProListInBrand');
+    Route::post('get-new-pro-list', 'IndexController@getNewProList');
 });
 
 Route::prefix('customer')->group(function () {

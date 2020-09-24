@@ -61,7 +61,13 @@ class ProInfo extends BaseModel
         }
         return $query;
     }
-
+    public function scopeOfLabelId($query, $label_id)
+    {
+        if ($label_id) {
+            $query = $query->where('label_id', $label_id);
+        }
+        return $query;
+    }
     public function scopeOfClassId($query, $class_id)
     {
         if ($class_id) {
@@ -98,6 +104,18 @@ class ProInfo extends BaseModel
     {
         if ($pro_name) {
             $query = $query->where('pro_name', 'like', '%' . $pro_name . '%');
+        }
+        return $query;
+    }
+
+    public function scopeOfPresentPrice($query, $low, $high)
+    {
+        if ($low) {
+            $query = $query->where('present_price', '>=', $low);
+        }
+
+        if ($high) {
+            $query = $query->where('present_price', '<=', $high);
         }
         return $query;
     }

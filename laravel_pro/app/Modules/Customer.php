@@ -20,10 +20,6 @@ class Customer extends BaseModel
     const SEX_MAN = 1;
     const SEX_WOMAN = 2;
 
-    public function getHeadImgUrlAttribute($head_img_url)
-    {
-        return 'upload/' . $head_img_url;
-    }
 
     public function scopeOfMobile($query, $mobile)
     {

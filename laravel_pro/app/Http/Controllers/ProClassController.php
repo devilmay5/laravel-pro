@@ -41,7 +41,7 @@ class ProClassController extends BaseController
     {
         try {
             $rules = [
-                'brand_id' => 'required',
+                'brand_id' => 'int|exists:pro_brand,id',
                 'page_index' => 'int',
                 'page_size' => 'int',
             ];

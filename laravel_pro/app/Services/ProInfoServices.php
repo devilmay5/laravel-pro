@@ -100,6 +100,10 @@ class ProInfoServices
         return [$recommend_group, $count];
     }
 
+    /**
+     * @param array $req
+     * @return array
+     */
     public static function getSearchList(array $req): array
     {
         $select = [
@@ -113,8 +117,13 @@ class ProInfoServices
         $query = ProInfo::query()->select($select)
             ->ofProName($req['pro_name'] ?? '')
             ->ofIsRecommend($req['is_recommend'] ?? '')
-            ->orderBy($req['order_item'], $req['order_type']);
+            ->ofPresentPrice($req['low'] ?? 0, $req['high'] ?? 0)
+            ->ofBrandId($req['brand_id'] ?? '')
+            ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
+            ->ofClassId($req['class_id'] ?? '');
 
+
+        $query = $query->orderBy($req['order_item'], $req['order_type']);
         $count = $query->count();
 
         if ($req['page_index'] && $req['page_size']) {
@@ -129,5 +138,40 @@ class ProInfoServices
         }
 
         return [$pro_group, $count];
+    }
+
+    /**
+     * @return array
+     */
+    public static function getNewList()
+    {
+        $select = [
+            'id as pro_id',
+            'pro_name',
+            'present_price',
+            'cover_image_url',
+            'sale_count'
+        ];
+        // 新品上新
+        $new_pro_group = ProInfo::select($select)
+            ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
+            ->orderBy('id', 'desc')
+            ->offset(0)->limit(4)
+            ->get();
+
+        $return = [['name' => '新品上新', 'data' => $new_pro_group]];
+
+        $label_group = ProLabelServices::getEnableList();
+        foreach ($label_group as $item) {
+            $label_pro = ProInfo::select($select)
+                ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
+                ->ofLabelId($item['id'])
+                ->orderBy('id', 'desc')
+                ->offset(0)->limit(4)
+                ->get();
+            $return = array_merge($return, [['name' => $item['label_name'], 'data' => $label_pro]]);
+        }
+
+        return $return;
     }
 }
