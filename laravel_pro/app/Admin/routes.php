@@ -24,6 +24,7 @@ Route::group([
     $router->resource('retail-order', RetailOrderController::class);
     $router->resource('customer-ask', AskController::class);
     $router->resource('advertisement', AdvertisementController::class);
+    $router->resource('about', AboutController::class);
 
     //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);

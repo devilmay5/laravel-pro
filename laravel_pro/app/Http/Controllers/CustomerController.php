@@ -33,6 +33,23 @@ class CustomerController extends BaseController
         }
     }
 
+    public function Logout()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            Session::forget('customer_' . $req['customer_id']);
+
+            return $this->RemoteApiResponse([], self::SUCCESS_CODE, '登出成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
     public function GetCustomerSelect()
     {
         try {
@@ -83,7 +100,7 @@ class CustomerController extends BaseController
             if ($this->request->hasFile('head_img_url')) {
                 $req['head_img_url'] = $this->request->file('head_img_url');
             }
-             CustomerServices::updateCustomer($req);
+            CustomerServices::updateCustomer($req);
             return $this->RemoteApiResponse([], self::SUCCESS_CODE, '更新成功');
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);

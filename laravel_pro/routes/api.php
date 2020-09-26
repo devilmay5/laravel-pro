@@ -39,6 +39,7 @@ Route::prefix('customer')->group(function () {
     Route::middleware('check_customer')->post('update-customer', 'CustomerController@UpdateCustomerInfo');
     Route::middleware('check_customer')->post('get-customer-info', 'CustomerController@GetCustomerInfo');
     Route::post('login', 'CustomerController@Login');
+    Route::post('logout', 'CustomerController@Logout');
 });
 
 Route::prefix('address')->middleware('check_customer')->group(function () {
@@ -106,6 +107,10 @@ Route::prefix('ask')->middleware('check_customer')->group(function () {
     Route::post('add-ask', 'CustomerAskController@AddAsk');
     Route::post('get-ask-list', 'CustomerAskController@GetAskList');
     Route::post('get-ask-item', 'CustomerAskController@GetAskItem');
+});
+
+Route::prefix('about')->group(function () {
+    Route::post('get-about-list', 'AboutController@GetAboutList');
 });
 
 Route::post('upload_file', function (Request $request) {
