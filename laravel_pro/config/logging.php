@@ -91,7 +91,7 @@ return [
         ],
 
         'execute_log' => [
-            'driver' => 'execute_log',
+            'driver' => 'daily',
             'level' => 'debug',
             'path' => storage_path('logs/execute.log'),
             'days' => 14,
