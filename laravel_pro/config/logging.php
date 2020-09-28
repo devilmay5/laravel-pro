@@ -85,6 +85,11 @@ return [
             'level' => 'debug',
         ],
 
+        'errorlog' => [
+            'driver' => 'errorlog',
+            'level' => 'debug',
+        ],
+
         'execute_log' => [
             'driver' => 'execute_log',
             'level' => 'debug',
