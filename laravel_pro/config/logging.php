@@ -85,9 +85,11 @@ return [
             'level' => 'debug',
         ],
 
-        'errorlog' => [
-            'driver' => 'errorlog',
+        'execute_log' => [
+            'driver' => 'execute_log',
             'level' => 'debug',
+            'path' => storage_path('logs/execute.log'),
+            'days' => 14,
         ],
     ],
 
