@@ -97,10 +97,12 @@ class CartServices
             'pro_count',
             'pro_unit_price',
             'pro_total_price',
-            'pro_info.pro_name as pro_name'
+            'pro_info.pro_name as pro_name',
+            'pro_brand.brand_name as brand_name'
         ];
         $query = Cart::query()->select($select)
             ->join('pro_info', 'pro_info.id', '=', 'cart.pro_id')
+            ->join('pro_brand','pro_info.brand_id', '=', 'pro_brand.id')
             ->ofCustomerId($customer_id)
             ->ofProId($pro_id)
             ->orderBy('cart_id', 'desc');
