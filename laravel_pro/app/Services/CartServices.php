@@ -98,7 +98,8 @@ class CartServices
             'pro_unit_price',
             'pro_total_price',
             'pro_info.pro_name as pro_name',
-            'pro_brand.brand_name as brand_name'
+            'pro_brand.brand_name as brand_name',
+            'pro_brand.brand_image as brand_image'
         ];
         $query = Cart::query()->select($select)
             ->join('pro_info', 'pro_info.id', '=', 'cart.pro_id')
