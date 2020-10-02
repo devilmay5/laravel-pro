@@ -98,6 +98,7 @@ class IndexController extends BaseController
                 'page_size' => 'required|int',
                 'order_item' => 'string', // sale_count,present_price
                 'order_type' => 'string', // asc desc
+                'label_id' => 'int|exists:pro_label,id',
                 'brand_id' => 'int|exists:pro_brand,id',
                 'class_id' => 'int|exists:pro_class,id',
                 'low' => 'numeric',

@@ -119,6 +119,7 @@ class ProInfoServices
             ->ofIsRecommend($req['is_recommend'] ?? '')
             ->ofPresentPrice($req['low'] ?? 0, $req['high'] ?? 0)
             ->ofBrandId($req['brand_id'] ?? '')
+            ->ofLabelId($req['label_id'] ?? '')
             ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
             ->ofClassId($req['class_id'] ?? '');
 
