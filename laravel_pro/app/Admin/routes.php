@@ -25,6 +25,7 @@ Route::group([
     $router->resource('customer-ask', AskController::class);
     $router->resource('advertisement', AdvertisementController::class);
     $router->resource('about', AboutController::class);
+    $router->resource('feedback', FeedbackController::class);
 
     //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);
