@@ -18,7 +18,6 @@ class AdvertisementController extends BaseController
     {
         try {
             $banner = AdvertisementServices::getInfo(Advertisement::banner_name);
-            $banner['image_list'] = json_decode($banner['image_list'], true);
             return $this->RemoteApiResponse($banner);
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);

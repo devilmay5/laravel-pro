@@ -102,8 +102,21 @@ class ProClassController extends AdminController
     {
         $form = new Form(new ProClass());
         $form->text('id', '分类Id')->readonly();
-        $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
-        $form->select('brand_id', '产品品牌')->required();
+
+        $label_list = ProLabelServices::getEnableList();
+        $options_label = [];
+        foreach ($label_list as $item) {
+            $options_label[$item['id']] = $item['label_name'];
+        }
+
+        $form->select('label_id', '所属标签')->options($options_label)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
+
+        [$brand_list, $count] = ProBrandServices::getBrandList(0, 0, 0);
+        $options_brand = [];
+        foreach ($brand_list as $key => $item) {
+            $options_brand[$item['brand_id']] = $item['brand_name'];
+        }
+        $form->select('brand_id', '产品品牌')->options($options_brand)->required();
         $form->select('parent_id', '父级分类')->options(ProClass::selectOptions())->required();
         $form->text('class_name', '分类名称')->required();
         $form->image('class_img', '分类图片')->uniqueName()->required();

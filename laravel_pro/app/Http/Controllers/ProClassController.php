@@ -22,12 +22,13 @@ class ProClassController extends BaseController
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-            [$pro_class_group, $count] = ProClassServices::getClassList(isset($req['q']) && $req['q'] != "" ? $req['q'] : 0);
-
             $return = [];
-            foreach ($pro_class_group as $key => $item) {
-                $return[$key]['id'] = $item['class_id'];
-                $return[$key]['text'] = $item['class_name'];
+            if (isset($req['q']) && $req['q'] != "") {
+                [$pro_class_group, $count] = ProClassServices::getClassList($req['q']);
+                foreach ($pro_class_group as $key => $item) {
+                    $return[$key]['id'] = $item['class_id'];
+                    $return[$key]['text'] = $item['class_name'];
+                }
             }
 
             return response()->json($return);
@@ -80,7 +81,12 @@ class ProClassController extends BaseController
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
 
-            $res = ProClassServices::getRootClass($req['q']);
+            if ($req['q'] != "") {
+                $res = ProClassServices::getRootClass($req['q']);
+            } else {
+                $res = [];
+            }
+
             return response()->json($res);
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);

@@ -147,7 +147,7 @@ class ProInfoController extends AdminController
         $form->currency('original_price', '原价')->symbol('￥')->required();
         $form->currency('present_price', '现价')->symbol('￥')->required();
         $form->image('cover_image_url', '封面图片')->uniqueName()->required();
-        $form->multipleImage('detail_image_url', '详情图片')->uniqueName();
+        $form->multipleImage('detail_image_url', '详情图片')->removable()->uniqueName();
         $form->ckeditor('description', '产品描述')->required();
         $form->keyValue('detail_params', '详细参数')->required();
 
