@@ -21,6 +21,10 @@ class Advertisement extends BaseModel
     const banner_name = 'banner';
     const index_advert = 'Indexadvert';
 
+    public $casts = [
+        'image_list' => 'array',
+    ];
+
     public function setImageListAttribute($image_list)
     {
         if (is_array($image_list)) {
