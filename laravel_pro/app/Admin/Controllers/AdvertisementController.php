@@ -72,9 +72,9 @@ class AdvertisementController extends AdminController
             Advertisement::IS_MUTI => '是',
             Advertisement::NOT_MUTI => '否',
         ])->when(Advertisement::IS_MUTI, function (Form $form) {
-            $form->multipleImage('image_list', '广告图')->uniqueName();
+            $form->multipleImage('image_list', '广告图')->removable()->uniqueName();
         })->when(Advertisement::NOT_MUTI, function (Form $form) {
-            $form->image('image_url', '广告图')->uniqueName();
+            $form->image('image_url', '广告图')->removable()->uniqueName();
         });
 
         $form->tools(function (Form\Tools $tools) {
