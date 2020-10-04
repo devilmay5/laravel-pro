@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 26/09/2020 22:18:53
+ Date: 04/10/2020 13:17:09
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `address`  (
 -- ----------------------------
 -- Records of address
 -- ----------------------------
-INSERT INTO `address` VALUES (1, '2020-09-05 03:29:28', '2020-09-06 13:18:06', 1, 110000, 110100, 110101, 'aaavvv', '11111', '18102025221', 1);
+INSERT INTO `address` VALUES (1, '2020-09-05 03:29:28', '2020-09-06 13:18:06', 51, 110000, 110100, 110101, 'aaavvv', '11111', '18102025221', 1);
 INSERT INTO `address` VALUES (2, '2020-09-05 03:38:01', '2020-09-06 13:18:06', 1, 120000, 120100, 120101, '123', '11111', '18102025228', 0);
 INSERT INTO `address` VALUES (3, '2020-09-05 07:14:41', '2020-09-05 07:14:41', 2, 110000, 110100, 110101, 'aaavvv', '11111', '18102025221', 0);
 INSERT INTO `address` VALUES (4, '2020-09-06 13:17:36', '2020-09-06 13:18:06', 1, 110000, 110100, 110101, 'qqqqq', '777', '18192928888', 0);
@@ -83,7 +83,7 @@ CREATE TABLE `admin_menu`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -112,6 +112,8 @@ INSERT INTO `admin_menu` VALUES (23, 0, 21, '广告位管理', 'fa-bars', NULL, 
 INSERT INTO `admin_menu` VALUES (24, 23, 22, '广告位管理', 'fa-bars', '/advertisement', '*', '2020-09-23 21:57:53', '2020-09-26 22:03:17');
 INSERT INTO `admin_menu` VALUES (25, 0, 23, '单页管理', 'fa-bars', NULL, '*', '2020-09-26 22:03:05', '2020-09-26 22:03:17');
 INSERT INTO `admin_menu` VALUES (26, 25, 0, '单页管理', 'fa-bars', '/about', '*', '2020-09-26 22:03:39', '2020-09-26 22:03:39');
+INSERT INTO `admin_menu` VALUES (27, 8, 0, '问题反馈', 'fa-bars', 'feedback', '*', '2020-10-02 16:59:19', '2020-10-02 16:59:19');
+INSERT INTO `admin_menu` VALUES (28, 19, 0, '退款管理', 'fa-bars', 'retail-refund', '*', '2020-10-02 22:07:48', '2020-10-02 22:07:48');
 
 -- ----------------------------
 -- Table structure for admin_operation_log
@@ -128,7 +130,7 @@ CREATE TABLE `admin_operation_log`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `admin_operation_log_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1357 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1394 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_operation_log
@@ -1489,6 +1491,43 @@ INSERT INTO `admin_operation_log` VALUES (1353, 1, 'admin/about', 'GET', '127.0.
 INSERT INTO `admin_operation_log` VALUES (1354, 1, 'admin/about/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-09-26 22:07:43', '2020-09-26 22:07:43');
 INSERT INTO `admin_operation_log` VALUES (1355, 1, 'admin/about', 'POST', '127.0.0.1', '{\"name\":\"feedback\",\"description\":\"\\u610f\\u89c1\\u53cd\\u9988\",\"text\":\"<p>\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988\\u610f\\u89c1\\u53cd\\u9988<\\/p>\",\"_token\":\"TiH7XxUVkcED9bRIWqoUMI49mWMPvqL8Ag58WHXB\",\"_previous_\":\"http:\\/\\/127.0.0.1\\/admin\\/about\"}', '2020-09-26 22:08:10', '2020-09-26 22:08:10');
 INSERT INTO `admin_operation_log` VALUES (1356, 1, 'admin/about', 'GET', '127.0.0.1', '[]', '2020-09-26 22:08:11', '2020-09-26 22:08:11');
+INSERT INTO `admin_operation_log` VALUES (1357, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-09-30 21:22:43', '2020-09-30 21:22:43');
+INSERT INTO `admin_operation_log` VALUES (1358, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-10-02 16:58:53', '2020-10-02 16:58:53');
+INSERT INTO `admin_operation_log` VALUES (1359, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 16:58:58', '2020-10-02 16:58:58');
+INSERT INTO `admin_operation_log` VALUES (1360, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"8\",\"title\":\"\\u95ee\\u9898\\u53cd\\u9988\",\"icon\":\"fa-bars\",\"uri\":\"feedback\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"KwzIQ7uKUPGGirGf0SAdbzkH38lEAmiFd7s0anpd\"}', '2020-10-02 16:59:18', '2020-10-02 16:59:18');
+INSERT INTO `admin_operation_log` VALUES (1361, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-10-02 16:59:19', '2020-10-02 16:59:19');
+INSERT INTO `admin_operation_log` VALUES (1362, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-10-02 16:59:21', '2020-10-02 16:59:21');
+INSERT INTO `admin_operation_log` VALUES (1363, 1, 'admin/feedback', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 16:59:26', '2020-10-02 16:59:26');
+INSERT INTO `admin_operation_log` VALUES (1364, 1, 'admin/feedback/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 17:02:00', '2020-10-02 17:02:00');
+INSERT INTO `admin_operation_log` VALUES (1365, 1, 'admin/feedback/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 17:02:09', '2020-10-02 17:02:09');
+INSERT INTO `admin_operation_log` VALUES (1366, 1, 'admin/feedback/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 17:02:25', '2020-10-02 17:02:25');
+INSERT INTO `admin_operation_log` VALUES (1367, 1, 'admin/feedback/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 17:02:42', '2020-10-02 17:02:42');
+INSERT INTO `admin_operation_log` VALUES (1368, 1, 'admin/feedback/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 17:02:51', '2020-10-02 17:02:51');
+INSERT INTO `admin_operation_log` VALUES (1369, 1, 'admin/feedback', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 17:04:08', '2020-10-02 17:04:08');
+INSERT INTO `admin_operation_log` VALUES (1370, 1, 'admin/feedback', 'GET', '127.0.0.1', '[]', '2020-10-02 22:07:22', '2020-10-02 22:07:22');
+INSERT INTO `admin_operation_log` VALUES (1371, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 22:07:26', '2020-10-02 22:07:26');
+INSERT INTO `admin_operation_log` VALUES (1372, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"19\",\"title\":\"\\u9000\\u6b3e\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":\"retail-refund\",\"roles\":[\"1\",\"2\",null],\"permission\":\"*\",\"_token\":\"6pAW1wrYKcjP8Fh4ol5mkxqDHcLzrSqUOPH9yqLT\"}', '2020-10-02 22:07:48', '2020-10-02 22:07:48');
+INSERT INTO `admin_operation_log` VALUES (1373, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-10-02 22:07:49', '2020-10-02 22:07:49');
+INSERT INTO `admin_operation_log` VALUES (1374, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-10-02 22:07:51', '2020-10-02 22:07:51');
+INSERT INTO `admin_operation_log` VALUES (1375, 1, 'admin/retail-order', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 22:07:56', '2020-10-02 22:07:56');
+INSERT INTO `admin_operation_log` VALUES (1376, 1, 'admin/retail-refund', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 22:07:57', '2020-10-02 22:07:57');
+INSERT INTO `admin_operation_log` VALUES (1377, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 22:16:01', '2020-10-02 22:16:01');
+INSERT INTO `admin_operation_log` VALUES (1378, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:16:33', '2020-10-02 22:16:33');
+INSERT INTO `admin_operation_log` VALUES (1379, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:17:05', '2020-10-02 22:17:05');
+INSERT INTO `admin_operation_log` VALUES (1380, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:17:29', '2020-10-02 22:17:29');
+INSERT INTO `admin_operation_log` VALUES (1381, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:17:50', '2020-10-02 22:17:50');
+INSERT INTO `admin_operation_log` VALUES (1382, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:18:48', '2020-10-02 22:18:48');
+INSERT INTO `admin_operation_log` VALUES (1383, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:19:44', '2020-10-02 22:19:44');
+INSERT INTO `admin_operation_log` VALUES (1384, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:21:34', '2020-10-02 22:21:34');
+INSERT INTO `admin_operation_log` VALUES (1385, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:21:48', '2020-10-02 22:21:48');
+INSERT INTO `admin_operation_log` VALUES (1386, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:22:01', '2020-10-02 22:22:01');
+INSERT INTO `admin_operation_log` VALUES (1387, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:22:16', '2020-10-02 22:22:16');
+INSERT INTO `admin_operation_log` VALUES (1388, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:22:38', '2020-10-02 22:22:38');
+INSERT INTO `admin_operation_log` VALUES (1389, 1, 'admin/retail-refund/1/edit', 'GET', '127.0.0.1', '[]', '2020-10-02 22:23:12', '2020-10-02 22:23:12');
+INSERT INTO `admin_operation_log` VALUES (1390, 1, 'admin/retail-refund', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-10-02 22:23:20', '2020-10-02 22:23:20');
+INSERT INTO `admin_operation_log` VALUES (1391, 1, 'admin/retail-refund', 'GET', '127.0.0.1', '[]', '2020-10-02 22:23:59', '2020-10-02 22:23:59');
+INSERT INTO `admin_operation_log` VALUES (1392, 1, 'admin/retail-refund', 'GET', '127.0.0.1', '[]', '2020-10-02 22:27:54', '2020-10-02 22:27:54');
+INSERT INTO `admin_operation_log` VALUES (1393, 1, 'admin/retail-refund', 'GET', '127.0.0.1', '[]', '2020-10-02 22:28:15', '2020-10-02 22:28:15');
 
 -- ----------------------------
 -- Table structure for admin_permissions
@@ -1574,6 +1613,10 @@ INSERT INTO `admin_role_menu` VALUES (1, 25, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (2, 25, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (1, 26, NULL, NULL);
 INSERT INTO `admin_role_menu` VALUES (2, 26, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 27, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 27, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (1, 28, NULL, NULL);
+INSERT INTO `admin_role_menu` VALUES (2, 28, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admin_role_permissions
@@ -1725,7 +1768,7 @@ CREATE TABLE `cart`  (
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
-INSERT INTO `cart` VALUES (6, 1, 1, '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"红色\"}', 2, 1100.00, 2200.00, '2020-09-11 02:58:59', '2020-09-17 15:29:23');
+INSERT INTO `cart` VALUES (6, 51, 1, '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"红色\"}', 2, 1100.00, 2200.00, '2020-09-11 02:58:59', '2020-09-17 15:29:23');
 
 -- ----------------------------
 -- Table structure for customer
@@ -1798,7 +1841,7 @@ INSERT INTO `customer` VALUES (47, '2020-09-04 14:02:50', '2020-09-04 14:02:50',
 INSERT INTO `customer` VALUES (48, '2020-09-04 14:02:50', '2020-09-04 14:02:50', 'Tom654040', '18102025228', '133d4f31-9830-4024-a54d-faa73b119714', 'http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyVmy6KibtfR6LSjTIzBibPpRib8OZfZPOKJzpgibbKwFWLtRtJ3cLsZj6zfW0NiaJlLoKmtibVMrWVIJA/132', 1, NULL);
 INSERT INTO `customer` VALUES (49, '2020-09-04 14:02:51', '2020-09-04 14:02:51', 'Tom697713', '18102025228', 'b72e9dd8-df48-4f45-bced-0dcd0019a376', 'http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyVmy6KibtfR6LSjTIzBibPpRib8OZfZPOKJzpgibbKwFWLtRtJ3cLsZj6zfW0NiaJlLoKmtibVMrWVIJA/132', 1, NULL);
 INSERT INTO `customer` VALUES (50, '2020-09-04 14:02:51', '2020-09-04 14:02:51', 'Tom526445', '18102025228', '0c8a5a14-1e08-48f6-8c0e-95cb5df1350c', 'http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoyVmy6KibtfR6LSjTIzBibPpRib8OZfZPOKJzpgibbKwFWLtRtJ3cLsZj6zfW0NiaJlLoKmtibVMrWVIJA/132', 1, NULL);
-INSERT INTO `customer` VALUES (51, '2020-09-13 15:40:53', '2020-09-24 22:59:20', '游客1600011653', '18102025227', '', 'images/h3PGVXInCYBOAJPEWpEF1teccV5cBgic3YvVj6cR.jpeg', 1, NULL);
+INSERT INTO `customer` VALUES (51, '2020-09-13 15:40:53', '2020-09-28 22:31:28', '游客1600011653', '18102025227', '', '', 1, NULL);
 
 -- ----------------------------
 -- Table structure for customer_ask
@@ -1828,6 +1871,25 @@ CREATE TABLE `customer_ask`  (
 INSERT INTO `customer_ask` VALUES (3, '2020-09-21 23:07:21', '2020-09-22 21:45:28', 0, 51, 1, 4, '差评差评差评差评差评差评差评差评', '', '');
 INSERT INTO `customer_ask` VALUES (4, '2020-09-21 23:09:42', '2020-09-22 21:47:21', 0, 51, 1, 4, '', 'images/xSRmPkun8PJo0GirWEGha3TYlXW6XBegftMLytDY.jpeg', '平平平平平平平啪啪啪啪啪啪啪啪啪');
 INSERT INTO `customer_ask` VALUES (5, '2020-09-22 22:59:59', '2020-09-22 22:59:59', 0, 51, 0, 4, '', 'images/CBuCZVTQJ0UUIAbng5sC4j1oQ9LlI5RTxH7tmyqJ.jpeg', NULL);
+
+-- ----------------------------
+-- Table structure for feedback
+-- ----------------------------
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE `feedback`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `mobile` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `customer_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of feedback
+-- ----------------------------
+INSERT INTO `feedback` VALUES (1, '122223333344', '18102025227', '2020-10-02 16:57:05', '2020-10-02 16:57:05', 51);
 
 -- ----------------------------
 -- Table structure for freight_template
@@ -5686,7 +5748,7 @@ CREATE TABLE `retail_order`  (
 -- ----------------------------
 -- Records of retail_order
 -- ----------------------------
-INSERT INTO `retail_order` VALUES (11, '2020-09-13 14:59:58', '2020-09-21 22:00:24', '202009131459580000000001585', 1, 1, 0.00, 13002.00);
+INSERT INTO `retail_order` VALUES (11, '2020-09-13 14:59:58', '2020-09-21 22:00:24', '202009131459580000000001585', 51, 1, 0.00, 13002.00);
 INSERT INTO `retail_order` VALUES (13, '2020-09-13 15:11:52', '2020-09-13 15:11:52', '2020091315115200000000013502', 1, 1, 0.00, 4412.00);
 INSERT INTO `retail_order` VALUES (14, '2020-09-18 22:15:04', '2020-09-18 22:15:04', '2020091822150400000000015293', 1, 1, 0.00, 1103.00);
 INSERT INTO `retail_order` VALUES (15, '2020-09-18 22:18:45', '2020-09-18 22:18:45', '2020091822184500000000011777', 1, 1, 0.00, 0.00);
@@ -5726,10 +5788,36 @@ CREATE TABLE `retail_order_line`  (
 -- ----------------------------
 -- Records of retail_order_line
 -- ----------------------------
-INSERT INTO `retail_order_line` VALUES (1, '2020-09-13 14:59:58', '2020-09-13 14:59:58', 11, '202009131459580000000001585', 1, 1, 1, '测试11', '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"1299\", \"stock\": \"200\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 1299.00, 10, 12.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `retail_order_line` VALUES (1, '2020-09-13 14:59:58', '2020-09-13 14:59:58', 11, '202009131459580000000001585', 51, 1, 1, '测试11', '{\"pic\": \"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg\", \"price\": \"1299\", \"stock\": \"200\", \"尺码\": \"42\", \"颜色\": \"红色\"}', 1299.00, 10, 12.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `retail_order_line` VALUES (2, '2020-09-13 15:11:52', '2020-09-13 15:11:52', 13, '2020091315115200000000013502', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/eTLHBTFgJVWRC8wwIMWgFq4lsWk3xYgaUDOiNwGU.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"43\", \"颜色\": \"蓝色\"}', 1100.00, 4, 12.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `retail_order_line` VALUES (3, '2020-09-18 22:15:04', '2020-09-18 22:15:04', 14, '2020091822150400000000015293', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}', 1100.00, 1, 3.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `retail_order_line` VALUES (4, '2020-09-18 22:18:45', '2020-09-18 22:18:45', 15, '2020091822184500000000011777', 1, 1, 1, '乔丹1', '{\"pic\": \"/upload/images/XojYVBEyRqV7gS7L3cY4cvu9GXVimSYK6iXEunkg.jpeg\", \"price\": \"1100\", \"stock\": \"100\", \"尺码\": \"42\", \"颜色\": \"蓝色\"}', 1100.00, 1, 3.00, 0, 0, NULL, NULL, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for retail_refund
+-- ----------------------------
+DROP TABLE IF EXISTS `retail_refund`;
+CREATE TABLE `retail_refund`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `retail_order_line_id` int(11) NOT NULL COMMENT '关联订单id',
+  `refuse_content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '退货原因描述',
+  `refuse_image_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `status` tinyint(1) NULL DEFAULT NULL COMMENT '1 待审核\r\n2 审核中\r\n3 已审核\r\n4 已退款',
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `submit_time` datetime(0) NULL DEFAULT NULL COMMENT '提交时间',
+  `accept_time` datetime(0) NULL DEFAULT NULL COMMENT '受理时间',
+  `exam_time` datetime(0) NULL DEFAULT NULL COMMENT '审核时间',
+  `refund_time` datetime(0) NULL DEFAULT NULL COMMENT '退款时间',
+  `customer_id` int(11) NOT NULL COMMENT '用户id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of retail_refund
+-- ----------------------------
+INSERT INTO `retail_refund` VALUES (1, 1, 'aaaaaaa', 'images/V3MRTJ8K8aeFspALW3LqYieW2wzMejWL5Bn4yG6V.jpeg', 1, '2020-10-02 18:11:17', '2020-10-02 18:11:17', '2020-10-02 18:11:15', NULL, NULL, NULL, 51);
+INSERT INTO `retail_refund` VALUES (2, 1, 'aaaaaaa', 'images/FIXhMuambP8zCfoLvwXOd75X95xb8uqyRiIcnFYn.jpeg', 1, '2020-10-02 21:56:31', '2020-10-02 21:56:31', '2020-10-02 21:56:30', NULL, NULL, NULL, 51);
 
 -- ----------------------------
 -- Table structure for shop
