@@ -31,7 +31,7 @@ class AdvertisementController extends AdminController
         $grid->column('description', '描述');
         $grid->column('image_url', __('Image url'))->image();
         $grid->column('image_list', __('Image list'))->display(function ($image_list) {
-            return json_decode($image_list, true);
+            return is_array($image_list) ? $image_list : json_decode($image_list, true);
         })->image();
         $grid->column('is_muti', '是否多图')->display(function ($is_muti) {
             return $is_muti == Advertisement::IS_MUTI ? '是' : '否';
