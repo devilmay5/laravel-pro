@@ -104,6 +104,7 @@ class ProCollectionServices
 
         $query = ProBrandCollection::query()->select($select)
             ->join('pro_brand', 'pro_brand.id', '=', 'pro_brand_collection.brand_id')
+            ->ofCustomerId($req['customer_id'])
             ->where('pro_brand.status', ProBrand::STATUS_CODE['ENABLE'])
             ->orderBy('pro_brand_collection.id', 'desc')
             ->groupBy('brand_id');

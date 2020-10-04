@@ -91,7 +91,7 @@ class ProCollectionController extends BaseController
         try {
             $rules = [
                 'customer_id' => 'required|exists:customer,id',
-                'pro_id' => 'required|exists:pro_info,id',
+                'pro_id' => 'exists:pro_info,id',
                 'page_size' => 'required',
                 'page_index' => 'required',
             ];
@@ -110,7 +110,7 @@ class ProCollectionController extends BaseController
         try {
             $rules = [
                 'customer_id' => 'required|exists:customer,id',
-                'brand_id' => 'required|exists:pro_brand,id',
+                'brand_id' => 'exists:pro_brand,id',
                 'page_size' => 'required',
                 'page_index' => 'required',
             ];
