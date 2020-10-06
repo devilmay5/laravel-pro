@@ -85,6 +85,7 @@ Route::prefix('cart')->middleware('check_customer')->group(function () {
     Route::post('add-cart', 'CartController@CreateCart');
     Route::post('get-cart', 'CartController@GetCart');
     Route::post('update-cart', 'CartController@UpdateCart');
+    Route::post('delete-cart', 'CartController@DeleteCart');
 });
 
 Route::prefix('retail_order')->middleware('check_customer')->group(function () {
