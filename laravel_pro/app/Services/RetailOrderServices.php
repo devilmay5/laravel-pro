@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\DB;
 
 class RetailOrderServices
 {
+    /**
+     * @param array $req
+     * @return mixed
+     */
     public static function getRetailOrderLineInfo(array $req)
     {
         $select = [
@@ -251,5 +255,14 @@ class RetailOrderServices
             }
             return $price;
         }
+    }
+
+    /**
+     * @param array $req
+     * @return mixed
+     */
+    public static function updateRetailStatus(array $req)
+    {
+        return RetailOrderLine::where('id', $req['retail_order_line_id'])->update(['pay_status' => $req['pay_status']]);
     }
 }

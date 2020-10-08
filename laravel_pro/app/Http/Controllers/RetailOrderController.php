@@ -96,4 +96,21 @@ class RetailOrderController extends BaseController
         }
     }
 
+    public function UpdateRetailStatus()
+    {
+        try {
+            $rules = [
+                'retail_order_line_id' => 'required|exists:retail_order_line,id',
+                'pay_status' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $res = RetailOrderServices::updateRetailStatus($req);
+            return $this->RemoteApiResponse([$res], self::SUCCESS_CODE, '更新成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
 }

@@ -97,6 +97,7 @@ Route::prefix('retail_order')->middleware('check_customer')->group(function () {
     Route::post('add-retail-refund', 'RetailRefundController@CreateRetailRefund');
     Route::post('get-retail-refund-list', 'RetailRefundController@GetRetailRefundList');
     Route::post('get-retail-refund-info', 'RetailRefundController@GetRetailRefundInfo');
+    Route::post('update-retail-status', 'RetailOrderController@UpdateRetailStatus');
 });
 
 Route::prefix('pro_collection')->middleware('check_customer')->group(function () {

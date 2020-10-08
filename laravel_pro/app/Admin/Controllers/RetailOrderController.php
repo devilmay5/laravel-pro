@@ -131,6 +131,8 @@ class RetailOrderController extends AdminController
                 RetailOrderLine::PAY_STATUS['TO_BE_DELIVERY'] => '待发货',
                 RetailOrderLine::PAY_STATUS['TO_BE_SIGNED'] => '待签收',
                 RetailOrderLine::PAY_STATUS['RETURN_EXCHANGE'] => '退换货',
+                RetailOrderLine::PAY_STATUS['SIGNED'] => '已签收',
+                RetailOrderLine::PAY_STATUS['CHANNEL'] => '已取消',
             ]);
 
             $form->display('pay_serial_number', '交易流水号');

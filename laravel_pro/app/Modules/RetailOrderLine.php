@@ -41,6 +41,8 @@ class RetailOrderLine extends BaseModel
         'TO_BE_DELIVERY' => 1,
         'TO_BE_SIGNED' => 2,
         'RETURN_EXCHANGE' => 3,
+        'SIGNED' => 4,
+        'CHANNEL' => 5,
     ];
 
     protected $casts = [
