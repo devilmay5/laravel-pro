@@ -24,4 +24,20 @@ class FreightTemplateController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetTemplateInfo()
+    {
+        try {
+            $rules = [
+                'tpl_id' => 'required|exists:freight_template,id',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $res = FreightTemplateServices::getTplInfo($req['tpl_id']);
+            return $this->RemoteApiResponse($res->toArray(),self::SUCCESS_CODE,'查询成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

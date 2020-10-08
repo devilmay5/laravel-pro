@@ -79,6 +79,7 @@ Route::prefix('pro_info')->group(function () {
     Route::post('get-pro-info', 'ProInfoController@GetProInfo');
     Route::post('get-pro-recommend', 'ProInfoController@GetRecommendList');
     Route::get('get-template-select', 'FreightTemplateController@GetTemplateSelect');
+    Route::post('get-template-info', 'FreightTemplateController@GetTemplateInfo');
 });
 
 Route::prefix('cart')->middleware('check_customer')->group(function () {

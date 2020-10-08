@@ -28,4 +28,13 @@ class FreightTemplateServices
         }
         return $freight_template_group;
     }
+
+    /**
+     * @param int $tpl_id
+     * @return mixed
+     */
+    public static function getTplInfo(int $tpl_id)
+    {
+        return FreightTemplate::find($tpl_id);
+    }
 }
