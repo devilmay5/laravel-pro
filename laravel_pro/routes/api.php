@@ -41,6 +41,7 @@ Route::prefix('customer')->group(function () {
     Route::middleware('check_customer')->post('update-customer', 'CustomerController@UpdateCustomerInfo');
     Route::middleware('check_customer')->post('get-customer-info', 'CustomerController@GetCustomerInfo');
     Route::middleware('check_customer')->post('add-feedback', 'FeedBackController@AddFeedBack');
+    Route::middleware('check_customer')->post('get-problem-list', 'CommonProblemController@GetProblemList');
 });
 
 Route::prefix('address')->middleware('check_customer')->group(function () {

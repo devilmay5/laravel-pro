@@ -27,7 +27,7 @@ Route::group([
     $router->resource('about', AboutController::class);
     $router->resource('feedback', FeedbackController::class);
     $router->resource('retail-refund', RetailRefundController::class);
-
+    $router->resource('common-problem', CommonProblemController::class);
     //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);
     //废
