@@ -28,6 +28,7 @@ Route::group([
     $router->resource('feedback', FeedbackController::class);
     $router->resource('retail-refund', RetailRefundController::class);
     $router->resource('common-problem', CommonProblemController::class);
+    $router->resource('system-push', SystemPushController::class);
     //废
     $router->resource('pro-specs-class', ProSpecsClassController::class);
     //废

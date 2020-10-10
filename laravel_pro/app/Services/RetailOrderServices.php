@@ -210,7 +210,7 @@ class RetailOrderServices
     public
     static function createRetailName($customer_id)
     {
-        return date('YmdHis', time()) . str_pad($customer_id, 10, '0', STR_PAD_LEFT) . random_int(0, 9999);
+        return date('YmdHis', time()) . str_pad($customer_id, 5, '0', STR_PAD_LEFT) . random_int(0, 9999);
     }
 
     /**

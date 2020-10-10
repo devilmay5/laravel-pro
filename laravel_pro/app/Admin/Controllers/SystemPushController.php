@@ -2,21 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Modules\CommonProblem;
-use App\Modules\Customer;
+use App\Modules\SystemPush;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CommonProblemController extends AdminController
+class SystemPushController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = '常见问题';
+    protected $title = '系统推送';
 
     /**
      * Make a grid builder.
@@ -25,20 +24,18 @@ class CommonProblemController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new CommonProblem());
+        $grid = new Grid(new SystemPush());
 
         $grid->column('id', __('Id'));
         $grid->column('created_at', '创建时间');
         $grid->column('title', '标题');
 
         $grid->column('order_by', '排序值')->editable()->sortable();
-
         $states = [
-            'on' => ['value' => CommonProblem::STATUS_CODE['ENABLE'], 'text' => '启用', 'color' => 'primary'],
-            'off' => ['value' => CommonProblem::STATUS_CODE['DISABLE'], 'text' => '禁用', 'color' => 'default'],
+            'on' => ['value' => SystemPush::STATUS_CODE['ENABLE'], 'text' => '启用', 'color' => 'primary'],
+            'off' => ['value' => SystemPush::STATUS_CODE['DISABLE'], 'text' => '禁用', 'color' => 'default'],
         ];
         $grid->column('status', '状态')->switch($states);
-
 
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
@@ -46,8 +43,8 @@ class CommonProblemController extends AdminController
             $filter->like('title', '标题');
 
             $status_group = [
-                CommonProblem::STATUS_CODE['DISABLE'] => '禁用',
-                CommonProblem::STATUS_CODE['ENABLE'] => '启用',
+                SystemPush::STATUS_CODE['DISABLE'] => '禁用',
+                SystemPush::STATUS_CODE['ENABLE'] => '启用',
             ];
             $filter->equal('status', '状态')->select($status_group);
         });
@@ -68,7 +65,7 @@ class CommonProblemController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(CommonProblem::findOrFail($id));
+        $show = new Show(SystemPush::findOrFail($id));
 
         return $show;
     }
@@ -80,7 +77,7 @@ class CommonProblemController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new CommonProblem());
+        $form = new Form(new SystemPush());
 
         $form->text('title', '标题')->required();
         $form->ckeditor('content', '文本')->required();

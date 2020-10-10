@@ -116,9 +116,10 @@ class CartServices
 
         $return_cart = $query->get();
 
-        if ($return_cart->isEmpty()) {
-            $return_cart = (object)[];
-        }
+//        if ($return_cart->isEmpty()) {
+//            $return_cart = (object)[];
+//        }
+
         return [$return_cart, $count];
     }
 

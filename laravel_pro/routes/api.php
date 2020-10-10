@@ -116,6 +116,7 @@ Route::prefix('ask')->middleware('check_customer')->group(function () {
     Route::post('get-ask-list', 'CustomerAskController@GetAskList');
     Route::post('get-ask-item', 'CustomerAskController@GetAskItem');
     Route::post('get-ask-item-by-pro', 'CustomerAskController@GetAskItemByProId');
+    Route::post('get-system-push-list', 'SystemPushController@GetSystemPushList');
 });
 
 Route::prefix('about')->group(function () {
