@@ -46,12 +46,17 @@ class AskController extends AdminController
         });;
 
         $grid->column('pro_id', '产品名称')->display(function ($pro_id) {
-            $proInfo = ProInfoServices::getProInfo($pro_id);
-            return $proInfo['pro_name'];
+            if ($pro_id) {
+                $proInfo = ProInfoServices::getProInfo($pro_id);
+                return $proInfo['pro_name'];
+            } else {
+                return '无关联产品';
+            }
+
         });
         $grid->column('ask_id', '咨询编号');
         $grid->column('ask_content', '咨询内容');
-        $grid->column('ask_img','上传图片')->image();
+        $grid->column('ask_img', '上传图片')->image();
         $grid->column('reply_content', '回复内容');
 
 
@@ -104,8 +109,13 @@ class AskController extends AdminController
             return $customer['nickname'];
         });
         $form->display('pro_id', '产品名称')->with(function ($pro_id) {
-            $proInfo = ProInfoServices::getProInfo($pro_id);
-            return $proInfo['pro_name'];
+            if ($pro_id) {
+                $proInfo = ProInfoServices::getProInfo($pro_id);
+                return $proInfo['pro_name'];
+            } else {
+                return '无关联产品';
+            }
+
         });
 
         $form->display('ask_id', '消息内容')->with(function ($ask_id) {

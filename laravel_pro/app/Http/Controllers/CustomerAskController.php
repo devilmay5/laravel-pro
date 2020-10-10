@@ -19,7 +19,7 @@ class CustomerAskController extends BaseController
             $rules = [
                 'retail_order_line_id' => 'int|exists:retail_order_line,id',
                 'customer_id' => 'required|int|exists:customer,id',
-                'pro_id' => 'required|int|exists:pro_info,id',
+                'pro_id' => 'int|exists:pro_info,id',
                 'ask_id' => 'int|exists:customer_ask,id',
                 'ask_content',
                 'ask_img',

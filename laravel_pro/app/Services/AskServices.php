@@ -18,6 +18,7 @@ class AskServices
         $ask = DB::transaction(function () use ($req) {
             $data['retail_order_line_id'] = $req['retail_order_line_id'] ?? 0;
             $data['customer_id'] = $req['customer_id'] ?? 0;
+            $data['pro_id'] = $req['pro_id'] ?? 0;
             $data['ask_id'] = $req['ask_id'] ?? 0;
             $data['ask_content'] = $req['ask_content'] ?? '';
             if (isset($req['ask_img'])) {
