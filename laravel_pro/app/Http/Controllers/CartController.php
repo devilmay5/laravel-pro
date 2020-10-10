@@ -55,7 +55,7 @@ class CartController extends BaseController
             $this->validateParams($req, $rules);
 
             [$cart_list, $count] = CartServices::getCartList($req['customer_id'], 0, $req['page_index'] ?? 0, $req['page_size'] ?? 0);
-            return $this->RemoteApiResponse($cart_list, self::SUCCESS_CODE, '查询成功', $count);
+            return $this->RemoteApiResponse($cart_list->toArray(), self::SUCCESS_CODE, '查询成功', $count);
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);
         }
