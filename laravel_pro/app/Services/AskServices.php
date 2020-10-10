@@ -70,9 +70,33 @@ class AskServices
      */
     public static function getAskItem(array $req)
     {
-       return  CustomerAsk::query()
+        return CustomerAsk::query()
             ->ofAskId($req['ask_id'])
-            ->orderBy('id','desc')
+            ->orderBy('id', 'desc')
             ->get();
+    }
+
+    /**
+     * @param array $req
+     * @return array
+     */
+    public static function getAskByProId(array $req): array
+    {
+        $query = CustomerAsk::query()
+            ->ofProId($req['pro_id'])
+            ->ofCustomerId($req['customer_id'])
+            ->orderBy('id', 'desc');
+
+        $count = $query->count();
+        if ($req['page_index'] && $req['page_size']) {
+            $query = $query->offset(($req['page_index'] - 1) * $req['page_size'])->limit($req['page_size']);
+        }
+        $res = $query->get();
+        if ($res->isNotEmpty()) {
+            $res = $res->toArray();
+        } else {
+            $res = [];
+        }
+        return [$res, $count];
     }
 }

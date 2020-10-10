@@ -20,7 +20,8 @@ class CustomerAsk extends BaseModel
 
     public function getAskImgAttribute($ask_img)
     {
-        return 'upload/' . $ask_img;
+        $ask_img = $ask_img ? 'upload/' . $ask_img : "";
+        return $ask_img;
     }
 
     public function scopeOfCustomerId($query, $customer_id)
@@ -35,6 +36,14 @@ class CustomerAsk extends BaseModel
     {
         if ($ask_id) {
             $query = $query->where('ask_id', $ask_id);
+        }
+        return $query;
+    }
+
+    public function scopeOfProId($query, $pro_id)
+    {
+        if ($pro_id) {
+            $query = $query->where('pro_id', $pro_id);
         }
         return $query;
     }

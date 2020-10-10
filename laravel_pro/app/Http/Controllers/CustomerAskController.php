@@ -70,4 +70,23 @@ class CustomerAskController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetAskItemByProId()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required',
+                'pro_id' => 'required',
+                'page_index' => 'required',
+                'page_size' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            [$ask_list, $count] = AskServices::getAskByProId($req);
+            return $this->RemoteApiResponse($ask_list, self::SUCCESS_CODE, '查询成功', $count);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }
