@@ -67,7 +67,7 @@ class CartServices
                     }
                 }
                 //如果这个客户关于这个产品的整个购物车列表都跑了一遍了，发现还是没有相同的sku，则直接新增
-                if ($different_num == count($cart_group)) {
+                if ($different_num == $count) {
                     Cart::create($req)->toArray();
                 }
 
