@@ -238,8 +238,10 @@ class RetailOrderServices
                     $price = $cart['pro_count'] * $other_template[$address['province']]['default_price'];
                 } else {
                     $price = $other_template[$address['province']]['default_piece'] * $other_template[$address['province']]['default_price'];
-
-                    $price += (($cart['pro_count'] - $other_template[$address['province']]['default_piece']) % $other_template[$address['province']]['incr_piece']) * $other_template[$address['province']]['incr_price'];
+                    // 购买数量 - 默认起始数量 = 剩余购买数量
+                    //  向上取整（剩余购买数量 / 追加单位数量） = 实际最终剩余购买计算单位数量
+                    $remain_piece = ceil($cart['pro_count'] - $other_template[$address['province']]['default_piece']) / $other_template[$address['province']]['incr_piece'];
+                    $price += $remain_piece * $other_template[$address['province']]['incr_price'];
                 }
                 return $price;
             }
@@ -251,7 +253,10 @@ class RetailOrderServices
             } else {
                 $price = $freight->default_template['default_piece'] * $freight->default_template['default_price'];
 
-                $price += (($cart['pro_count'] - $freight->default_template['default_piece']) % $freight->default_template['incr_piece']) * $freight->default_template['incr_price'];
+                // 购买数量 - 默认起始数量 = 剩余购买数量
+                //  向上取整（剩余购买数量 / 追加单位数量） = 实际最终剩余购买计算单位数量
+                $remain_piece = ceil(($cart['pro_count'] - $freight->default_template['default_piece']) / $freight->default_template['incr_piece']);
+                $price += $remain_piece * $freight->default_template['incr_price'];
             }
             return $price;
         }
