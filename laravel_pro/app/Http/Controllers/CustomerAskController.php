@@ -21,8 +21,8 @@ class CustomerAskController extends BaseController
                 'customer_id' => 'required|int|exists:customer,id',
                 'pro_id' => 'int|exists:pro_info,id',
                 'ask_id' => 'int|exists:customer_ask,id',
-                'ask_content',
-                'ask_img',
+                'ask_content'=>'',
+                'ask_img'=>'',
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
@@ -30,6 +30,7 @@ class CustomerAskController extends BaseController
             if ($this->request->hasFile('ask_img')) {
                 $req['ask_img'] = $this->request->file('ask_img');
             }
+
             $res = AskServices::addAsk($req);
             return $this->RemoteApiResponse($res->toArray(), self::SUCCESS_CODE, '新增成功');
         } catch (\Throwable $e) {
