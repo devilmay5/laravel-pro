@@ -113,4 +113,23 @@ class RetailOrderController extends BaseController
         }
     }
 
+    public function RetailPayBack()
+    {
+        try {
+            $rules = [
+                'customer_id' => 'required',
+                'retail_name' => 'exists:retail_order,retail_name',
+                'retail_order_line_id' => 'exists:retail_order_line,id',
+                'pay_serial_number' => 'required',
+                'pay_type' => 'required'
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            $res = RetailOrderServices::payBack($req);
+            return $this->RemoteApiResponse($res->toArray(), self::SUCCESS_CODE, '回调成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

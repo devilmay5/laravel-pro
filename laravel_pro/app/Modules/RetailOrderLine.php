@@ -59,6 +59,14 @@ class RetailOrderLine extends BaseModel
         $this->attributes['pro_sku'] = json_encode($pro_sku);
     }
 
+    public function scopeOfId($query, $id)
+    {
+        if ($id) {
+            $query = $query->where('id', $id);
+        }
+        return $query;
+    }
+
     public function scopeOfCustomerId($query, $customer_id)
     {
         if ($customer_id) {
@@ -71,6 +79,14 @@ class RetailOrderLine extends BaseModel
     {
         if ($pay_status !== false) {
             $query = $query->where('pay_status', $pay_status);
+        }
+        return $query;
+    }
+
+    public function scopeOfRetailName($query, $retail_name)
+    {
+        if ($retail_name) {
+            $query = $query->where('retail_name', $retail_name);
         }
         return $query;
     }

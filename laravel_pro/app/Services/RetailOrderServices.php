@@ -270,4 +270,49 @@ class RetailOrderServices
     {
         return RetailOrderLine::where('id', $req['retail_order_line_id'])->update(['pay_status' => $req['pay_status']]);
     }
+
+    /**
+     * @param array $req
+     * @return mixed
+     */
+    public static function payBack(array $req)
+    {
+        return DB::transaction(function () use ($req) {
+            $retail_order_line_group = RetailOrderLine::query()
+                ->ofRetailName($req['retail_name'] ?? "")
+                ->ofId($req['retail_order_line_id'] ?? "")
+                ->lockForUpdate()->get();
+
+            foreach ($retail_order_line_group as $item) {
+                $pro_buy_count = $item->unit_count;
+
+                $obj_pro = ProInfo::query()->where('id', $item->pro_id)->lockForUpdate()->first();
+                $obj_pro->sale_count += $pro_buy_count;
+                $obj_pro->total_count -= $pro_buy_count;
+                $pro_sku_params = json_decode($obj_pro->sku_params, true);
+
+                $diff_count = 0;
+                foreach ($pro_sku_params['sku'] as $key => $item_sku) {
+                    if (count(array_diff($item_sku, $item->pro_sku)) == 0) {
+                        $pro_sku_params['sku'][$key]['stock'] -= $pro_buy_count;
+                    } else {
+                        $diff_count++;
+                    }
+                }
+
+                if ($diff_count == count($pro_sku_params['sku'])) {
+                    throw new \Exception('提交产品sku参数有误！');
+                }
+                $obj_pro->sku_params = json_encode($pro_sku_params);
+                $obj_pro->save();
+                //更改订单详情状态
+                $item->pay_type = $req['pay_type'];
+                $item->pay_status = RetailOrderLine::PAY_STATUS['TO_BE_DELIVERY'];
+                $item->pay_serial_number = $req['pay_serial_number'];
+                $item->pay_time = now();
+                $item->save();
+            }
+            return RetailOrderLine::query()->ofRetailName($req['retail_name'])->get();
+        });
+    }
 }
