@@ -110,6 +110,9 @@ Route::prefix('pro_collection')->middleware('check_customer')->group(function ()
     Route::post('add-brand-collection', 'ProCollectionController@addBrandCollection');
     Route::post('del-brand-collection', 'ProCollectionController@delBrandCollection');
     Route::post('get-brand_collection-list', 'ProCollectionController@getBrandCollection');
+
+    Route::post('check-pro-collection', 'ProCollectionController@CheckProCollection');
+    Route::post('check-brand-collection', 'ProCollectionController@CheckBrandCollection');
 });
 
 Route::prefix('ask')->middleware('check_customer')->group(function () {

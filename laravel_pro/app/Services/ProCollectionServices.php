@@ -137,4 +137,28 @@ class ProCollectionServices
         }
         return [$res, $count];
     }
+
+    /**
+     * @param array $req
+     * @return mixed
+     */
+    public static function checkProCollection(array $req)
+    {
+        return ProInfoCollection::query()
+            ->ofCustomerId($req['customer_id'])
+            ->ofProId($req['pro_id'])
+            ->count();
+    }
+
+    /**
+     * @param array $req
+     * @return mixed
+     */
+    public static function checkBrandCollection(array $req)
+    {
+        return ProBrandCollection::query()
+            ->ofCustomerId($req['customer_id'])
+            ->ofBrandId($req['brand_id'])
+            ->count();
+    }
 }

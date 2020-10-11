@@ -124,4 +124,47 @@ class ProCollectionController extends BaseController
         }
     }
 
+    public function CheckProCollection()
+    {
+        try {
+            $rules = [
+                'customer_id' => '',
+                'pro_id' => 'exists:pro_info,id',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            if (isset($req['customer_id'])) {
+                $count = ProCollectionServices::checkProCollection($req);
+            } else {
+                $count = 0;
+            }
+
+            return $this->RemoteApiResponse(['attention_count' => $count], self::SUCCESS_CODE, '查询成功', $count);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function CheckBrandCollection()
+    {
+        try {
+            $rules = [
+                'customer_id' => '',
+                'brand_id' => 'exists:pro_brand,id',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+            if (isset($req['customer_id'])) {
+                $count = ProCollectionServices::checkBrandCollection($req);
+            } else {
+                $count = 0;
+            }
+            return $this->RemoteApiResponse(['attention_count' => $count], self::SUCCESS_CODE, '查询成功', $count);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
 }
