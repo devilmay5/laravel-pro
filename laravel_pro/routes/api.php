@@ -28,6 +28,7 @@ Route::prefix('index')->group(function () {
     Route::post('get-search-list', 'IndexController@GetIndexProSearch');
     Route::post('get-banner', 'AdvertisementController@GetBannerList');
     Route::post('get-advert', 'AdvertisementController@GetAdvert');
+    Route::post('get-new-pro', 'AdvertisementController@GetNewPro');
     Route::post('get-recommend-list', 'IndexController@GetRecommendList');
     Route::post('get-pro-list', 'IndexController@GetProList');
     Route::post('get-pro-list-in-brand', 'IndexController@getProListInBrand');
