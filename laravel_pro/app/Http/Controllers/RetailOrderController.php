@@ -47,7 +47,7 @@ class RetailOrderController extends BaseController
                 'pro_id' => 'required|exists:pro_info,id',
                 'address_id' => 'required|exists:address,id',
                 'customer_id' => 'required|exists:customer,id',
-                'pro_sku_param' => 'required|json',
+                'pro_sku_param' => 'required',
                 'pro_unit_price' => 'required',
                 'pro_count' => 'required',
             ];
