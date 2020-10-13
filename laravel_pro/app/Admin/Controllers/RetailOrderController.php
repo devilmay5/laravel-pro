@@ -33,7 +33,7 @@ class RetailOrderController extends AdminController
     {
         $grid = new Grid(new RetailOrder());
 
-        $grid->column('id', __('Id'));
+        $grid->column('id', __('Id'))->sortable();
         $grid->column('created_at', '下单时间');
         $grid->column('retail_name', '订单号');
         $grid->column('customer_id', '客户名称')->display(function ($customer_id) {

@@ -38,7 +38,7 @@ class ProInfoController extends AdminController
     {
         $grid = new Grid(new ProInfo());
 
-        $grid->column('id', 'Id');
+        $grid->column('id', 'Id')->sortable();
         $grid->column('created_at', '创建时间');
         $grid->column('label_id', '所属标签')->display(function ($label_id) {
             $labelInfo = ProLabelServices::getInfoById($label_id);
