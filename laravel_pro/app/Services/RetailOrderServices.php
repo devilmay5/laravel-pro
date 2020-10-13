@@ -293,7 +293,8 @@ class RetailOrderServices
 
                 $diff_count = 0;
                 foreach ($pro_sku_params['sku'] as $key => $item_sku) {
-                    if (count(array_diff($item_sku, $item->pro_sku)) == 0) {
+                    $pro_sku = is_array($item->pro_sku) ? $item->pro_sku : json_decode($item->pro_sku, true);
+                    if (count(array_diff($item_sku, $pro_sku)) == 0) {
                         $pro_sku_params['sku'][$key]['stock'] -= $pro_buy_count;
                     } else {
                         $diff_count++;
