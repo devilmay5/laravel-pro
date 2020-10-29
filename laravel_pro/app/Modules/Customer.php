@@ -14,7 +14,8 @@ class Customer extends BaseModel
         'wechat_openid',
         'head_img_url',
         'status',
-        'sex'
+        'sex',
+        'password'
     ];
 
     const SEX_MAN = 1;

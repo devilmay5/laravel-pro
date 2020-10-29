@@ -38,6 +38,11 @@ Route::prefix('index')->group(function () {
 Route::prefix('customer')->group(function () {
     Route::post('login', 'CustomerController@Login');
     Route::post('logout', 'CustomerController@Logout');
+    Route::post('register', 'CustomerController@Register');
+    Route::post('login-by-pwd', 'CustomerController@LoginByPwd');
+    Route::post('get-sms-code', 'CustomerController@GetSmsCode');
+    Route::post('check-mobile-is-exists', 'CustomerController@CheckMobileIsExists');
+    Route::post('get-sms-code', 'CustomerController@GetSmsCode');
     Route::get('get-customer-select', 'CustomerController@GetCustomerSelect');
     Route::middleware('check_customer')->post('update-customer', 'CustomerController@UpdateCustomerInfo');
     Route::middleware('check_customer')->post('get-customer-info', 'CustomerController@GetCustomerInfo');

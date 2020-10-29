@@ -8,23 +8,26 @@ use App\Modules\Customer;
 
 class CustomerServices
 {
+
     /**
-     * @param $mobile
+     * @param string $mobile
+     * @return mixed
+     */
+    public static function checkMobileIsRegister(string $mobile)
+    {
+        return Customer::ofMobile($mobile)->exists();
+    }
+
+    /**
+     * @param array $req
      * @return array
      */
-    public static function getCustomerByMobile($req): array
+    public static function registerCustomerByMobile(array $req): array
     {
         $customer = Customer::ofMobile($req['mobile'])->first();
 
         if (!$customer) {
-            $tmp_customer = [];
-            $tmp_customer['nickname'] = '游客' . time();
-            $tmp_customer['mobile'] = $req['mobile'];
-            $tmp_customer['status'] = Customer::STATUS_CODE['ENABLE'];
-            $tmp_customer['wechat_openid'] = $req['wechat_openid'] ?? '';
-            $tmp_customer['head_img_url'] = $req['head_img_url'] ?? '';
-            $tmp_customer['sex'] = Customer::SEX_MAN;
-            $customer = Customer::create($tmp_customer);
+            $customer = self::createCustomer($req);
         }
         return $customer->toArray();
     }
@@ -85,5 +88,22 @@ class CustomerServices
     public static function getListFromNickname(string $nickname)
     {
         return Customer::query()->where('nickname', 'like', "%$nickname%")->get();
+    }
+
+    /**
+     * @param array $req
+     * @return mixed
+     */
+    public static function createCustomer(array $req)
+    {
+        $tmp_customer = [];
+        $tmp_customer['nickname'] = '游客' . time();
+        $tmp_customer['mobile'] = $req['mobile'];
+        $tmp_customer['status'] = Customer::STATUS_CODE['ENABLE'];
+        $tmp_customer['wechat_openid'] = $req['wechat_openid'] ?? '';
+        $tmp_customer['head_img_url'] = $req['head_img_url'] ?? '';
+        $tmp_customer['sex'] = Customer::SEX_MAN;
+        $tmp_customer['password'] = isset($req['password']) ? md5($req['password']) : '';
+        return Customer::create($tmp_customer);
     }
 }
