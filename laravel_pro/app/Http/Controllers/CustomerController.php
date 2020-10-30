@@ -101,6 +101,8 @@ class CustomerController extends BaseController
             }
 
             $customer = CustomerServices::createCustomer($req);
+            //删除短信验证码队列
+            Redis::del($sms_list_name);
             return $this->RemoteApiResponse($customer->toArray(), self::SUCCESS_CODE, '注册成功');
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);
