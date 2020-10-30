@@ -32,7 +32,28 @@ class CustomerController extends BaseController
 
     public function CheckSmsCode()
     {
+        try {
+            $rules = [
+                'sms_code' => 'required',
+                'mobile' => 'required'
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
 
+            $sms_list_name = 'sms:' . $req['mobile'];
+
+            if (!Redis::llen($sms_list_name)) {
+                return $this->RemoteApiResponse([], self::ERROR_CODE, '请获取有效短信验证码后操作');
+            }
+
+            $first_item = json_decode(Redis::lindex($sms_list_name, 0), true);
+            if ($first_item['sms_code'] != $req['sms_code']) {
+                return $this->RemoteApiResponse([], self::ERROR_CODE, '短信验证码错误，请重新输入');
+            }
+            return $this->RemoteApiResponse([], self::SUCCESS_CODE, '短信验证码验证成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
     }
 
     public function ResetPwd()
@@ -104,7 +125,7 @@ class CustomerController extends BaseController
 
                 //如果当前时间，与队列最右边的元素的时间相比小于等于1分钟，则不让继续请求
                 if ((time() - $last_item['time']) <= 60) {
-                    return $this->RemoteApiResponse([], self::ERROR_CODE, '请求过于频繁');
+                    return $this->RemoteApiResponse([], self::ERROR_CODE, '请求过于频繁，请在1分钟之后再次操作');
                 } else {
                     //如果当前时间，与队列最右边的元素的时间相比大于1分钟，则pop出去最右边的元素
                     Redis::rpop($sms_list_name);
