@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modules\Customer;
 use App\Services\CustomerServices;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redis;
@@ -162,6 +163,11 @@ class CustomerController extends BaseController
             if (md5($req['password']) != $customer['password']) {
                 return $this->RemoteApiResponse([], self::ERROR_CODE, '登录密码错误');
             }
+
+            if ($customer['status'] == Customer::STATUS_CODE['DISABLE']) {
+                return $this->RemoteApiResponse([], self::ERROR_CODE, '您的登录状态已被禁用，请联系管理员操作');
+            }
+
             Session::put('customer_' . $customer['id'], $customer);
             return $this->RemoteApiResponse($customer, self::SUCCESS_CODE, '登录成功');
         } catch (\Throwable $e) {
@@ -182,6 +188,11 @@ class CustomerController extends BaseController
             $this->validateParams($req, $rules);
 
             $customer = CustomerServices::registerCustomerByMobile($req);
+
+            if ($customer['status'] == Customer::STATUS_CODE['DISABLE']) {
+                return $this->RemoteApiResponse([], self::ERROR_CODE, '您的登录状态已被禁用，请联系管理员操作');
+            }
+
             Session::put('customer_' . $customer['id'], $customer);
 
             return $this->RemoteApiResponse($customer, self::SUCCESS_CODE, '登录成功');
