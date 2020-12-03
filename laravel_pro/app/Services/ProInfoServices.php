@@ -111,7 +111,9 @@ class ProInfoServices
             'pro_name',
             'present_price',
             'cover_image_url',
-            'sale_count'
+            'sale_count',
+            'description',
+            'detail_image_url'
         ];
 
         $query = ProInfo::query()->select($select)
