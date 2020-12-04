@@ -77,6 +77,7 @@ class ProInfoServices
             'cover_image_url',
             'status',
             'order_by',
+            'description'
         ];
 
         $query = ProInfo::query()->select($select)
