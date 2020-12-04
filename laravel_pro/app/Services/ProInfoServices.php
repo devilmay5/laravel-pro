@@ -24,7 +24,9 @@ class ProInfoServices
             'pro_name',
             'original_price',
             'present_price',
+            'description',
             'cover_image_url',
+            'detail_image_url',
             'sale_count',
             'status',
             'order_by'
