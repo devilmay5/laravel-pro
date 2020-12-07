@@ -43,14 +43,14 @@ class AddressServices
         if ($res->isNotEmpty()) {
 
             $res = collect($res)->map(function ($item) {
-                $obj_map = MapServices::getInfoByCode($item['province']);
-                $item['province_name'] = $obj_map->name ?? "";
+                $obj_province = MapServices::getInfoByCode($item['province']);
+                $item['province_name'] = $obj_province->name ?? "";
 
-                $obj_map = MapServices::getInfoByCode($item['city']);
-                $item['city_name'] = $obj_map->name ?? "";
+                $obj_city = MapServices::getInfoByCode($item['city']);
+                $item['city_name'] = $obj_city->name ?? "";
 
-                $obj_map = MapServices::getInfoByCode($item['area']);
-                $item['area_name'] = $obj_map->name ?? "";
+                $obj_area = MapServices::getInfoByCode($item['area']);
+                $item['area_name'] = $obj_area->name ?? "";
                 return $item;
             })->toArray();
 
