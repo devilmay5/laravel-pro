@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Modules\Address;
+use Illuminate\Support\Facades\DB;
 
 class AddressServices
 {
@@ -35,12 +36,24 @@ class AddressServices
         $count = $query->count();
 
         if ($page_index && $page_size) {
-        $query = $query->offset(($page_index - 1) * $page_size)->limit($page_size);
-    }
+            $query = $query->offset(($page_index - 1) * $page_size)->limit($page_size);
+        }
 
         $res = $query->get();
         if ($res->isNotEmpty()) {
-            $res = $res->toArray();
+
+            $res  = collect($res)->map(function ($item){
+                $obj_map = MapServices::getInfoByCode($item['province']);
+                $item['province_name'] = $obj_map->name;
+
+                $obj_map = MapServices::getInfoByCode($item['city']);
+                $item['city_name'] = $obj_map->name;
+
+                $obj_map = MapServices::getInfoByCode($item['area']);
+                $item['area_name'] = $obj_map->name;
+                return $item;
+            })->toArray();
+
         } else {
             $res = [];
         }
