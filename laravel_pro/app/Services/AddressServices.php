@@ -42,15 +42,15 @@ class AddressServices
         $res = $query->get();
         if ($res->isNotEmpty()) {
 
-            $res  = collect($res)->map(function ($item){
+            $res = collect($res)->map(function ($item) {
                 $obj_map = MapServices::getInfoByCode($item['province']);
-                $item['province_name'] = $obj_map->name;
+                $item['province_name'] = $obj_map->name ?? "";
 
                 $obj_map = MapServices::getInfoByCode($item['city']);
-                $item['city_name'] = $obj_map->name;
+                $item['city_name'] = $obj_map->name ?? "";
 
                 $obj_map = MapServices::getInfoByCode($item['area']);
-                $item['area_name'] = $obj_map->name;
+                $item['area_name'] = $obj_map->name ?? "";
                 return $item;
             })->toArray();
 
