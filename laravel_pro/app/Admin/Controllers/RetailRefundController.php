@@ -56,7 +56,7 @@ class RetailRefundController extends AdminController
         $grid->column('refund_time','退款时间');
         $grid->column('customer_id','用户名称')->display(function ($customer_id){
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname;
+            return $customer->nickname??"";
         });
 
         $grid->filter(function ($filter) {
@@ -118,7 +118,7 @@ class RetailRefundController extends AdminController
         $form->datetime('refund_time', '退款时间');
         $form->display('customer_id', '用户名称')->with(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname;
+            return $customer->nickname??"";
         });
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

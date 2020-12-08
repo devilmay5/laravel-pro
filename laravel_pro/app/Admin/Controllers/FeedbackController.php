@@ -34,7 +34,7 @@ class FeedbackController extends AdminController
         $grid->column('created_at', '创建时间');
         $grid->column('customer_id','提交人')->display(function ($customer_id){
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname;
+            return $customer->nickname??"";
         });
 
         $grid->filter(function ($filter) {
@@ -75,7 +75,7 @@ class FeedbackController extends AdminController
         $form->mobile('mobile','手机号')->readonly();
         $form->display('customer_id', '反馈客户')->with(function ($customer_id){
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname;
+            return $customer->nickname??"";
         });
 
         $form->tools(function (Form\Tools $tools) {

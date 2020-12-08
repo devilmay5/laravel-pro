@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Modules\Address;
+use App\Modules\Customer;
 use App\Services\CustomerServices;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -31,8 +32,8 @@ class AddressController extends AdminController
         $grid->column('id', 'ID')->sortable();
         $grid->column('created_at', '创建时间');
         $grid->column('customer_id', '客户名称')->display(function ($customer_id) {
-            $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname;
+            $customer = Customer::find($customer_id);
+            return $customer->nickname ?? "";
         });
         $grid->column('consignee_name', '收货人姓名');
         $grid->column('consignee_mobile', '收货人手机号');
