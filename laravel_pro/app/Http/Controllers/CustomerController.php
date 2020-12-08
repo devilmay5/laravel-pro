@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Modules\Customer;
 use App\Services\CustomerServices;
+use App\Services\SmsServices;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redis;
 
@@ -114,7 +115,8 @@ class CustomerController extends BaseController
     {
         try {
             $rules = [
-                'mobile' => 'required'
+                'mobile' => 'required',
+                'send_type' => 'in:1,2',
             ];
             $req = $this->request->only(array_keys($rules));
             $this->validateParams($req, $rules);
@@ -141,9 +143,18 @@ class CustomerController extends BaseController
                 'sms_code' => $sms_code,
             ];
 
-            Redis::lpush($sms_list_name, json_encode($sms_res));
-            Redis::expire($sms_list_name, 300);
-            return $this->RemoteApiResponse($sms_res, self::SUCCESS_CODE, '发送成功');
+            $user_group = [$req['mobile']];
+            $param_format = ["code" => $sms_code];
+
+            $send_res = SmsServices::sendSms($user_group, $req['send_type'], $param_format);
+            if ($send_res['Code'] == 'OK') {
+                Redis::lpush($sms_list_name, json_encode($sms_res));
+                Redis::expire($sms_list_name, 300);
+                return $this->RemoteApiResponse([], self::SUCCESS_CODE, '发送成功');
+            } else {
+                return $this->RemoteApiResponse($send_res, self::ERROR_CODE, '发送失败，请联系管理员查看短信接口');
+            }
+
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);
         }
@@ -271,6 +282,37 @@ class CustomerController extends BaseController
             CustomerServices::updateCustomer($req);
             return $this->RemoteApiResponse([], self::SUCCESS_CODE, '更新成功');
         } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function LoginFromWeb()
+    {
+        try{
+            $rules = [
+                'mobile' => 'required',
+                'sms_code' => 'required',
+            ];
+            $req = $this->request->only(array_keys($rules));
+            $this->validateParams($req, $rules);
+
+
+            $sms_list_name = 'sms:' . $req['mobile'];
+
+            if (!Redis::llen($sms_list_name)) {
+                return $this->RemoteApiResponse([], self::ERROR_CODE, '请获取有效短信验证码后操作');
+            }
+
+            $first_item = json_decode(Redis::lindex($sms_list_name, 0), true);
+            if ($first_item['sms_code'] != $req['sms_code']) {
+                return $this->RemoteApiResponse([], self::ERROR_CODE, '短信验证码错误，请重新输入');
+            }
+
+            $customer = CustomerServices::registerCustomerByMobile($req);
+            //删除短信验证码队列
+            Redis::del($sms_list_name);
+            return $this->RemoteApiResponse($customer, self::SUCCESS_CODE, '登录成功');
+        }catch (\Throwable $e){
             return $this->ErrorResponse($e);
         }
     }

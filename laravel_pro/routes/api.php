@@ -40,6 +40,7 @@ Route::prefix('customer')->group(function () {
     Route::post('logout', 'CustomerController@Logout');
     Route::post('register', 'CustomerController@Register');
     Route::post('login-by-pwd', 'CustomerController@LoginByPwd');
+    Route::post('login-from-web', 'CustomerController@LoginFromWeb');
     Route::post('get-sms-code', 'CustomerController@GetSmsCode');
     Route::post('check-mobile-is-exists', 'CustomerController@CheckMobileIsExists');
     Route::post('check-sms-code', 'CustomerController@CheckSmsCode');
