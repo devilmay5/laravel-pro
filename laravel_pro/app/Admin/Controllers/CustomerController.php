@@ -90,6 +90,7 @@ class CustomerController extends AdminController
         $form->display('id', 'ID');
         $form->text('nickname', '用户名')->required();
         $form->mobile('mobile', '手机号')->required();
+        $form->password('password', '密码')->required();
 
         $status = [
             'on' => ['value' => 1, 'text' => '启用', 'color' => 'success'],
@@ -97,6 +98,13 @@ class CustomerController extends AdminController
         ];
         $form->image('head_img_url', '头像')->uniqueName()->required();
         $form->switch('status', '状态')->states($status);
+
+        $form->saving(function (Form $form) {
+            if ($form->password !== $form->model()->password){
+                $form->password = md5($form->password);
+            }
+        });
+
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮
             $tools->disableView();
