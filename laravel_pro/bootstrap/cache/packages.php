@@ -6,6 +6,13 @@
       0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
     ),
   ),
+  'cyd622/laravel-admin-ext-echarts' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Encore\\Admin\\Widgets\\Echarts\\EchartsServiceProvider',
+    ),
+  ),
   'encore/laravel-admin' => 
   array (
     'providers' => 
@@ -29,6 +36,13 @@
     'providers' => 
     array (
       0 => 'JadeKun\\Sku\\SkuServiceProvider',
+    ),
+  ),
+  'laravel-admin-ext/chartjs' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Encore\\Chartjs\\ChartjsServiceProvider',
     ),
   ),
   'laravel-admin-ext/china-distpicker' => 
