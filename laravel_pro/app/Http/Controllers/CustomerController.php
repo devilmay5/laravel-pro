@@ -290,7 +290,7 @@ class CustomerController extends BaseController
     {
         try{
             $rules = [
-                'mobile' => 'required',
+                'mobile' => 'required|exists:customer,mobile',
                 'sms_code' => 'required',
             ];
             $req = $this->request->only(array_keys($rules));
