@@ -63,6 +63,8 @@ class ProCollectionServices
             'pro_info.cover_image_url',
             'pro_info.sale_count',
             'pro_info.present_price',
+            'pro_info.description',
+            'pro_info.detail_image_url',
         ];
 
         $query = ProInfoCollection::query()->select($select)
