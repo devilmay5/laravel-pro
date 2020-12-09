@@ -43,4 +43,14 @@ class AdvertisementController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetNewProWeb()
+    {
+        try {
+            $advert = AdvertisementServices::getInfo(Advertisement::new_pro_web);
+            return $this->RemoteApiResponse($advert);
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

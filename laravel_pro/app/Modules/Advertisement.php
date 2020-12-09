@@ -21,6 +21,7 @@ class Advertisement extends BaseModel
     const banner_name = 'banner';
     const index_advert = 'Indexadvert';
     const new_pro = 'NewPro';
+    const new_pro_web = 'NewProsWeb';
 
     public $casts = [
         'image_list' => 'array',
