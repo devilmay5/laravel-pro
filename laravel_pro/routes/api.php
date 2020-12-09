@@ -134,6 +134,7 @@ Route::prefix('ask')->middleware('check_customer')->group(function () {
 
 Route::prefix('about')->group(function () {
     Route::post('get-about-list', 'AboutController@GetAboutList');
+    Route::post('get-about-info', 'AboutController@GetAboutInfo');
 });
 
 Route::post('upload_file', function (Request $request) {
