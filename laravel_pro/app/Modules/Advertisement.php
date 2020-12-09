@@ -13,7 +13,8 @@ class Advertisement extends BaseModel
         'name',
         'image_url',
         'image_list',
-        'is_muti'
+        'is_muti',
+        'url_list'
     ];
     const IS_MUTI = 1;
     const NOT_MUTI = 2;
@@ -25,6 +26,7 @@ class Advertisement extends BaseModel
 
     public $casts = [
         'image_list' => 'array',
+        'url_list' => 'json'
     ];
 
     public function setImageListAttribute($image_list)

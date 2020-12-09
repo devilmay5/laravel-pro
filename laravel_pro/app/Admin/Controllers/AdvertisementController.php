@@ -77,6 +77,8 @@ class AdvertisementController extends AdminController
             $form->image('image_url', '广告图')->removable()->uniqueName();
         });
 
+        $form->list('url_list','广告链接（按图片顺序设置）');
+
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮
             $tools->disableView();
