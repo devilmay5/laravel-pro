@@ -154,8 +154,10 @@ class ProInfoServices
         $select = [
             'id as pro_id',
             'pro_name',
+            'description',
             'present_price',
             'cover_image_url',
+            'detail_image_url',
             'sale_count'
         ];
         // 新品上新
