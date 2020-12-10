@@ -59,8 +59,9 @@ class ProInfoServices
      */
     public static function getProInfo(int $pro_id)
     {
-        $proInfo = ProInfo::find($pro_id);
-        if (isEmpty($proInfo)) {
+        $proInfo = ProInfo::query()->where('id', $pro_id)->first();
+
+        if (!$proInfo) {
             $proInfo = [];
         } else {
             $proInfo = $proInfo->toArray();
