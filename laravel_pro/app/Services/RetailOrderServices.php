@@ -99,7 +99,7 @@ class RetailOrderServices
             //  $res = $res->toArray();
             $res = collect($res)->map(function ($item) {
                 $proInfo = ProInfoServices::getProInfo($item['pro_id']);
-                $item['cover_image_url'] = $proInfo['cover_image_url'];
+                $item['cover_image_url'] = $proInfo['cover_image_url'] ?? "";
                 return $item;
             })->toArray();
         } else {
