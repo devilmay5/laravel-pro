@@ -17,7 +17,8 @@ class CartController extends BaseController
     /**
      *  customer_id:1
      * pro_id:1
-     * pro_sku_param:{"颜色":"红色","尺码":"42","pic":"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg","price":"100","stock":"10"}
+     * pro_sku_param:{"颜色":"红色","尺码":"42","pic":"/upload/images/05pPX5pqP9GnEgpOnx90rYeWagLp9ETqtJiCZLhv.jpeg","price":"100","stock":"10"} 多规格
+     * pro_sku_param: {"type": "single"} 单规格
      * pro_count:2
      * pro_unit_price:100
      * pro_total_price:200

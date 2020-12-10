@@ -24,14 +24,12 @@ class CartServices
         $sku_arr = json_decode($proInfo->sku_params, true);
         $req_sku_param = json_decode($req['pro_sku_param'], true);
 
-        if (in_array($req_sku_param, $sku_arr['sku'])) {
+        if (isset($sku_arr['sku']) && in_array($req_sku_param, $sku_arr['sku'])) {
             //如果请求的数量大于
             if ($req['pro_count'] > $req_sku_param['stock']) {
                 throw new \Exception('购买数量不得大于规格限定数量！');
             }
 
-        } else {
-            throw new \Exception('规格参数无效，请核实！');
         }
 
     }
@@ -103,7 +101,7 @@ class CartServices
         ];
         $query = Cart::query()->select($select)
             ->join('pro_info', 'pro_info.id', '=', 'cart.pro_id')
-            ->join('pro_brand','pro_info.brand_id', '=', 'pro_brand.id')
+            ->join('pro_brand', 'pro_info.brand_id', '=', 'pro_brand.id')
             ->ofCustomerId($customer_id)
             ->ofProId($pro_id)
             ->orderBy('cart_id', 'desc');
