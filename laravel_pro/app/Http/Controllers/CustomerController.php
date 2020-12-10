@@ -8,6 +8,7 @@ use App\Services\CustomerServices;
 use App\Services\SmsServices;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Log;
 
 class CustomerController extends BaseController
 {
@@ -147,6 +148,8 @@ class CustomerController extends BaseController
             $param_format = ["code" => $sms_code];
 
             $send_res = SmsServices::sendSms($user_group, $req['send_type'], $param_format);
+            Log::info('发送短信请求',$req);
+            Log::info('发送短信结果',$send_res);
             if ($send_res['Code'] == 'OK') {
                 Redis::lpush($sms_list_name, json_encode($sms_res));
                 Redis::expire($sms_list_name, 300);
@@ -311,6 +314,7 @@ class CustomerController extends BaseController
             $customer = CustomerServices::registerCustomerByMobile($req);
             //删除短信验证码队列
             Redis::del($sms_list_name);
+            Session::put('customer_' . $customer['id'], $customer);
             return $this->RemoteApiResponse($customer, self::SUCCESS_CODE, '登录成功');
         }catch (\Throwable $e){
             return $this->ErrorResponse($e);
