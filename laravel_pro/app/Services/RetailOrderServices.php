@@ -85,7 +85,7 @@ class RetailOrderServices
         ];
         $query = RetailOrderLine::query()->select($select)
             ->ofCustomerId($req['customer_id'])
-            ->ofRetailId($req['retail_order_id'])
+            ->ofRetailId($req['retail_order_id'] ?? false)
             ->ofPayStatus($req['pay_status'] ?? false);
 
         $query = $query->orderBy("id", "desc");
