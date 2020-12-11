@@ -66,6 +66,7 @@ class RetailOrderController extends BaseController
         try {
             $rules = [
                 'customer_id' => 'required|exists:customer,id',
+                'retail_order_id' => 'int',
                 'page_index' => 'int',
                 'page_size' => 'int',
                 'pay_status' => 'int',

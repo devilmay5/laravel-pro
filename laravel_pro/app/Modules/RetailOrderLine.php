@@ -90,4 +90,12 @@ class RetailOrderLine extends BaseModel
         }
         return $query;
     }
+
+    public function scopeOfRetailId($query, $retail_order_id)
+    {
+        if ($retail_order_id) {
+            $query = $query->where('retail_order_id', $retail_order_id);
+        }
+        return $query;
+    }
 }
