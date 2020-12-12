@@ -61,6 +61,12 @@ Route::prefix('address')->middleware('check_customer')->group(function () {
     Route::post('get-default-address', 'AddressController@GetDefaultAddressByCustomerId');
 });
 
+Route::prefix('news')->group(function () {
+    Route::get('get-news-class-select', 'NewsClassController@GetNewsClassSelect');
+    Route::post('get-news-list', 'NewsController@GetNewsList');
+    Route::post('get-news-info', 'NewsController@GetNewsInfo');
+});
+
 Route::prefix('pro_label')->group(function () {
     Route::get('get-pro_label-select', 'ProLabelController@GetProLabelSelect');
     Route::post('get-pro_label-list', 'ProLabelController@GetProLabelList');

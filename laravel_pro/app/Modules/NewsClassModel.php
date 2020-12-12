@@ -11,7 +11,6 @@ class NewsClassModel extends BaseModel
         'created_at',
         'updated_at',
         'class_name',
-        'status',
         'order_by'
     ];
 }

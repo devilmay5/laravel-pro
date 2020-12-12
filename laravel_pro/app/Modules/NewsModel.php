@@ -16,4 +16,13 @@ class NewsModel extends BaseModel
         'status',
         'order_by',
     ];
+
+    public function scopeOfStatus($query, $status)
+    {
+        if ($status) {
+            $query = $query->where($this->table . '.status', $status);
+        }
+
+        return $query;
+    }
 }

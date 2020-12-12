@@ -15,7 +15,7 @@ class NewsClassController extends AdminController
      *
      * @var string
      */
-    protected $title = 'NewsClassModel';
+    protected $title = '帮助信息分类';
 
     /**
      * Make a grid builder.
@@ -26,12 +26,21 @@ class NewsClassController extends AdminController
     {
         $grid = new Grid(new NewsClassModel());
 
-        $grid->column('id', __('Id'));
-        $grid->column('class_name', __('Class name'));
-        $grid->column('status', __('Status'));
-        $grid->column('order_by', __('Order by'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('id','ID')->sortable();
+        $grid->column('created_at', '创建时间');
+        $grid->column('class_name', '分类名称');
+        $grid->column('order_by', '排序值')->editable()->sortable();
+
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->like('class_name', '分类名称');
+        });
+
+        $grid->disableExport();
+        $grid->actions(function ($actions) {
+            // 去掉查看
+            $actions->disableView();
+        });
 
         return $grid;
     }
@@ -45,14 +54,6 @@ class NewsClassController extends AdminController
     protected function detail($id)
     {
         $show = new Show(NewsClassModel::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->field('class_name', __('Class name'));
-        $show->field('status', __('Status'));
-        $show->field('order_by', __('Order by'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-
         return $show;
     }
 
@@ -65,10 +66,18 @@ class NewsClassController extends AdminController
     {
         $form = new Form(new NewsClassModel());
 
-        $form->text('class_name', __('Class name'));
-        $form->switch('status', __('Status'))->default(1);
-        $form->number('order_by', __('Order by'))->default(10);
+        $form->text('class_name', '分类名称')->required();
 
+        $form->number('order_by', '排序值')->default(10)->required();
+
+        $form->tools(function (Form\Tools $tools) {
+            // 去掉`查看`按钮
+            $tools->disableView();
+        });
+        $form->footer(function ($footer) {
+            // 去掉`查看`checkbox
+            $footer->disableViewCheck();
+        });
         return $form;
     }
 }
