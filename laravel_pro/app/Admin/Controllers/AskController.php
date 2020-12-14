@@ -67,6 +67,7 @@ class AskController extends AdminController
         });
 
         $grid->disableExport();
+        $grid->disableCreateButton();
         $grid->actions(function ($actions) {
             // 去掉查看
             $actions->disableView();
