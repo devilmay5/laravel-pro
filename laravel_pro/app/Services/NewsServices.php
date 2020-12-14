@@ -14,27 +14,26 @@ class NewsServices
      */
     public static function getNewsList()
     {
+
         $select = [
             'news_class.class_name',
-            'news.id as news_id',
-            'news.title as news_title',
-            'news.created_at as created_at',
+            'news_class.id as class_id',
         ];
 
-        $newsList = NewsModel::query()->select($select)
-            ->join('news_class', 'news_class.id', '=', 'news.class_id')
-            ->ofStatus(NewsModel::STATUS_CODE['ENABLE'])
-            ->groupBy('class_name')
+        $classList = NewsClassModel::query()->select($select)
             ->orderBy('created_at', 'desc')
             ->get();
 
+        if ($classList) {
 
-        if (!$newsList) {
-            $newsList = [];
-        } else {
-            $newsList = $newsList->toArray();
+            foreach ($classList as $key => $item) {
+                $tmp_list = NewsModel::query()->where('class_id', $item->class_id)->get();
+                $classList[$key]['news_list'] = $tmp_list ?? [];
+            }
+            $classList = $classList->toArray();
         }
-        return $newsList;
+
+        return $classList;
     }
 
     /**
