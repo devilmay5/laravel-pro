@@ -27,7 +27,7 @@ class NewsServices
         if ($classList) {
 
             foreach ($classList as $key => $item) {
-                $tmp_list = NewsModel::query()->where('class_id', $item->class_id)->get();
+                $tmp_list = NewsModel::query()->where('class_id', $item->class_id)->orderBy('created_at', 'desc')->get();
                 $classList[$key]['news_list'] = $tmp_list ?? [];
             }
             $classList = $classList->toArray();
