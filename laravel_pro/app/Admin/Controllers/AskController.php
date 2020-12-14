@@ -42,13 +42,13 @@ class AskController extends AdminController
         });
         $grid->column('customer_id', '客户名称')->display(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer['nickname'];
+            return $customer['nickname'] ?? "";
         });;
 
         $grid->column('pro_id', '产品名称')->display(function ($pro_id) {
             if ($pro_id) {
                 $proInfo = ProInfoServices::getProInfo($pro_id);
-                return $proInfo['pro_name'];
+                return $proInfo['pro_name'] ?? "";
             } else {
                 return '无关联产品';
             }
@@ -99,19 +99,19 @@ class AskController extends AdminController
         $form->display('retail_order_line_id', '关联订单号')->with(function ($retail_order_line_id) {
             if ($retail_order_line_id) {
                 $retail = RetailOrderServices::getRetailOrderLineInfo(['retail_order_line_id' => $retail_order_line_id]);
-                return $retail['retail_name'];
+                return $retail['retail_name'] ?? "";
             } else {
                 return '无关联订单';
             }
         });
         $form->display('customer_id', '客户名称')->with(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer['nickname'];
+            return $customer['nickname'] ?? "";
         });
         $form->display('pro_id', '产品名称')->with(function ($pro_id) {
             if ($pro_id) {
                 $proInfo = ProInfoServices::getProInfo($pro_id);
-                return $proInfo['pro_name'];
+                return $proInfo['pro_name'] ?? "";
             } else {
                 return '无关联产品';
             }
