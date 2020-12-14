@@ -42,6 +42,6 @@ class NewsServices
      */
     public static function getNewsInfo(int $id)
     {
-        return NewsModel::find($id);
+        return NewsModel::find($id)->toArray();
     }
 }
