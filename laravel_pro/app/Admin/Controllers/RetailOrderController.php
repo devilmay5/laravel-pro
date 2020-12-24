@@ -17,6 +17,7 @@ use Encore\Admin\Show;
 
 class RetailOrderController extends AdminController
 {
+    const LOGISTICS_URL = '/api/customer/get-logistics';
     /**
      * Title for current resource.
      *
@@ -136,7 +137,18 @@ class RetailOrderController extends AdminController
             ]);
 
             $form->display('pay_serial_number', '交易流水号');
-            $form->text('logistics_number','物流单号');
+            $form->text('logistics_number', '物流单号');
+
+            $form->display('logistics_number', '物流信息')->with(function ($logistics_number) {
+                if ($logistics_number) {
+                    $url = config('app.url') . RetailOrderController::LOGISTICS_URL . '?bill_no=' . $logistics_number;
+
+                    $response = json_decode(file_get_contents($url), true);
+                    return view('logistics', ['data' => $response['result']]);
+                }
+
+            });
+
             $form->datetime('pay_time', '支付时间');
             $form->datetime('delivery_time', '发货时间');
             $form->datetime('sign_time', '签收时间');

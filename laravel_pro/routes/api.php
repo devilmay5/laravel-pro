@@ -46,6 +46,7 @@ Route::prefix('customer')->group(function () {
     Route::post('check-mobile-is-exists', 'CustomerController@CheckMobileIsExists');
     Route::post('check-sms-code', 'CustomerController@CheckSmsCode');
     Route::post('reset-pwd', 'CustomerController@ResetPwd');
+    Route::get('get-logistics','RetailOrderController@GetLogistics');
     Route::get('get-customer-select', 'CustomerController@GetCustomerSelect');
     Route::middleware('check_customer')->post('update-customer', 'CustomerController@UpdateCustomerInfo');
     Route::middleware('check_customer')->post('get-customer-info', 'CustomerController@GetCustomerInfo');

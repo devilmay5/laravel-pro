@@ -4,7 +4,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Services\LogisticsService;
 use App\Services\RetailOrderServices;
+use GuzzleHttp\Client;
 
 class RetailOrderController extends BaseController
 {
@@ -129,6 +131,17 @@ class RetailOrderController extends BaseController
 
             $res = RetailOrderServices::payBack($req);
             return $this->RemoteApiResponse($res->toArray(), self::SUCCESS_CODE, '回调成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
+
+    public function GetLogistics()
+    {
+        try {
+            $bill_no = $this->request->input('bill_no');
+            $body = LogisticsService::getLogistics($bill_no);
+            return $this->RemoteApiResponse($body['data'], self::SUCCESS_CODE, '查询成功');
         } catch (\Throwable $e) {
             return $this->ErrorResponse($e);
         }
