@@ -3,7 +3,7 @@
 
 namespace App\Services;
 
-
+use App\Modules\ExpressDictionary;
 use GuzzleHttp\Client;
 
 class LogisticsService
@@ -23,7 +23,7 @@ class LogisticsService
             $client = new Client();
             $comCode = self::getComCode($client, $bill_no);
 
-            if($comCode){
+            if ($comCode) {
                 $param = [
                     'com' => $comCode,
                     'num' => $bill_no,
@@ -63,5 +63,18 @@ class LogisticsService
         $body = json_decode($body, true);
 
         return $body[0]['comCode'] ?? '';
+    }
+
+    public static function getComName(string $comCode)
+    {
+        $com = ExpressDictionary::query()
+            ->ofCode($comCode)
+            ->first();
+
+        $return = "";
+        if ($com) {
+            $return = $com['name'];
+        }
+        return $return;
     }
 }

@@ -146,4 +146,19 @@ class RetailOrderController extends BaseController
             return $this->ErrorResponse($e);
         }
     }
+
+    public function GetComName()
+    {
+        try {
+            $bill_no = $this->request->input('bill_no');
+
+            $client = new Client();
+            $comCode = LogisticsService::getComCode($client, $bill_no);
+            $name = LogisticsService::getComName($comCode);
+
+            return $this->RemoteApiResponse(['name' => $name], self::SUCCESS_CODE, '查询成功');
+        } catch (\Throwable $e) {
+            return $this->ErrorResponse($e);
+        }
+    }
 }

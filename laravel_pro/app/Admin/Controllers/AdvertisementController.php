@@ -17,6 +17,12 @@ class AdvertisementController extends AdminController
      */
     protected $title = '广告位管理';
 
+    const OPTIONS = [
+            'banner'=>'banner广告图',
+            'Indexadvert'=>'首页宣传图',
+            'NewPro'=>'新品上新-app',
+            'NewProsWeb'=>'新品上新-web',
+        ];
     /**
      * Make a grid builder.
      *
@@ -27,7 +33,9 @@ class AdvertisementController extends AdminController
         $grid = new Grid(new Advertisement());
 
         $grid->column('id', 'Id');
-        $grid->column('name', '广告位标识');
+        $grid->column('name', '广告位标识')->display(function ($name){
+            return self::OPTIONS[$name];
+        });
         $grid->column('description', '描述');
         $grid->column('image_url', __('Image url'))->image();
         $grid->column('image_list', __('Image list'))->display(function ($image_list) {
@@ -41,7 +49,10 @@ class AdvertisementController extends AdminController
         $grid->actions(function ($actions) {
             // 去掉查看
             $actions->disableView();
+            $actions->disableDelete();
         });
+        // 去掉批量操作
+        $grid->disableBatchActions();
         return $grid;
     }
 
@@ -66,7 +77,9 @@ class AdvertisementController extends AdminController
     {
         $form = new Form(new Advertisement());
 
-        $form->text('name', '广告位标识（勿改）')->required();
+
+        $form->select('name','广告位标识')->options(self::OPTIONS)->required();
+
         $form->text('description', '描述')->required();
         $form->radio('is_muti', '是否多图')->options([
             Advertisement::IS_MUTI => '是',
