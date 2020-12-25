@@ -39,7 +39,7 @@ class RetailOrderController extends AdminController
         $grid->column('retail_name', '订单号');
         $grid->column('customer_id', '客户名称')->display(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer['nickname'];
+            return $customer['nickname'] ?? '';
         });
         $grid->column('total_actual_price', '实际成交价格');
 
@@ -103,7 +103,11 @@ class RetailOrderController extends AdminController
             $province = MapServices::getInfoByCode($address['province']);
             $city = MapServices::getInfoByCode($address['city']);
             $area = MapServices::getInfoByCode($address['area']);
-            return $province->name . ' ' . $city->name . ' ' . $area->name . ' ' . $address['address'];
+            if (isset($address) && $address != '') {
+                return $province->name . ' ' . $city->name . ' ' . $area->name . ' ' . $address['address'];
+            } else {
+                return '';
+            }
         });
         $form->currency('total_actual_price', '订单总金额')->symbol('￥')->readonly();
 
@@ -111,7 +115,7 @@ class RetailOrderController extends AdminController
 
             $form->display('brand_id', '品牌名称')->with(function ($brand_id) {
                 $brand = ProBrand::find($brand_id);
-                return $brand['brand_name'];
+                return $brand['brand_name'] ?? '';
             });
             $form->display('pro_name', '产品名称');
             $form->keyValue('pro_sku', '产品参数');

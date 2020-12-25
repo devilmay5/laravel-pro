@@ -50,11 +50,11 @@ class ProClassController extends AdminController
         $grid->column('created_at', '创建时间');
         $grid->column('label_id', '所属标签')->display(function ($label_id) {
             $labelInfo = ProLabelServices::getInfoById($label_id);
-            return $labelInfo['label_name'];
+            return $labelInfo['label_name'] ?? '';
         });
         $grid->column('brand_id', '品牌名称')->display(function ($brand_id) {
             $brandInfo = ProBrandServices::getBrandInfo($brand_id);
-            return $brandInfo['brand_name'];
+            return $brandInfo['brand_name'] ?? '';
         });
         $grid->column('class_name', '分类名称');
         $grid->column('order_by', '排序值')->editable()->sortable();

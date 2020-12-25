@@ -29,34 +29,34 @@ class RetailRefundController extends AdminController
         $grid = new Grid(new RetailRefund());
 
         $grid->column('id', 'Id');
-        $grid->column('retail_order_line_id', '关联订单号')->display(function ($retail_order_line_id){
+        $grid->column('retail_order_line_id', '关联订单号')->display(function ($retail_order_line_id) {
             $retail_order_line = RetailOrderServices::getRetailOrderLineInfo(['retail_order_line_id' => $retail_order_line_id]);
-            return $retail_order_line['retail_name'];
+            return $retail_order_line['retail_name'] ?? '';
         });
-        $grid->column('status', '状态')->display(function ($status){
-          switch ($status){
-              case RetailRefund::STATUS_CODE['SUBMIT']:
-                  $name = '已提交';
-                  break;
-              case RetailRefund::STATUS_CODE['ACCEPT']:
-                  $name = '已受理';
-                  break;
-              case RetailRefund::STATUS_CODE['EXAM']:
-                  $name = '已审核';
-                  break;
-              case RetailRefund::STATUS_CODE['REFUND']:
-                  $name = '已退款';
-                  break;
-          }
-          return $name;
+        $grid->column('status', '状态')->display(function ($status) {
+            switch ($status) {
+                case RetailRefund::STATUS_CODE['SUBMIT']:
+                    $name = '已提交';
+                    break;
+                case RetailRefund::STATUS_CODE['ACCEPT']:
+                    $name = '已受理';
+                    break;
+                case RetailRefund::STATUS_CODE['EXAM']:
+                    $name = '已审核';
+                    break;
+                case RetailRefund::STATUS_CODE['REFUND']:
+                    $name = '已退款';
+                    break;
+            }
+            return $name;
         });
         $grid->column('submit_time', '提交时间');
         $grid->column('accept_time', '受理时间');
-        $grid->column('exam_time','审核时间');
-        $grid->column('refund_time','退款时间');
-        $grid->column('customer_id','用户名称')->display(function ($customer_id){
+        $grid->column('exam_time', '审核时间');
+        $grid->column('refund_time', '退款时间');
+        $grid->column('customer_id', '用户名称')->display(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname??"";
+            return $customer->nickname ?? "";
         });
 
         $grid->filter(function ($filter) {
@@ -100,7 +100,7 @@ class RetailRefundController extends AdminController
 
         $form->display('retail_order_line_id', '关联订单编号')->with(function ($retail_order_line_id) {
             $retail_order_line = RetailOrderServices::getRetailOrderLineInfo(['retail_order_line_id' => $retail_order_line_id]);
-            return $retail_order_line['retail_name'];
+            return $retail_order_line['retail_name'] ?? '';
         });
         $form->textarea('refuse_content', '退款描述')->readonly();
         $form->image('refuse_image_url', '凭证图片')->readonly();
@@ -118,7 +118,7 @@ class RetailRefundController extends AdminController
         $form->datetime('refund_time', '退款时间');
         $form->display('customer_id', '用户名称')->with(function ($customer_id) {
             $customer = CustomerServices::getCustomerById($customer_id);
-            return $customer->nickname??"";
+            return $customer->nickname ?? "";
         });
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮

@@ -35,7 +35,7 @@ class NewsController extends AdminController
 
         $grid->column('class_id', '所属分类')->display(function ($class_id) {
             $class = NewClassServices::getInfo($class_id);
-            return $class->class_name;
+            return $class->class_name ?? '';
         });
         $states = [
             'on' => ['value' => NewsModel::STATUS_CODE['ENABLE'], 'text' => '启用', 'color' => 'primary'],
@@ -69,7 +69,7 @@ class NewsController extends AdminController
         $form = new Form(new NewsModel());
 
         $form->text('title', '标题')->required();
-        $form->select('class_id','分类')->options(self::REMOTE_URL_NEWS_CLASS);
+        $form->select('class_id', '分类')->options(self::REMOTE_URL_NEWS_CLASS);
         $form->ckeditor('content', '详情')->required();
 
 

@@ -35,7 +35,7 @@ class ProBrandController extends AdminController
         $grid->column('created_at', '创建时间');
         $grid->column('label_id', '所属标签')->display(function ($label_id) {
             $labelInfo = ProLabelServices::getInfoById($label_id);
-            return $labelInfo->label_name;
+            return $labelInfo->label_name ?? '';
         });
         $grid->column('brand_name', '品牌名称');
         $grid->column('order_by', '排序值')->editable()->sortable();

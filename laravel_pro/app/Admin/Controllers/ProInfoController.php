@@ -42,15 +42,15 @@ class ProInfoController extends AdminController
         $grid->column('created_at', '创建时间');
         $grid->column('label_id', '所属标签')->display(function ($label_id) {
             $labelInfo = ProLabelServices::getInfoById($label_id);
-            return $labelInfo['label_name'];
+            return $labelInfo['label_name'] ?? '';
         });
         $grid->column('brand_id', '品牌名称')->display(function ($brand_id) {
             $brandInfo = ProBrandServices::getBrandInfo($brand_id);
-            return $brandInfo['brand_name'];
+            return $brandInfo['brand_name'] ?? '';
         });
         $grid->column('class_id', '分类名称')->display(function ($class_id) {
             $classInfo = ProClassServices::getProClassInfo($class_id);
-            return $classInfo['class_name'];
+            return $classInfo['class_name'] ?? '';
         });
         $grid->column('pro_name', '产品名称');
         $grid->column('original_price', '原价');
