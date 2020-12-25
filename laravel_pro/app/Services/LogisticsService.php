@@ -21,33 +21,47 @@ class LogisticsService
         $data = "";
         if ($bill_no) {
             $client = new Client();
-            $response = $client->request('POST', self::COM_URL, [
-                'form_params' => [
+            $comCode = self::getComCode($client, $bill_no);
+
+            if($comCode){
+                $param = [
+                    'com' => $comCode,
                     'num' => $bill_no,
-                    'key' => config('logistics.key'),
-                ]
-            ]);
+                ];
+                $sign = strtoupper(md5(json_encode($param) . config('logistics.key') . config('logistics.customer')));
 
-            $body = $response->getBody()->getContents();
-            $body = json_decode($body, true);
+                $response = $client->request('POST', self::QUERY_URL, [
+                    'form_params' => [
+                        'customer' => config('logistics.customer'),
+                        'sign' => $sign,
+                        'param' => json_encode($param)
+                    ]
+                ]);
 
-            $param = [
-                'com' => $body[0]['comCode'],
-                'num' => $bill_no,
-            ];
-
-            $sign = strtoupper(md5(json_encode($param) . config('logistics.key') . config('logistics.customer')));
-            $response = $client->request('POST', self::QUERY_URL, [
-                'form_params' => [
-                    'customer' => config('logistics.customer'),
-                    'sign' => $sign,
-                    'param' => json_encode($param)
-                ]
-            ]);
-
-            $data = json_decode($response->getBody()->getContents(), true);
+                $data = json_decode($response->getBody()->getContents(), true);
+            }
 
         }
         return $data;
+    }
+
+    /**
+     * @param $client
+     * @param string $bill_no
+     * @return mixed|string
+     */
+    public static function getComCode($client, string $bill_no)
+    {
+        $response = $client->request('POST', self::COM_URL, [
+            'form_params' => [
+                'num' => $bill_no,
+                'key' => config('logistics.key'),
+            ]
+        ]);
+
+        $body = $response->getBody()->getContents();
+        $body = json_decode($body, true);
+
+        return $body[0]['comCode'] ?? '';
     }
 }

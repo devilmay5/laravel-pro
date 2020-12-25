@@ -14,6 +14,13 @@ class AdvertisementServices
      */
     public static function getInfo(string $name): array
     {
-        return Advertisement::query()->ofName($name)->first()->toArray();
+        $res = Advertisement::query()->ofName($name)->first();
+
+        if ($res) {
+            $res = $res->toArray();
+        } else {
+            $res = [];
+        }
+        return $res;
     }
 }
