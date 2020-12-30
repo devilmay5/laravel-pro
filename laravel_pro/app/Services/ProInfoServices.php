@@ -117,26 +117,28 @@ class ProInfoServices
     public static function getSearchList(array $req): array
     {
         $select = [
-            'id as pro_id',
+            'pro_info.id as pro_id',
             'pro_name',
             'present_price',
             'cover_image_url',
             'sale_count',
-            'description',
-            'detail_image_url'
+            'pro_info.description',
+            'detail_image_url',
+            'pro_brand.brand_name'
         ];
 
         $query = ProInfo::query()->select($select)
+            ->leftJoin('pro_brand', 'pro_info.brand_id', '=', 'pro_brand.id')
             ->ofProName($req['pro_name'] ?? '')
             ->ofIsRecommend($req['is_recommend'] ?? '')
             ->ofPresentPrice($req['low'] ?? 0, $req['high'] ?? 0)
             ->ofBrandId($req['brand_id'] ?? '')
             ->ofLabelId($req['label_id'] ?? '')
-            ->ofStatus(ProInfo::STATUS_CODE['ENABLE'])
+            ->where('pro_info.status', ProInfo::STATUS_CODE['ENABLE'])
             ->ofClassId($req['class_id'] ?? '');
 
 
-        $query = $query->orderBy($req['order_item'], $req['order_type']);
+//        $query = $query->orderBy($req['order_item'], $req['order_type']);
         $count = $query->count();
 
         if ($req['page_index'] && $req['page_size']) {
