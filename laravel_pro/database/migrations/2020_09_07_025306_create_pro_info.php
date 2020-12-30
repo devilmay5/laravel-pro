@@ -25,10 +25,10 @@ class CreateProInfo extends Migration
             $table->decimal('original_price', 8, 2)->default(0)->nullable(false)->comment('原价');
             $table->decimal('present_price', 8, 2)->default(0)->nullable(false)->comment('现价');
             $table->mediumText('cover_image_url')->comment('封面图');
-            $table->json('detail_image_url')->comment('详情图');
+            $table->string('detail_image_url',255)->comment('详情图');
             $table->mediumText('description')->comment('描述');
-            $table->json('detail_params')->comment('参数详情');
-            $table->json('sku_params')->comment('sku详情');
+            $table->string('detail_params',255)->comment('参数详情');
+            $table->string('sku_params',255)->comment('sku详情');
 
             $table->integer('total_count')->default(0)->comment('库存总计');
             $table->integer('sale_count')->default(0)->comment('销量总计');

@@ -12,7 +12,7 @@
         "ext-json": "*",
         "alibabacloud/client": "^1.5",
         "cyd622/laravel-admin-ext-echarts": "^1.0",
-        "encore/laravel-admin": "^1.8",
+        "encore/laravel-admin": "1.*",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
         "jadekun/sku": "^1.0",

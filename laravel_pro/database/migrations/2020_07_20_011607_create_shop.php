@@ -27,7 +27,7 @@ class CreateShop extends Migration
             $table->integer('attention')->default(0)->comment('关注量');
             $table->integer('is_branch')->default(0)->nullable(true)->comment('是否是分店：0不是 1是');
             $table->integer('parent_branch')->default(0)->nullable(true)->comment('父级店铺id');
-            $table->json('extention')->nullable(true)->comment('扩展字段');
+            $table->string('address', 255)->nullable(true)->comment('扩展字段');
 
             $table->index('name');
 

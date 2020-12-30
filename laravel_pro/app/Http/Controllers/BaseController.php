@@ -48,6 +48,7 @@ class BaseController extends Controller
             'count' => $count ?? 0,
             'result' => $data ?? [],
         ];
+
         return response()->json($res);
     }
 

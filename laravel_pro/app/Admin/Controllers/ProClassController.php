@@ -48,10 +48,10 @@ class ProClassController extends AdminController
 
         $grid->column('id', 'Id');
         $grid->column('created_at', '创建时间');
-        $grid->column('label_id', '所属标签')->display(function ($label_id) {
-            $labelInfo = ProLabelServices::getInfoById($label_id);
-            return $labelInfo['label_name'] ?? '';
-        });
+//        $grid->column('label_id', '所属标签')->display(function ($label_id) {
+//            $labelInfo = ProLabelServices::getInfoById($label_id);
+//            return $labelInfo['label_name'] ?? '';
+//        });
         $grid->column('brand_id', '品牌名称')->display(function ($brand_id) {
             $brandInfo = ProBrandServices::getBrandInfo($brand_id);
             return $brandInfo['brand_name'] ?? '';
@@ -109,7 +109,7 @@ class ProClassController extends AdminController
             $options_label[$item['id']] = $item['label_name'];
         }
 
-        $form->select('label_id', '所属标签')->options($options_label)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
+//        $form->select('label_id', '所属标签')->options($options_label)->load('brand_id', self::REMOTE_URL_PRO_BRAND)->required();
 
         [$brand_list, $count] = ProBrandServices::getBrandList(0, 0, 0);
         $options_brand = [];

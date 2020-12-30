@@ -33,10 +33,10 @@ class ProBrandController extends AdminController
 
         $grid->column('id', 'Id')->sortable();
         $grid->column('created_at', '创建时间');
-        $grid->column('label_id', '所属标签')->display(function ($label_id) {
-            $labelInfo = ProLabelServices::getInfoById($label_id);
-            return $labelInfo->label_name ?? '';
-        });
+//        $grid->column('label_id', '所属标签')->display(function ($label_id) {
+//            $labelInfo = ProLabelServices::getInfoById($label_id);
+//            return $labelInfo->label_name ?? '';
+//        });
         $grid->column('brand_name', '品牌名称');
         $grid->column('order_by', '排序值')->editable()->sortable();
         $states = [
@@ -81,7 +81,7 @@ class ProBrandController extends AdminController
     {
         $form = new Form(new ProBrand());
 
-        $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->required();
+//        $form->select('label_id', '所属标签')->options(self::REMOTE_URL_PRO_LABEL)->required();
         $form->text('brand_name', '品牌名称')->required();
         $form->textarea('description', '描述')->required();
         $form->image('brand_image', 'LOGO')->uniqueName()->required();
